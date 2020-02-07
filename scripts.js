@@ -1,4 +1,5 @@
 let response = undefined;
+let assessmentDone = false;
 
 const levenshteinDistance =  function(a, b){
         if(a.length == 0) return b.length; 
@@ -139,29 +140,54 @@ const getCandidatesAndBestOne = function(sourceArray, text, property){
 	};
 }
 
-const selectCorrectAnswer = function() {
-	let currQuestion = document.getElementsByClassName('question')[0].innerText;
-	
-	try {
-		let currAnswer = null;
-		// Might throw null pointer
-		if (response.questions.find( it => it.question == currQuestion ) != undefined) {
-			 currAnswer = response.questions.find( it => it.question == currQuestion ).answer;
-		} else {
-			let questionCandidate = getCandidatesAndBestOne(response.questions, currQuestion, 'question'); 
-			console.log(questionCandidate);
+const doResponseIntent = function(){
 
-			currAnswer = questionCandidate.best.value.answer; //questionCandidate.value.answer;
-		}
+};
+
+const selectCorrectAnswer = function() {	
+	let btnSubmitQuiz = document.getElementById('quizSubmitBtn');
+	if (btnSubmitQuiz.attributes.cursor.value === 'pointer') { // Submit available
+		btnSubmitQuiz.click();
+		setTimeout(() => {
+			assessmentDone = true;
+			doAssessment();
+		}, 2000);
+	} else {
+		let currQuestion = document.getElementsByClassName('question')[0].innerText;
 		
-		let answerOptions = Array.from(document.getElementsByClassName('answerOptions')[0].children).filter(it => it.tagName == "LABEL");
-		let answerCandidate = getCandidatesAndBestOne(answerOptions, currAnswer, 'innerText');
+		try {
+			let currAnswer = null;
+			// Might throw null pointer
+			if (response.questions.find( it => it.question == currQuestion ) != undefined) {
+				 currAnswer = response.questions.find( it => it.question == currQuestion ).answer;
+			} else {
+				let questionCandidate = getCandidatesAndBestOne(response.questions, currQuestion, 'question'); 
+				console.log(questionCandidate);
 
-		// Might throw null pointer (CURRENTLY NOT WORKING)
-		let correctAnswerObject = answerCandidate.best.value.previousElementSibling; 
-		correctAnswerObject.click();
-	} catch (error) {
-		console.log("No answers for this")
+				currAnswer = questionCandidate.best.value.answer; //questionCandidate.value.answer;
+			}
+			
+			let answerOptions = Array.from(document.getElementsByClassName('answerOptions')[0].children).filter(it => it.tagName == "LABEL");
+			let answerCandidate = getCandidatesAndBestOne(answerOptions, currAnswer, 'innerText');
+
+			// Might throw null pointer (CURRENTLY NOT WORKING)
+			let correctAnswerObject = answerCandidate.best.value.previousElementSibling; 
+			correctAnswerObject.click();
+		} catch (error) {
+			console.log("No answers for this")
+		}
+	}
+}
+
+const doAssessment = function() {
+	if(!assessmentDone){
+		response = undefined;
+		loadAnswersJson();
+	} else {
+		let continueBtn = Array.from(document.getElementsByClassName('modalContent')[0].children).find(it => it.innerText === 'CONTINUE');
+		if(continueBtn !== undefined) {
+			continueBtn.click();			
+		}
 	}
 }
 
@@ -175,4 +201,4 @@ Array.from(document.querySelectorAll(".navButton.right, .answerOptions")).map( i
 	})
 })
 
-loadAnswersJson();
+doAssessment();
