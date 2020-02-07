@@ -1,0 +1,168 @@
+{
+  "questions": [
+    {
+      "question": "The complexity of developing, testing and deploying the distributed system, and handling partial failures account to the disadvantages of ___________",
+      "answer": "Microservices"
+    },
+    {
+      "question": "Agile development & deployment is difficult in case of __________________",
+      "answer": "Monolithic"
+    },
+    {
+      "question": "Separating components with conflicting resource requirements falls under the bucket of _____________",
+      "answer": "Microservices"
+    },
+    {
+      "question": "The benefits of Microservices include ___________",
+      "answer": "All the options"
+    },
+    {
+      "question": "Simple to develop, test, deploy and scale represents __________________",
+      "answer": "Monolithic"
+    },
+    {
+      "question": "Software built as microservices can, by definition, be broken down into multiple component services.",
+      "answer": "1"
+    },
+    {
+      "question": "The decomposition of Microservices is based on two categories, namely ________",
+      "answer": "Business Capability and Subdomain"
+    },
+    {
+      "question": "The 3Cs of Microservices include the following, except ______________",
+      "answer": "Control"
+    },
+    {
+      "question": "Microservice Architecture adapts which of the following concept(s)?",
+      "answer": "All the options"
+    },
+    {
+      "question": "Microservice is considered as a subset of SOA.",
+      "answer": "1"
+    },
+    {
+      "question": "The client expects a timely response from the service and might even block while it waits. This represents the _________ client service interaction style.",
+      "answer": "Synchronous"
+    },
+    {
+      "question": "Which ensures to insulate the applications by acting as a barrier?",
+      "answer": "API Gateway"
+    },
+    {
+      "question": "_____________ helps to control and limit the number of consecutive request failures that cross a threshold.",
+      "answer": "Circuit breaker"
+    },
+    {
+      "question": "AWS Elastic Load Balancer (ELB) is an example of __________________",
+      "answer": "Server-side discovery"
+    },
+    {
+      "question": "Netflix OSS is an example of ____________",
+      "answer": "Client-side discovery"
+    },
+    {
+      "question": "Scenarios where the client takes the onus and is responsible for determining the network locations of the available service instances is _________",
+      "answer": "Client-side discovery"
+    },
+    {
+      "question": "The services communicate with each other internally using _____________",
+      "answer": "Both Messaging and Remote Procedure invocation"
+    },
+    {
+      "question": "API Gateway ensures ____________",
+      "answer": "All the options"
+    },
+    {
+      "question": "External clients communicate with Microservices using _______________",
+      "answer": "API Gateway "
+    },
+    {
+      "question": "Which acts as a database of services?",
+      "answer": "Service Registry"
+    },
+    {
+      "question": "The two types of Service Discovery includes Client-side discovery and server-side discovery.",
+      "answer": "1"
+    },
+    {
+      "question": "Amazon EC2 Container Service is an example of ________________",
+      "answer": "Docker"
+    },
+    {
+      "question": "Microservices supports different kinds of databases and this is called ____________.",
+      "answer": "Polyglot persistence"
+    },
+    {
+      "question": "Microservices-based architecture enforces a Modular structure.",
+      "answer": "1"
+    },
+    {
+      "question": "IDL stands for ______________________",
+      "answer": "Interface Definition Language "
+    },
+    {
+      "question": "Which of these is a drawback of Multiple Services per Host pattern?",
+      "answer": "Faulty deployment"
+    },
+    {
+      "question": "Service Instance per Host pattern provides ________________",
+      "answer": "All the options"
+    },
+    {
+      "question": "Efficient Utilization and Fast Deployment represents which pattern?",
+      "answer": "Multiple Services per Host pattern"
+    },
+    {
+      "question": "In __________, each external request is tagged with a unique identifier which is passed to all services involved in handling the request and included in application logging messages.",
+      "answer": "Distributed tracing"
+    },
+    {
+      "question": "Which pattern collects and reports all exceptions to a centralized exception tracking service?",
+      "answer": "Exception tracing"
+    },
+    {
+      "question": "The following are all caching types, except ___________",
+      "answer": "Server cache "
+    },
+    {
+      "question": "__________ is the ability to store something temporarily to reduce the loading times, and I/O of a system.",
+      "answer": "Cache"
+    },
+    {
+      "question": "Caching helps in improving the performance of the system.",
+      "answer": "1"
+    },
+    {
+      "question": "Microservice Chassis takes care of the following, except ______________",
+      "answer": "Token generation "
+    },
+    {
+      "question": "In Microservices, the API Gateway takes care of the security aspect by rendering ________________",
+      "answer": "Access tokens"
+    },
+    {
+      "question": "Microservices-based architecture prefers __________",
+      "answer": "No dependency on any particular DB"
+    },
+    {
+      "question": "The transactions that span across multiple services are handled by ____________",
+      "answer": ""
+    },
+    {
+      "question": "Kubernotes and Marathon are examples of _______________________",
+      "answer": ""
+    },
+    {
+      "question": "The two components of CQRS include_______________",
+      "answer": "Query and command side "
+    },
+    {
+      "question": "Packer.io and Boxful represent ______________ type of pattern.",
+      "answer": "Service Instance per Host "
+    },
+    {
+      "question": "Limited Efficient Utilization and slow deployment represent _____________",
+      "answer": "Service Instance per Host"
+    }
+  ]
+}
