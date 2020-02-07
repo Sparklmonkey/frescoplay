@@ -116,14 +116,6 @@ const loadAnswersJson = function() {
 
 const getCandidatesAndBestOne = function(sourceArray, text, property){
 	// We must find the question that probably has format differences, so let's use some distance algorithms
-	let objs = sourceArray.map((element) => {
-		return {
-			'element': element
-		}
-	});
-
-	console.log(objs);
-
 	let candidates = sourceArray.map((element) => {
 		return {
 			'distance0': levenshteinDistance(text.trim(), element[property].trim()),
@@ -146,6 +138,7 @@ const doResponseIntent = function(){
 
 const selectCorrectAnswer = function() {	
 	let btnSubmitQuiz = document.getElementById('quizSubmitBtn');
+	
 	if (btnSubmitQuiz.attributes.cursor.value === 'pointer') { // Submit available
 		btnSubmitQuiz.click();
 		setTimeout(() => {
@@ -182,6 +175,7 @@ const selectCorrectAnswer = function() {
 const doAssessment = function() {
 	if(!assessmentDone){
 		response = undefined;
+		addBtnClickEventListener();
 		loadAnswersJson();
 	} else {
 		let continueBtn = Array.from(document.getElementsByClassName('modalContent')[0].children).find(it => it.innerText === 'CONTINUE');
@@ -191,14 +185,24 @@ const doAssessment = function() {
 	}
 }
 
-//THIS WILL HANDLE CALLING QUESTION COMPLETION AFTER QUESTION HAS BEEN AUTOMATICALLY SELECTED, OR MANUALLY SELECTED.
-Array.from(document.querySelectorAll(".navButton.right, .answerOptions")).map( it => {
-	it.addEventListener("click", (event) => {
-		if(response)
-			setTimeout(() => selectCorrectAnswer(), 1500)
-		else
-			loadAnswersJson()
-	})
-})
+const addBtnClickEventListener = function () {
+	//THIS WILL HANDLE CALLING QUESTION COMPLETION AFTER QUESTION HAS BEEN AUTOMATICALLY SELECTED, OR MANUALLY SELECTED.
+	Array.from(document.querySelectorAll(".navButton.right, .answerOptions")).map( it => {
+		it.addEventListener("click", (event) => {
+			if(response)
+				setTimeout(() => selectCorrectAnswer(), 1500)
+			else
+				loadAnswersJson()
+		})
+	});
+}
+
+const takeNewAssessment = function() {
+	response = undefined;
+	assessmentDone = false;
+
+	addBtnClickEventListener();
+	loadAnswersJson();
+}
 
 doAssessment();
