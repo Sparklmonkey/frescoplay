@@ -6,7 +6,7 @@
    },
    {
       "question": "       Closure is similar to _________ in other languages.         ",
-      "answer": "lambda",
+      "answer": "lambda"
    },
    {
       "question": "  print([1, 3, 2, 4].sorted(by:{ a, b in return a > b }))     What will be the output of this code snippet?",
