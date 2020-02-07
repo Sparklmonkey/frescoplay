@@ -1,17 +1,15 @@
 {
 "questions": [
    {
-    "question": "A nested function is an example of Closure.",
+    "question": "     A nested function is an example of Closure. ",
     "answer": "True"
    },
    {
-      "question": "Closure is similar to _________ in other languages.",
+      "question": "       Closure is similar to _________ in other languages.         ",
       "answer": "lambda",
    },
    {
-      "question": "print([1, 3, 2, 4].sorted(by:{ a, b in return a > b }))
-
-What will be the output of this code snippet?",
+      "question": "  print([1, 3, 2, 4].sorted(by:{ a, b in return a > b }))     What will be the output of this code snippet?",
       "answer": "[4, 3, 2, 1]"
    }
  ]
