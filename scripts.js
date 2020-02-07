@@ -36,6 +36,8 @@ let selectCorrectAnswer = function(jsonTest) {
 
 	if (correctAnswerObject !== null){
 		correctAnswerObject.click();
+	} else {
+		alert("Sorry... we don't have the correct answer for this question :(");
 	}
 };
 
