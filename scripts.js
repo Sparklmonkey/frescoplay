@@ -1,44 +1,44 @@
+let response = undefined
+
 let loadAnswersJson = function() {
-	var oReq = new XMLHttpRequest();
-	oReq.addEventListener("load", function(){
-		let jsonData = JSON.parse(this.responseText);
-		console.log(jsonData);
-		selectCorrectAnswer(jsonData);
-	});
-	oReq.open("GET", "https://raw.githubusercontent.com/Sparklmonkey/frescoplay/master/test.json");
-	oReq.send();
-};
+	let urlArray = document.URL.split('/');
+	let quizId = urlArray[urlArray.length - 2];
+	// fetch(`https://raw.githubusercontent.com/Sparklmonkey/frescoplay/master/${quizId}.json`)
+	fetch(`https://raw.githubusercontent.com/Sparklmonkey/frescoplay/master/test.json`)
+		.then( response => response.json())
+		.then( responseObject => {
+			response = responseObject
+			selectCorrectAnswer();
+		})
+}
 
-let selectCorrectAnswer = function(jsonTest) {
-	let currentQuestion = document.getElementsByClassName('question')[0].innerText;
-	let currentAnswer = "";
+let selectCorrectAnswer = function() {
+	
+	let currQuestion = document.getElementsByClassName('question')[0].innerText;
+	
+	try {
+		// Might throw null pointer
+		var currAnswer = response.questions.find( it => it.question == currQuestion ).answer;
+		
+		let answerOptions = Array.from(document.getElementsByClassName('answerOptions')[0].children);
 
-	for(var x = 0; x < jsonTest.questions.length; x++){
-		if(currentQuestion == jsonTest.questions[x].question) {
-			currentAnswer = jsonTest.questions[x].answer;
-			break;
-		}
-	}
-
-	console.log(currentAnswer);
-
-	let answerOptions = document.getElementsByClassName('answerOptions')[0].children;
-	let correctAnswerObject = null;
-
-	for(var x = 0; x < answerOptions.length; x++){
-		if (answerOptions[x].tagName == "LABEL") {
-			if(answerOptions[x].innerText == currentAnswer) {
-				correctAnswerObject = answerOptions[x].previousElementSibling;
-				break;
-			}
-		}
-	}
-
-	if (correctAnswerObject !== null){
+		// Might throw null pointer (CURRENTLY NOT WORKING)
+		let correctAnswerObject = answerOptions.find( it => it.tagName == "LABEL" && it.innerText == currAnswer).previousElementSibling
 		correctAnswerObject.click();
-	} else {
-		alert("Sorry... we don't have the correct answer for this question :(");
+	} catch (error) {
+		console.log("No answers for this")
 	}
-};
+
+}
+
+// THIS WILL HANDLE CALLING QUESTION COMPLETION AFTER QUESTION HAS BEEN AUTOMATICALLY SELECTED, OR MANUALLY SELECTED.
+Array.from(document.querySelectorAll(".navButton.right, .answerOptions")).map( it => {
+	it.addEventListener("click", (event) => {
+		if(response)
+			setTimeout(() => selectCorrectAnswer(), 1500)
+		else
+			loadAnswersJson()
+	})
+})
 
 loadAnswersJson();
