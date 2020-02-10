@@ -138,7 +138,7 @@ const doResponseIntent = function(){
 
 const selectCorrectAnswer = function() {	
 	let btnSubmitQuiz = document.getElementById('quizSubmitBtn');
-	
+
 	if (btnSubmitQuiz.attributes.cursor.value === 'pointer') { // Submit available
 		btnSubmitQuiz.click();
 		setTimeout(() => {
@@ -180,7 +180,10 @@ const doAssessment = function() {
 	} else {
 		let continueBtn = Array.from(document.getElementsByClassName('modalContent')[0].children).find(it => it.innerText === 'CONTINUE');
 		if(continueBtn !== undefined) {
-			continueBtn.click();			
+			continueBtn.click();	
+			setTimeout(() => {
+				doCourse();
+			}, 2000);		
 		}
 	}
 }
@@ -205,4 +208,17 @@ const takeNewAssessment = function() {
 	loadAnswersJson();
 }
 
-doAssessment();
+const doCourse = function() {
+	let btnNext = document.getElementsByClassName('navButton right')[0];
+	if (btnNext !== undefined) {
+		btnNext.click();
+		setTimeout(() => {
+			doCourse();
+		}, 1000);
+	} else { // A wild quiz has appeared!
+		document.getElementById('startQuiz').click();
+		takeNewAssessment();
+	}
+}
+
+doCourse();
