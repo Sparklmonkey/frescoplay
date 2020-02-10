@@ -1,0 +1,220 @@
+
+*Which functionality should you use to delegate administrative tasks for specific resource groups in Azure?
+Role Based Access Control
+
+* Which of these modules is not included in Azure PowerShell?
+None of the options
+
+**What is the minimum number of instances necessary to get the SLA guarantee from Microsoft?
+2
+
+*When using Azure Resource Manager, you can use a _______________ for deployment, which can build identical environments for different work scenarios such as testing, staging, and production.
+Template
+
+*Which tool helps you estimate the costs you will incur on Azure?
+Pricing Calculator
+
+*Which of the following is the older service management model, where cloud services contain your cloud resources?
+Classic Portal
+
+*Notification Hubs is a ________________ service of Azure.
+Application Service
+
+*Azure supports both .vhd and .vhdx file formats for Virtual Machines.
+False
+
+*In the Azure Service Management model, the resources are _________.
+Coupled
+
+
+
+
+
+*When should you use a static IP address?
+DNS Server
+
+*Maximum number of NICs can be associated with the Azure VM ________________.
+Depends on the VM size
+
+*There are default rules for outbound and inbound traffic, which are predefined. You cannot delete these predefined rules, but how can you override them?
+By creating rules with a higher priority
+
+**Network Security Group (NSG) rules are based on _______________.
+All the options
+
+*Azure offers a DNS system for supporting most of the resolution scenarios, except _____________.
+Hybrid Connections
+
+**___________________ are the maximum number of Private IP Addresses per network interface managed via Azure Resource Manager per region per subscription.
+256
+
+*Maximum Number of VPN Gate ways can be created for the VNet ___________________________
+1
+
+**Multiple NICs are used to ________________.
+High Network traffic management
+
+
+
+
+
+
+**________ is the message size limit in a Azure Storage Queue.
+64 KB
+
+*What assembly contains classes for working with Tables, Blobs, and Queues?
+Microsoft.WindowsAzure.Storage
+
+*Which emulators are installed with the Azure SDK?
+Compute & Storage Emulator
+
+*Azure File Storage allows for applications to have shared storage using the SMB 2.1 protocol.
+True
+
+*What URL format can Blobs be accessed from?
+http://<storage account>.blob.core.windows.net/<container>/<blob>
+
+*Azure File Storage data can be accessed from an on-premises application using the following:
+Both as Mounted Drive and File Storage API
+
+*An Azure Storage Account has to be created before using Azure Storage Files or Blobs.
+True
+
+
+*You have an Azure Storage account named "superstore", and you create a new Storage Table called "BigTable". Which URL is used to access the newly created Storage Table?
+http://superstore.storage.core.windows.net/table/bigtable X  http://superstore.azurestorage.net/table/bigtable X
+
+
+
+
+
+
+*Two web apps cannot share the same web hosting plan.
+False
+
+*What kind of a NoSQL store is Azure Table Storage?
+Key-Value pair
+
+*What DNS record type is set when mapping a Custom Domain to be an alias for the default {sitename}.azurewebsites.net domain name assigned to a Web App by Azure?
+CNAME
+
+*The web app contents are swapped when swapping deployment slots.
+True
+
+*Which of the following web applications can be deployed with Azure?
+All the options
+
+**You create a new Azure Web App with the URL prefix of "my-amazing-app". What is the domain/URL where the application is accessible from?
+my-amazing-app.azurewebsites.net
+
+*A _________ role is a virtual machine instance running the Microsoft IIS Web server that can accept and respond to HTTP or HTTPS requests.
+Web
+
+
+
+
+
+
+
+*A company has 10 on-premises SQL databases. The company plans to move the databases to SQL Server 2012 that runs in Azure Infrastructure-as-a-Service (IaaS). After migration, the databases will support a limited number of Azure websites in the same Azure Virtual Network. You have the following requirements: You must restore copies of existing on-premises SQL databases to the SQL servers that run in Azure IaaS. You must be able to manage the SQL databases remotely.
+
+You must not open a direct connection from all of the machines on the on-premises network to Azure. Connections to the databases must originate from only five Windows computers. You need to configure remote connectivity to the databases. Which technology solution should you implement?
+Azure Virtual Network point-to-site VPN from 5 workstations only
+
+*9What is a determining factor as to whether or not a virtual machine can have multiple NICs connected to it?
+VM Size
+
+**You need to transfer several TBs of data to Azure Datacenter, but uploading over the network is not feasible due to limited bandwidth, then how will you upload the data?
+Use the Import and Export service
+
+**An Azure Standard_A4 virtual machine has ______ cores.
+8
+
+*Which Azure networking component is the core unit, from which administrators can have full control over IP address assignments, name resolution, security settings and routing rules?
+Virtual Networks (VNETs)
+
+**GitHub is a web-based Git repository that is free to use for public and open source projects.
+True
+
+**What type of workload would be the most suitable for deployment on Azure virtual machines?
+All the options
+
+*You are using the Set-AzureRMVMSourceImage command with the -Version parameter. You want to ensure you get the most current image. Which value should you use with the -Version parameter?
+Latest
+
+*ExpressRoute connections enable access to the ___________.
+All the options
+
+**Which storage type should you use for streaming audio and video files?
+Blob
+
+**Fs and F series of VMs are _________________.
+Compute Optimized
+
+**Which tool helps you estimate the costs you will incur on Azure?
+Pricing Calculator
+
+**Which service gives Microsoft Azure users access to the open source framework Hadoop?
+HDInsight
+
+**Microsoft uses industry standard _______________ dynamic routing protocol to exchange routes between your on-premises network, your instances in Azure, and Microsoft public addresses.
+BGP
+
+*Azure data, by default, is replicated ________ times for data protection and writes are checked for consistency.
+3
+
+**What kind of NoSQL store are Azure Table Storage?
+Key-Value pair
+
+**In addition to the Production deployment slot, how many additional deployment slots can you create?
+4
+
+*Network configuration files are defined in what format?
+.xml
+
+*WebJobs can be scheduled to run ___________.
+All the options
+
+**Scale Out in Azure __________________.
+Increases instances
+ 
+**Microsoft supports OS that is past their end of support date without a Custom Support Agreement (CSA).
+False
+
+*Add-AzureRmVMNetworkInterface PowerShell command is used to ___________________.
+Attach a VNIC using ARM portal
+
+**Which statement regarding operating system upgrades of an Azure virtual machine is correct?
+No OS upgrades are supported
+
+**You are designing a distributed application for Azure. The application must securely integrate with on-premises servers. You need to recommend a method of enabling Internet Protocol security (IPsec)-protected connections between on-premises servers and the distributed application. What should you recommend?
+Azure Site-to-Site VPN
+
+*You are creating an Azure storage account. You have decided on a general purpose storage account. Which performance tier is available for general purpose storage accounts?
+Standard
+
+**VPN Gateway must be used to provide the connection between the VNets of ________________.
+All the options
+
+*Storage Optimized VM series is ideal for _____________________.
+Big Data, SQL, and NoSQL databases
+
+*Which of the following is a valid reason to deploy a virtual machine (VM) on-premises in Hyper-V instead of in Azure?
+You need to deploy a Generation 2 VM.
+
+**Maximum number of VMs based on a custom VM image in a scale set is __________________.
+None of the options
+
+*You need to deploy a virtual machine on Azure with a low memory entry level requirement. Which virtual machine sizes should you consider choosing?
+Basic_A0- Basic_A4
+
+
+
+
+
+
+
+
+
+
+

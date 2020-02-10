@@ -1,0 +1,201 @@
+*What is Ethereum?
+Public Blockchain
+
+*Ethereum's mining process is similar to bitcoin.
+True
+
+*EVM stands for ___________.
+Ethereum Virtual Machine
+
+*What is the purpose of EVM?
+To compile and execute code
+
+*ERC stands for _____________.
+Ethereum Request for Comments
+
+*The native currency of Ethereum network is _________________.
+Ether
+
+*Basic Structure for ERC20 Tokens is __________________.
+6 Functions, 2 Events, 3 Token information
+
+*EIP stands for __________.
+Ethereum Improvement Proposal
+
+*How many lower denominations does the Ether have?
+6
+
+*How is the ether brought into the Ethereum system?
+Mining
+
+*What is the denomination used in Ethereum?
+Wei
+
+*The main advantage of Ethereum over Bitcoin is __________.
+Smart Contracts
+
+*What is the smallest unit of Ether?
+Wei
+
+*Which consensus algorithm is to be added in Ethereum Serenity update?
+Proof of Stake
+
+*What are Ethereum tokens?
+Digital asset
+
+*Ethereum tokens are created by using ____________.
+Smart contracts
+
+*The native currency of Ethereum network is _________________.
+Ether
+
+*_________requires lots of Electricity/Energy.
+Proof of Work
+
+*Ethereum’s proof of Work Algorithm is ______.
+Ethash
+
+*How many rewards (Wei/Ether) does the miner receive for adding a block to the chain?
+5 ether
+
+*The time taken for mining one block in Ethereum is ___________.
+14 seconds
+
+*For EIP to become a new ERC, _________________.
+approved by Ethereum Committee
+
+
+
+
+*MetaMask wallet is a Browser Extension.
+True
+
+*How is transaction fee calculated?
+Gas used * gas price
+
+*Based on the storage of keys, wallets are classified into ______.
+hot and cold
+
+*Wallets and Ethereum Clients are used to interact with Ethereum network.
+True
+
+*Ethereum Client's Command Line Interface can be used for ___________.
+All the options
+
+*How can one send ethers?
+Between accounts on same network
+
+*In geth, the implementations are done in ____________.
+Go programming
+
+*Which of the following wallets is not with ERC20?
+Remix
+
+*Ethereum network is classified into _________.
+Public, Private and Consortium blockchain
+
+*All normal transactions are ________.
+Single-signature Transactions
+
+
+
+
+*Truffle can be used for ____.
+All the options
+
+*Remix IDE cannot be used with a Browser.
+False
+
+*Which environment in Remix IDE can be used to connect a private test network?
+Web3 Provider
+
+*Configuration file of Truffle is?
+truffle-config.js
+
+*Which is the command to install truffle?
+npm install -g truffle
+
+*What is Vyper?
+Python based programming language for Smart Contract
+
+*______ is a personal testnetwork that is a part of truffle suite.
+Ganache
+
+*Which command is used to create a truffle project?
+truffle init
+
+*Solidity is a statically typed language.
+True
+
+*If the actual Gas used in a Contract execution is less than the Gas specified by the user, the additional amount is returned.
+True
+
+*Solidity is a _____ language.
+Turing Complete
+
+*Remix IDE can be locally installed.
+True
+
+*Which of the following is a geth command?
+eth.getAccounts
+
+*Smart contract execution fees is paid by _______.
+User who called the Contract
+
+
+
+
+
+**Ethereum Virtual Machine supports turing complete languages.
+True
+
+*_______ is a collection of libraries used to create easy and better front-end for Ethereum DApps.
+Drizzle
+
+**Which of the follwing is an extension of Solidity file?
+.sol
+
+**Which control structure is not supported by Solidity?
+switch
+
+*What is the token used for executing Smart Contracts?
+Gas
+
+*Which of the following is a C++ based Ethereum Client?
+eth
+
+*What is the minimum Gas required for Transaction execution?
+21000 Gas
+
+*______ functions can only be called from inside the present contract, and cannot be called by the inherited contracts.
+Private
+
+*It is mandatory to specify the compiler version at the start of a Solidity Program.
+True
+
+*Which geth command is used to create a new account?
+geth account new
+
+*_______contains the Development Environment, testing Framework, and the asset pipeline.
+Truffle
+
+*Contract Accounts have code associated with them.
+True
+
+*______signifies the amount of gas to be spent for a transaction.
+gas limit
+
+*Which of the following is a Proof of Work implemented test network?
+Ropsten
+
+*MetaMask wallet is a ______.
+Browser extension
+
+
+
+*Which of the following is a geth command?
+eth.account
+
+
+
+*

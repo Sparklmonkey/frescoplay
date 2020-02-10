@@ -1,0 +1,227 @@
+*When using Azure Resource Manager, you can use a _______________ for deployment, which can build identical environments for different work scenarios such as testing, staging, and production.
+Template
+
+*Which one of the following option serves is a NoSQL datastore?
+Tables
+
+*Which of the following is the older service management model, where cloud services contain your cloud resources?
+Classic Portal
+
+*High-availability applications are ____________.
+All the options
+
+*The new Azure Portal is accessed using ___________.
+https:\\portal.azure.com
+
+*Which of the following statements are correct?
+All the options
+
+*If you have to replace your current on-premise services in the form of virtual machines, then you can use Microsoft Azure Cloud categorized as ____________.
+IAAS
+
+*In which operating system can we use Azure PowerShell?
+All the options
+
+*Which cloud offering targets the consumption of services?
+SaaS
+
+*You can view the latest data center map and Pay as You Go subscription information in (the) ________?
+Azure Dash Board
+
+
+
+
+
+*Which connection configuration offers faster speeds, higher security, lower latencies, and higher reliability?
+ExpressRoute
+
+*Default Private IP address allocation method is _________.
+dynamic
+
+**ExpressRoute connections enable access to the _________.
+All the options
+
+**Microsoft uses industry standard _______________ dynamic routing protocol to exchange routes between your on-premises network, your instances in Azure, and Microsoft public addresses.
+BGP
+
+*When should you use a static IP address?
+DNS Server
+
+*A subnet is a range of IP addresses in a __________.
+VNet
+
+*Which Azure networking component is the core unit from which administrators can have full control over IP address assignments, name resolution, security settings, and routing rules?
+Virtual Networks (VNETs)
+
+*_______________ is used to route the traffic between virtual machines inside your private virtual network.
+Azure Internal Load Balancers
+
+
+
+
+
+*Most types of resources can be moved to a different resource group at _______.
+Anytime
+
+*To how many resource groups can a resource be added?
+1
+
+*Azure supports both .vhd and .vhdx file formats for Virtual Machines.
+False
+
+*You can estimate the costs you will incur on Azure by using which tool?
+Pricing Calculator
+
+*You need to deploy a virtual machine on Azure with a low memory entry level requirement. Which virtual machine sizes should you consider choosing?
+Basic_A0- Basic_A4
+
+* The VM size determines the number of __________.
+Nic
+
+*The smallest recommended virtual machine size in Azure for a production environment is ____________.
+A1
+
+*Azure Virtual Machines only support VMs running the Microsoft Windows operating system.
+False
+
+*Which of the following option helps Azure maintain a high availability and fault tolerance when deploying and upgrading applications?
+Availability set
+
+*Which of the following Windows Server roles is not supported on Azure Virtual Machines?
+Hyper-V
+
+
+
+
+
+
+
+*Geo-replication is enabled by default in Windows Azure Storage.
+Yes
+
+*Premium storage disks for virtual machines support up to 64 TBs of storage.
+True
+
+*In which type of Storage replication, data is not replicated across multiple datacenters?
+Locally redundant storage (LRS)
+
+*Which type of storage offering uses SSDs and is intended for use with Virtual machines?
+Premium
+
+*You add a data disk to an Azure virtual machine. What drive type is created?
+SCSI
+
+*Your Azure storage account is always replicated to ensure durability and high availability. By default, which of the following replications schemes is used?
+RA-GRS
+
+*If you choose this redundancy strategy, you cannot convert to another redundancy strategy without creating a new storage account and copying the data to the account.
+ZRS
+
+*What type of storage account is backed by magnetic drives and provides the lowest cost per GB?
+Standard
+
+*The maximum size for a file share is 5 TBs.
+True
+
+*Geo Redundancy is to provide high availability in ________.
+Geographically
+
+
+
+
+
+
+**The VM size determines the number of __________.
+Nic
+
+**Which of the following web applications can be used with Azure?
+All the options
+
+**A subnet is a range of IP addresses in a __________.
+VNet
+
+**Which connection configuration offers faster speeds, higher security, lower latencies, and higher reliability?
+ExpressRoute
+
+*Which of the following services allow the creation and management of virtual machines that serve either in a Web role and a Worker role?
+Compute
+
+**If you have to replace your current on-premise services in the form of virtual machines, then you can use Microsoft Azure Cloud categorized as ____________.
+IAAS
+
+**Azure Virtual Machines only support VMs running the Microsoft Windows operating system.
+False
+
+*Which of the following are a worldwide content caching and delivery system for Windows Azure blob content?
+CDN
+
+**To delegate administrative tasks for specific resource groups in Azure which functionality should be used?
+Role Based Access Control
+
+*What is the format of an Azure Resource Template?
+JSON
+
+*Is it possible to create a custom Domain name, or use your organization's domain name, such as fresco.com, in Azure Active Directory?
+True
+
+*Microsoft Azure Active Directory can be integrated with on-premises Active Directory to allow single sign-on.
+True
+
+**You need to deploy a virtual machine on Azure with a low memory entry level requirement. Which virtual machine sizes should you consider choosing?
+Basic_A0- Basic_A4
+
+**Which Azure networking component is the core unit, from which administrators can have full control over IP address assignments, name resolution, security settings, and routing rules?
+Virtual Networks (VNets)
+
+**What’s the maximum bandwidth provided by ExpressRoute?
+10 Gbps
+
+**What VPN types are supported by Azure?
+All the options
+
+*SQL Azure is a cloud-based relational database service that relies on _________.
+SQL Server
+
+**Geo Redundancy is to provide high availability in ________.
+Geographically
+
+**Default Private IP address allocation method is _________.
+dynamic
+
+*In which type of Storage replication, data is not replicated across multiple data centers?
+Locally redundant storage (LRS)
+
+*Azure data is replicated ________ times for data protection and writes are checked for consistency.
+three
+
+*Azure Storage plays the same role in Azure that ______ plays in Amazon Web Services.
+S3
+
+*Microsoft and Hortonworks joined their forces to make Hadoop available on ___________ for on-premise deployments
+Windows Server
+
+*What VM series should you consider if you want to host applications that require high-performance IO for persisted data?
+DS-series
+
+*The connection between storage and Microsoft’s CDN (Content Delivery Network) is stated to be at least _______ percent available
+99.9
+
+*Which of the following VM configurations qualifies for SLA availability?
+Multi-instance VMs on an Availability Set
+
+*Which of the following is also called Compute?
+Set of virtual machine instances
+
+*Which of the following specific components are incorporated on HDInsight clusters?
+All the options
+
+
+
+
+
+*Which of the following options are the methods that Traffic Manager uses to pick endpoints?
+Failover X 
+
+*Which of the following is a non-relational storage system for large-scale storage?
+All the options X
+

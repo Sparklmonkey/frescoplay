@@ -1,0 +1,133 @@
+*Running Magento in production mode allows you to enable or disable cache in Magento admin.
+False
+
+*What is the CLI command to get current mode?
+php bin/magento deploy::mode:show
+
+*Where do the default modules reside in the Magento directory?
+vendor/vendorname/modules/module1
+
+*A theme directory requires which of the following mandatory files?
+All of the options mentioned
+
+*Where do the default themes in Magento reside?
+app/design/frontend/vendor/magento/theme
+
+*_________ interacts with other parts of an application to accomplish a specific function.
+Modules
+
+*Modules are dependent on other modules and php extensions, where it will affect the functionality of inclusion of other modules.
+False
+
+*What is the starting point for Magento admin area?
+index.php
+
+
+
+
+
+
+**If a theme that is used as a parent for some other theme needs to be uninstalled, the child theme should be unistalled first.
+True
+
+**Layout for a web page is defined by the page layout file and page configuration file components.
+True
+
+**Where does the theme page configuration files reside in the Magento directory?
+<theme_dir>/<Namespace>_<Module>/layout/configuration.xml
+
+**To locate the templates for a view, where should you navigate to enable template path hints for storefront?
+Stores > Configuration > Advanced > Developer > Debug
+
+**_________ file is required in the theme folder to register the theme in the system.
+registration.php
+
+**Where are the base files of the page layout files located in the Magento directory?
+module/view/frontend/layout
+
+**_______ layout file type is used to define the contents inside the body section of the HTML page markup.
+Generic
+
+*app/code/vendor_name/module_name/etc – contains what files of modules?
+module configuration
+
+**What is the mysql command to delete the database of a theme?
+mysql -u <user> -p -e "delete from <dbname>.theme where theme_path ='<Vendor>/<theme>' AND area ='frontend' limit 1"
+
+**________ type of layout file is used to define the page structure, and wireframe.
+Page layout
+
+**What is the CLI command to switch Magento mode from default to developer?
+php bin/magento deploy:mode:set developer
+
+*What is the CLI command to check the status of your module?
+php bin/magento module:status
+
+*______ assign content structure to a page by using container tags within a layout XML file.
+Containers
+
+**Where does the root template in Magento is reside?
+<Magento_Theme_module_dir>/view/base/templates/root.phtml
+
+
+*A web page in Magento includes which of the following components?
+All of the options mentioned
+
+**app/code/vendor_name/module_name/etc/frontend contain ________ files?
+Router
+
+**What is the CLI command to flush Magento cache?
+php bin/magento cache:flush
+
+**What is the extension of default Magento template files?
+phtml
+
+*________ file contains the meta information about a theme, and declares a theme as a system component.
+theme.xml
+
+**_______ render the UI elements on a page by using block tags within a layout XML file.
+Blocks
+
+*Magento allows managing URLs, creating images, and handling links that makes easy use of SEO, so that your site can easily be indexed in search engines.
+True
+
+*The generic layouts and configuration files are located in same location where page configuration files are located?
+True
+
+**__________ are part of a view layer that are initiated in layout files. These define how the content of layout blocks is presented on a page.
+Templates
+
+*Which of these files comes under dynamic view files?
+/<Vendor><Module>/web/css/
+
+*Where can you check to know if your theme is applied to the storefront or not?
+Stores > Configuration > Design
+
+*While creating a custom module, you must run Magento in developer mode.
+True
+
+*app/code/vendor/module/Block contain _________ files?
+PHP
+
+*What is the entry point for a storefront that contains the layout and template files which define the appearance of the store?
+index.php
+
+*
+
+
+
+
+
+
+
+
+
+
+*Which of these files does not fall under static view files?
+/web/js X /media X 
+
+*Where can you check whether your theme is not mentioned in the parent theme column?
+Content > Configuration > Themes X Stores > Configuration > Design X 
+
+
+

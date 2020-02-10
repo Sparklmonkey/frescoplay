@@ -1,0 +1,31 @@
+*You are creating a user in the Microsoft Azure portal. Which are the default roles can you assign to the user?
+User
+
+**You need to implement multi-factor authentication (MFA). What is the minimum version of Microsoft Azure Active Directory (AD) that you must deploy?
+Microsoft Azure AD Free
+
+*Which feature is provided only with Microsoft Azure Active Directory Premium P2?
+Identity protection
+
+*You need to assign a user to a role in Microsoft Azure Active Directory. Which Microsoft Azure PowerShell command should you run?
+Add-MsolRole
+
+*Which Microsoft Azure Active Directory (AD) PowerShell command must you run before you can manage a Microsoft Azure AD tenant from PowerShell?
+Connect-MsolService correct
+
+
+
+
+
+**When creating a new user in Microsoft Azure, how is the initial password determined?
+You set a value for the password when you create the user.
+
+*Which services are offered in Active Directory Domain Services but not in Microsoft Azure Active Directory?
+All the options
+
+
+
+
+
+
+

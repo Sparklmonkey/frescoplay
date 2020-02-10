@@ -1,0 +1,121 @@
+*Can I uninstall a Module?
+True
+
+*The plugin types, most commonly used for extensions are
+All of the options
+
+*HAL stands for
+Hypertext Application Language
+
+*Plugins that perform similar functionality are of the same plugin type.
+True
+
+*Configuration will typically include things such as
+All of the options
+
+*Wysiwyg module is compatible with the CKEditor library from ckeditor.com
+True
+
+*External applications interact with other applications using
+Webservices
+
+
+
+
+*Drupal loads all assets(CSS and Js) by default.
+False
+
+*Which module is used for Image optimization
+Responsive Image Module
+
+*Custom Breakpoints can be created in drupal8
+True
+
+*Why twig in Drupal8
+All of the options mentioned
+
+*Using Layout Builder, we can split an article content into columns.
+True
+
+*If you install a new theme the content remains the same.
+Yes
+
+*The most consistent way to add CSS and Js libraries is by
+Library API
+
+*How do you declare a twig file in drupal8
+.twig
+
+
+
+
+**REST stands for
+Representational State Transfer
+
+*The plugin types, most commonly used for extensions are
+both
+
+**.info.yml file represents
+Extend information
+
+**Twigs syntax originated from
+Jinja and Django templates
+
+**Drupal can be run on which operating system?
+Linux and Windows
+
+**Drupal provides a WYSIWYG editor by default.
+False
+
+**Custom Breakpoints cannot be created in Drupal 8.
+False
+
+*Drupal is compatible with
+All of the options
+
+**Twig templates used in drupal are
+all of the options
+
+*Layout Builder customizes
+sections
+
+*Do I have to clear cache after every change made in files?
+True
+
+*Responsive Image styles in drupal
+both
+
+**Drupal is based on ______.
+PHP
+
+**choose which is not an API in drupal8
+Exchange API
+
+*The http methods used by REST are
+All of the options
+
+*Wysiwyg module is compatible with the CKEditor module from drupal.org.
+False
+
+*Look and Feel of a Drupal site can be changed through which menu?
+appearance
+
+* Using Responsive Image Module, the quality remains same
+True
+
+*Default theme used in drupal is __________
+Seven X Bartik
+
+*Why twig in Drupal8
+All of the options mentioned
+
+*We cannot connect libraries directly to templates using Twig
+True
+
+*Twig is a
+Template Framework
+
+*
+
+
+

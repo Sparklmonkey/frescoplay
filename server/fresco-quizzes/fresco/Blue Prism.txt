@@ -1,0 +1,207 @@
+**What is correct about Object Studio?
+Object Studio does not have a Main Page, but It does have 2 default page
+
+*In a process, which data item can be used to store the values from Rows and Columns fetched from .xls file?
+Collection
+
+*What are all the spy modes in Blue Prism?
+Win 32 Mode, HTML Mode, Active Accessibility Mode, Region Mode
+
+*The reset button in Process Studio must always be pressed ________.
+Before re-running a Process.
+
+*Which stage enables a Business Object to pause and wait for an application element?
+Wait stage
+
+*We can step through a diagram one stage at a time. Which of the following is used to traverse pages more quickly?
+Step Over and Step Out
+
+*Which stage is used in Blue Prism Object Studio to launch an application?
+Navigate
+
+*Which stage is available in Object Studio but not in process studio?
+Wait Stage
+
+
+*Which stage in Process Studio, can be used to store multiple pieces of data in Columns and Rows?
+Collection
+
+*Reusable logic shall be in which layer?
+Object Layer
+
+*What is the purpose of Action Stage?
+It’s used to call a Business Object page from a Processes.
+
+
+
+
+
+Final Quiz
+
+**In a process which data item can be used to store the values from Rows and Columns fetched from .xls file?
+Collection
+
+**Session Variables are _______________.
+Both the options
+
+**To exit from the Spy mode, in Application Modeller the keyboard shortcut is ___________.
+CTRL + Right Click
+
+**Which of the following statements is true when employing multiple object in object layer?
+Reduces the risk to the process layer when a change is made in object layer
+
+**Can we have Resume Stage in Process without Recover Stage?
+False
+
+**Which type of brackets must be used to include a Data Item in an expression?
+Square brackets
+
+**Exception Bubbling means ___________.
+Exception travel upwards towards the Main Page of the Process
+
+**Which stage in Process Studio can be used to store multiple pieces of data in Columns and Rows?
+Collection
+
+**Which is not the valid data type in Blue Prism?
+Char
+
+**Which of the System Manager module of Blue Prism provides the below functionalities?
+All the options
+
+**Application Modelling can be done in which Module of Blue Prism?
+Object Studio
+
+**Which stage enables a Business Object to pause and wait for an application element?
+Wait stage
+
+**The Stage which can be used to throw can exception in Blue Prism Process is _____________
+Exception Stage
+
+*What is true about Global Data Items?
+Global Data Items name and Local Data Items name cannot share same name
+
+*What is correct about work Queues in Blue Prism?
+All the options
+
+*What is correct about Recovery Mode in Blue Prism?
+All the options
+
+*Which of the following statement in incorrect?
+Single Bot can work from a queue, at one point of time
+
+*Process scheduling functionality can be achieved in which module of Blue Prism?
+Control Room
+
+**Which stage is used in Blue Prism Object Studio to launch an application ___________.
+Navigate
+
+*Once a business object has launched an application, any attempt to launch again will cause an exception.
+True
+
+*Environment Variable are ____________.
+Variables that are available to all Processes and Business Objects, i.e., across the environment.
+ 
+*Which of the following statements are correct?
+Blue Prism can be configured to handle an exception and continue processing.
+
+*We can call Initialize and Cleanup Actions of Object from Process.
+False
+
+*In Process Flow Diagram, Data Items __________.
+Are case-sensitive and cannot be physically connected to any part of diagram
+
+*While debugging, Developer added a Breakpoint at Stage 1 in Process. Before deployment in Production, developer forgot to remove the breakpoint. In Production Environment the control will break at Stage 1?
+False
+
+*How do you refer the Collection Fields? Identify the correct option.
+‘Collection Name.Field Name’
+
+*Which stage needs to be used to call Business object Page from Process?
+Action
+
+*How many times a session can run?
+Once
+
+*What is True about Wait Stage
+All the options
+
+*When should you consider Exception Handling strategy?
+In Design Phase
+
+*What is true about defer items from the Work Queue?
+All the options
+
+*To spy the elements in any mode in an application, the keyboard shortcut is _________.
+CTRL + Left Click
+
+*The objects created in Object Studio can be made available in Control Room?
+False
+
+*Can we set up queue, to enable multiple attempts on an item?
+True
+
+*In a single application, we can spy via more than one spying mode.
+True
+
+*Identify the two stages that that should always be there in process definition
+Start stage and End Stage
+
+*When we create the process in Process Studio then a page can have ________.
+Multiple End Points but only one Starting Point
+
+*Which of the following statements regarding the “preserve the type and the detail of the exception" is correct?
+Both the options
+
+*What is True about Wait Stage?
+All the options
+
+*Which Business Object is used to interact with Work Queue?
+Work Queue – Internal
+
+*Which of the following statements is correct regarding the key field of the Work Queue?
+The key field value can only be set when the case if first added to the queue.
+
+*In Object layer, if we will create more Objects, then design will be more efficient and scalable because ____________.
+All the options
+
+*Which stage allows to move forward through the rows of a collection?
+Loop Stage
+
+*Which stage always comes, if we insert Wait Stage in our Object?
+Time Out Stage
+
+*Which of the following statement is correct?
+Blue Prism can be configured to handle an exception and continue processing
+
+*Which part of Blue Prism interacts with the target system (the application a user would use)?
+Object Studio
+
+*Select the incorrect statement.
+Blocks can overlap as well as nested.
+
+
+
+
+
+
+
+*Work Queue configuration can be done in which module of Blue Prism?
+Control Room X
+
+*Which statement is incorrect about Exception Handling in Blue Prism?
+A resume stage neutralizes the exception but does not fix the problem X A recover stage acts like a magnet X
+
+*Code Stage in Blue Prism does not allow to write code in which programming language?
+C# X VB X 
+
+
+
+
+
+
+
+
+
+
+
+

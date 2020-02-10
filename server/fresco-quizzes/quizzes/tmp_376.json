@@ -1,0 +1,275 @@
+QUIZ 1
+**Which property of the image tag provides an image decoding hint to the browser?
+decoding
+
+**In CSS, select the property used to set the background color of an image?
+background-color
+
+*The <img> element can use all the ARIA roles.
+True
+
+*Which property of the image tag allows images from third-party sites that allow cross-origin access to be reused with canvas?
+crossorigin
+
+**In CSS, select the property to set an image in a list instead of a standard bullet?
+list-style-image:
+
+*Which property is used to specify a list of one or more strings separated by commas indicating a set of possible image sources for the user agent to use.
+srcset
+
+*In CSS, choose the correct option to select this image by its id? ``` <img id=”mainpic” src=”cat.png”>
+.mainpic { } X #mainpic { }
+
+
+
+
+QUIZ 2
+*In the code flex: 1 0 auto, which property does the second value represent(here 0)?
+flex-shrink
+
+*What is the default orientation within a flex container?
+horizontal
+
+**The order of grid-area property is ________.
+grid-row-start
+
+grid-columns-start
+
+grid-row-end
+
+Grid-column-end
+
+**Which of the Flexbox properties exists?
+flex-wrap
+
+**The value/values that “writing-mode” can take is/are __________.
+All the options
+
+*What will be the width value for the following code?
+
+width:500px; flex-basis:1250px; min-width:750px; flex-shrink:0;
+
+1250px
+
+*Which of the following properties are not of a GRID-container?
+grid-column
+
+
+
+QUIZ 3
+
+**Which of the following css property is used to define the number of times an animation should play?
+animation-iteration-count
+
+**Which of the following css property is used to define which properties a transition will be applied to?
+transition-property
+
+**Which of the following css property is used to indicate if an animation plays in reverse or repeats itself every other iteration?
+animation-direction
+
+*Which of the following css property allows elements to be offset, rotated, scaled, and skewed in a variety of different ways?
+transform
+
+*Which of the following css property is used to define a delay before an animation starts?
+animation-delay
+
+*________ css property is utilized to define the animations that should be run.
+animation-name
+
+**Which of the following css property is used to define the time it takes one iteration of an animation to play?
+transition-duration
+
+
+
+
+
+QUIZ 4
+
+*The “aria-hidden” attribute is equivalent to “hidden” attribute of HTML5.
+False
+
+*What is the correct UCD cycle?
+Plan>Analyze>Design>Test
+
+*It is not a big concern if the UI components are inaccessible using assistive technologies such as screen readers, magnifiers and braille displays.
+False
+
+*Usage of red text on a blue blackground is avoided because ___________.
+It will be fuzzy to read
+
+*Which feature/s will lead to better web design?
+All the options
+
+
+
+
+FINAL QUIZ
+
+**Which part of a webpage receives most of the users’ fixations?
+Left half of the page
+
+**If we set autoplay=”false”, the video will play automatically when the page loads.
+False
+
+**In REST API interaction is made via HTTP protocol.
+True
+
+**What is the statement to enable ‘strict’ mode in JavaScript?
+use strict
+
+**The ____________ property specifies the stack order of an element.
+z-index
+
+**What is/are the types of the pop-up box/es available in JavaScript?
+All the options
+
+**What are the values that preload attribute can take?
+All the options
+
+**What is the purpose of the event onAirEvent?
+Content is played
+
+**Choose the correct statement.
+onload function runs when all the information on the page is loaded . OnDocumentReady runs just after DOM is loaded.
+
+**For users that use the tab key to navigate websites, what property represents this way of moving from one element to another?
+a:focus
+
+**Which of the following does JavaScript use to send HTTP or HTTPS requests to a Web Server?
+The XMLHttpRequest object
+
+**A preprocessor is an abstraction layer built on top of CSS.
+True
+
+**Which of the following ensures additional interactivity mechanism?
+WAI ARIA
+
+**JavaScript is a highly secure scripting language.
+False
+
+**Objects can inherit from other objects in JavaScript.
+True
+
+**What is the purpose of the event disconnectionEvent?
+Player disconnects from the channel
+
+*What is one advantage of sliders for application design?
+They allow users to explore the effect of the control for the whole range of the associated parameter.
+
+*SVG supports pointer events, keyboard events, document events, but does not support JavaScript/ECMAScript functions.
+False
+
+*Which of the following statements is valid for the features of JavaScript?
+All the options
+
+*What is a difference between a customer-journey map and an experience map?
+The experience map is agnostic of any specific products, while the customer-journey map is tied to a specific product or service.
+
+*Which property defines colour of the text, a line or outline of an element?
+stroke
+
+
+
+
+
+**We cannot draw anything other than a rectangle in Canvas.
+False
+
+**How to force a word wrap using CSS3?
+word-wrap: break-word;
+
+**Which of the following is a true statement for JavaScript callbacks?
+Both 1 and 2
+
+**Which CSS 'table-layout' property value renders tables the fastest?
+fixed
+
+*Is it valid to pass an anonymous function as an argument to another function?
+True
+
+**Which of the following attributes triggers event after the document has been printed?
+onafterprint
+
+**Which method checks if the browser can play the specified video type?
+canPlayType()
+
+**What are the first three values of text-shadow in order?
+horizontal, vertical, blur
+
+**Void(0) is used to call another method without refreshing the page.
+True
+
+*Which of the following attributes triggers event when we drop the element that was being dragged?
+ondrop
+
+**What is/are the types of the pop-up box/es available in JavaScript?
+All the options
+
+**Which of the following method retrieves the current geographic location of the user?
+geolocation.getCurrentPosition()
+
+*Event used to check an empty text-box is ___________.
+onBlur()
+
+*<filter> element uses an id attribute to uniquely identify it.
+True
+
+*Which are the different events that the <video> tag generates?
+suspend and ended
+
+*We can use GET request instead of PUT for creating a resource.
+False
+
+*What can the 'direction' CSS property be useful for?
+For languages that read from right to left
+
+*Which of the following best describes the false-consensus effect?
+People tend to assume that others share their beliefs and responses to a given situation.
+
+*Using Responsive Web Design (RWD) ensures that site will display correctly in all desktop browsers and mobile devices. You used a grid-based layout and resize-able images, which is another RWD technique that you can use in responsive design?
+Use relative units, such as percentages, for positioning page elements
+
+*The Tag is used To Give Heading To The Table is __________
+Caption
+
+*When creating the manifest file and ensuring that the manifest attribute is correct, which choice shows the correct text for the first line of text?
+CACHE MANIFEST
+
+*Which API makes the user’s current location available to browser-based application?
+Geolocation API
+
+*Which tag is used to give heading to the table?
+caption()
+
+*Which method returns an object that contains image data of a specific ImageData object?
+getImageData()
+
+*Choose the correct statement with respect to the Path an element takes.
+When commands are in Upper Case, these represent Absolute Path.In case their Lower Case commands are used, the Relative Path is used.
+
+*Which function is used to connect to the WEBSQL database?
+openDatabase()
+
+*Which of the following does NOT usually appear in a service blueprint?
+Customer actions
+
+*Which of the following functions of Number object would return a string version of the number that may change according to the browser’s locale settings?
+toLocaleString()
+
+*Which of the following delivers style instructions based on device capabilities such as screen width?
+CSS3 media properties
+
+*Which function is Used To Parse a String To Int?
+Parse.Int X None X Int.Parse
+
+
+
+
+
+
+*What is the necessity to have API?
+Guide to performing activities X 
+
+*Which HTML5 attribute can be used3654
+ with HTML5 date input type to limit date selection?
+max X

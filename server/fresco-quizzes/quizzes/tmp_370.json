@@ -1,0 +1,143 @@
+*Which is NOT a form of analysis commonly carried out with information visualization?
+Theoretical analysis
+
+*When visualizing complex information, should one always try to show as much data as possible at any one time?
+No
+
+*List of numbers are usually best aligned: _______.
+On decimal points
+
+*Who said; “Use a picture. It’s worth a thousand words.”?
+Tess Flanders
+
+
+
+*The advent of computing has _____________.
+made information visualization easier with greater power and speed
+
+*Who is considered to be the leading expert on information visualization?
+John Tukey 
+
+*What is the desired end point on the continuum of understanding?
+Wisdom
+
+*Which of Tufte’s principles says you should not distort data?
+Visual integrity
+
+*Who wrote “The Future of Data Analytics”?
+Edward Tufte ??
+
+*What is more likely to be true of an information visualization for analysts than consumers?
+It will need to be an interactive representation
+
+*What is graphical excellence related to?
+Usability
+
+*Who created the world’s first statistical diagram?
+Michael Florent van Langren
+
+*Which of the following is typically a less important purpose of visualization for the data consumer compared with the analyst?
+Exploration
+
+*For the data analyst, exploratory visualization is particularly difficult because ___________.
+You don't know what you are looking for.
+
+*Which discipline was information visualization once considered to be a subset of?
+Human Computer Interaction
+
+
+
+
+*What is a common way to show univariate data?
+Tabulated form
+
+*Which property is hardest to use successfully in information visualization?
+Color
+
+*Which of the following relationships would be suggested by the change in volume of a liquid over the course of a day?
+Temporal relationship
+
+*How many dimensions would you map a trivariate data set in?
+Three
+
+*What is Shneiderman's visualization mantra?
+Overview first, zoom and filter, then details on demand
+
+* Visual analytics is primarily about interactive visualization and ________.
+Algorithmic processing
+
+*The 'dancing histogram' works because it __________.
+Relaxes the constraint of which data series is at the base of the columns.
+
+
+*Which of the following analyses is done when you have two dependent variables?
+Bivariate analysis
+
+*Which of the following is NOT a type of data?
+Numerate
+
+
+
+
+
+*Which of the following is an example of hierarchical data we encounter regularly in real life in an interactive visualization format?
+File directory
+
+*Which of the following is a good example of a hierarchical information visualization?
+A tree map
+
+*Which of the following data sets would typically require multivariate analysis?
+The properties of different smartphones
+
+*Which of the following multivariate analysis tools has a series of axes emanating from a single central point?
+Star plot
+
+*Which analysis tool often uses clickable calendars, radio buttons, sliders, etc.?
+Dynamic Querying
+
+*What are the techniques employed to render multivariate analysis through information visualization?
+All the options
+
+*Which of the following is a technique for reducing complexity in graphs?
+Minimum Spanning Trees (MST)
+
+*Who proposed the bifocal display?
+Robert Spence
+
+*Which of the following techniques uses a bifocal display and 3-dimensions to provide context?
+Perspective Walls
+
+*Who made the term “information overload” popular?
+Alvin Toffler
+
+*Which of the following is NOT a technique for reducing complexity in graphs?
+Polar disparity curves
+
+*Which analysis tool was invented by Xerox PARC?
+MAGIC Lens
+
+*Mind maps differ from concept maps in that they always work around a ______ central concept.
+Double
+
+*How would you commonly represent an edge on a network diagram?
+A Line
+
+*Which of the following is advice that you could give a designer to reduce information overload in their designs?
+Make the data simpler to understand
+
+*What is true of a node on a network diagram?
+It may be either a physical or an abstract entity
+
+*Information Scent helps you know about ________.
+The future – the likelihood of finding the data you want as you perform new interactions
+
+*The scatter-gather browser used which visualization techniques for clusters?
+Typical documents
+
+*The horizontal axis Cam Tree was developed from the vertical axis Cone Tree primarily because:
+It allows longer labels
+
+
+
+
+

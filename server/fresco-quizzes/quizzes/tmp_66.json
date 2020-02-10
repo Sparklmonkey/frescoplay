@@ -1,0 +1,126 @@
+*What is Node.js?
+Node.js is a JavaScript-based framework/platform built on Google Chrome's JavaScript V8 Engine
+
+*How are node-based web servers different from traditional web servers?
+Node-based server uses a single threaded model and can service a much larger number of requests than traditional server like Apache HTTP Server
+
+*REPL stands for ____________________.
+Read Eval Print Loop
+
+*Which of the following is true about Node.js?
+All the options
+
+*What is the use of Underscore Variable in REPL session?
+To get the last result
+
+
+
+*Print the relative path of your script using the predefined global object _____________.
+console.log( __filename );
+
+*Which of the following is true about __dirname global object? (I) The __dirname represents the name of the directory that the currently executing script resides. (II) The __dirname represents the resolved absolute path of the code file.
+I
+
+*Which of the following commands will show all the modules installed globally?
+$ npm ls -g
+
+*Print the directory name of your script using the predefined global object _____________.
+console.log( __dirname );
+
+
+
+
+
+*Which of the following is true about EventEmitter.emit property?
+It is used to fire an event
+
+*Which method of fs module is used to truncate a file?
+fs.ftruncate(fd, len, callback)
+ 
+*Which method of fs module is used to close a file?
+fs.close(fd, callback)
+
+*We can get an http module in a node based application using _______
+var http = require("http");
+
+*Which of the following is true about EventEmitter.on property?
+It is used to bind a function with the event
+
+*Which method of fs module is used to write a file?
+fs.writeFile(path, flags[, mode], callback)
+
+
+
+*A stream fires a data event when there is data available to read.
+True
+
+*A stream fires end event when there is no more data to read.
+True
+
+*Which of the following is true about a readable stream? (I) A readable stream is used for read operation. (II) The output of a readable stream can be the input to a writable stream.
+I & II
+
+*Which of the following is true about a writable stream? (I) A writable stream is used for write operation. (II) The output of a readable stream can be the input to a writable stream.
+I & II
+
+*Which of the following is true about Piping streams?
+All the options
+
+
+*Each type of Stream is an EventEmitter.
+True
+
+
+
+
+
+
+**Which of the following commands will show the version of the Node?
+$ node --version
+
+*Which of the following is true about RESTful webservices? (I) Webservices based on REST Architecture are known as RESTful web services. (II) Webservices use HTTP methods to implement the concept of REST architecture.
+I & II
+
+*We can create child processes in Node applications.
+True
+
+*Which of the following is true about console global object?
+All the options
+
+*Print the relative path of your script using the predefined global object ______________.
+console.log( __filename );
+
+*Node.js is a single threaded application but supports concurrency.
+True
+
+*Which of the following is true about File I/O in Node applications? (I) Node implements File I/O using simple wrappers around standard POSIX functions. (II) Node File System (fs) module should be imported for File I/O operations.
+I & II
+
+*Which of the following is true about __filename global object? (I) The __filename represents the filename of the code being executed. (II) The __filename represents the resolved absolute path of the code file.
+I & II
+
+*Which of the following codes prints the platform of the operating system?
+console.log('platform : ' + os.platform());
+
+*What is use of Underscore Variable in REPL session?
+To get the last result
+
+*Which of the following codes can make a request to a web server?
+http.request(options, callback)
+
+*Which of the following is true about setTimeout(cb, ms) global function? (I) The setTimeout(cb, ms) global function is used to run callback cb after at least ms milliseconds. (II) The setTimeout(cb, ms) function returns an opaque value that represents the timer which can be used to clear the timer.
+I & II
+
+*Print the directory name of your script using the predefined global object _________________.
+console.log( __dirname );
+
+*Which of the following commands will show all the modules installed locally
+$ npm ls
+
+*Which of the following modules is required for operating system specific operations?
+fs module X None of the options X os module
+
+*Console is a global object.
+True
+
+*REPL stands for ________________.

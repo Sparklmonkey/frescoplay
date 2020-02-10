@@ -1,0 +1,83 @@
+**In which of the following modes, transmission errors are not propagated?
+Output Feedback Mode
+
+**Select the modes in which computations do not depend on outputs from previous stages
+Electronic Code Book
+
+**Which among the following is an active attack?
+User Impersonation
+
+**The computational complexity of __________ problem is exploited by Diffie_Hellman algorithm
+Discrete Logarithm
+
+**Which among the following are steps in each round of AES algorithm?
+Substitute Bytes
+
+**What is the size of the hash value produced by MD5 algorithm?
+128 bits
+
+*Which among the following is the most desirable property to enhance the computational complexity of cryptosystems?
+Key size
+
+*The size of the output produced by hash functions is __________
+Fixed based on the hash algorithm
+
+*Frequency analysis can be performed on polyalphabetic ciphers which makes it weak.
+True
+
+*The idea behind “confusion” in cryptography is to hide the relationship between the plaintext and ciphertext.
+False
+
+**Which among the following best describes hash collision attack?
+Different input strings, same hash result
+
+**Which among the following may be addressed using message authentication?
+All the options
+
+*The number of keys used in Triple DES algorithm:
+2 or 3
+
+*Based on the network security protocols, which of the following algorithms are used to generate message digests?
+MD5
+
+*The primary goal of cryptanalysis is to __________
+Find the insecurities of the cryptosystem
+
+**Digital Signature is implemented using__________
+Public key system
+
+*Which among the following algorithms is designed based on the Feistel Cipher?
+DES
+
+*The cryptographic method that is considered to be truly unbreakable:
+One-time pad
+
+*Kerchkoff’s principle emphasizes that the cryptosystem should be accessible to the adversary without inconvenience:
+True
+
+*The hash function value used in message authentication is also known as _________
+Message Digest
+
+*Which of the following is widely used in cryptography to create a trapdoor function to facilitate exchange of keys?
+Factorization
+
+*The uses of hashing algorithms include:
+All the options
+
+*Diffie-Hellman algorithm is applicable for exchange of keys between two parties only.
+False
+
+*Which among the following is the most resistant to frequency analysis?
+Beaufort
+
+*Which of the following cryptographic strategy may be used to overcome Man-in the Middle attacks?
+Authentication
+
+
+
+
+
+
+
+*In digital cryptography, each character is represented as__________
+12 bits X

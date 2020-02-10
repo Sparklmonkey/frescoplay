@@ -1,0 +1,156 @@
+*The command(s) to display the examples of get-service is/are ____________
+All the options
+
+**To run ".PS1" files, the execution policy must be set to __________.
+Remote Signed
+
+**Variables start with ______.
+"$"
+
+**PowerShell for Ubuntu can be downloaded _______________.
+As a Debian Package
+
+*Which of the following are Session specific commands?
+Both Shell Function and Alias Commands
+
+**Which of the versions of .Net Framework is required to install PowerShell version 4?
+.Net Framework 4.5
+
+*Alias name of the Format-table is _________.
+ft
+
+**When PowerShell 2.0 is updated with PowerShell 3.0, then ___________.
+PowerShell 2.0 is left on the system
+
+*PowerShell cmdlets perform system administration tasks such as managing ______________.
+All the options
+
+*PSSession is ________.
+Created, managed and closed by a user
+
+*The command Get-Process | Where-Object{$_.ProcessName -match "^p. *"} filters the processes by the process name and lists the processes which ___________.
+Starts with the alphabet "P"
+
+*Sort-Object cmdlet is used to _______.
+Sort the list of objects based on the selected property
+
+*The command to display the process name and ID of all processes is get-process ______.
+Both Select-Object and FT can be used
+
+*Shell is a _______ that is used to pass commands to the OS.
+cmd interpreter
+
+*PowerShell variables are used to store _______.
+Strings and Number objects
+
+*Read-Host cmdlet is used to ___________
+Prompt the value of the variable interactively
+
+*ISE is available from _______.
+PowerShell 2.0
+
+*The open-source version of PowerShell contains a full set of commands.
+False
+
+*Error Action Preference specifies the desired behavior for ___________ in PowerShell.
+A non-terminating error
+
+*The command(s) to display the examples of get-service is/are ____________.
+All the options
+
+*The open-source version of PowerShell is available from the year _______.
+2016
+
+*Write-host is used to _________.
+ Display messages in the PowerShell console
+
+*Package management module is available in ________.
+PowerShell 5.0
+
+*Integrated scripting environment is the ______ for PowerShell.
+Host application
+
+*The PowerShell command to view all the properties of a specific Process like "Notepad" is Get-Process notepad | Select-Object -Property *.
+True
+
+*In the following command, "-as secured string" is used to ___________.
+$ password=Read-host "Enter Your Password" -assecured string
+Enter the password securely
+
+*The PowerShell module can contain _______.
+Cmdlets, providers, functions, variables that can be imported as a single unit
+
+*PowerShell commands are case sensitive.
+False
+
+*Which is an equivalent PowerShell command for "ls"?
+Get-childitem
+
+*Get-Variable cmdlet displays the list of ____________.
+Both Pre-defined and User-defined variables
+
+*The default version of PowerShell in Windows 10 is __________.
+PowerShell 5.0
+
+*If $Name="User1" then the command $name.gettype() provides the information on___________
+Both the options
+
+*To get customized output, _________ cmdlet is used.
+Format-table
+
+*How will the value of the variable "$name" be set in the following command?
+$ name=user1 
+Write-host "$name"
+The value is already defined in the command
+
+
+
+
+
+
+*Get-Process | Sort-Object -Property Handles | Select-Object -Last 5
+List of 5 processes having lower handles values X 
+
+
+
+
+
+
+*PowerShell command is in ___________________ format.
+Verb-Noun
+
+*Ipconfig/flushdns can be used in PowerShell console.
+True
+
+*What is the command to list the files and folders in the directory?
+Get-Childitem
+
+*Which of the following is a/are PowerShell command type(s)?
+All the options
+
+*What is the command to find the total number of "FUNCTION" Commands?
+(Get-Command -type function).count
+
+*Which is the equivalent PowerShell command for "cls"?
+Clear-host
+
+
+
+
+*Pipeline Symbol in PowerShell is _____.
+"|"
+
+*ForEach-Object cmdlet is used to __________.
+Perform action on each object
+
+*The function(s) of the Pipeline is/are _______________.
+All the options
+
+*Sort-Object cmdlet is used to __________.
+Sort the list of objects based on the selected property
+
+*Select-Object cmdlet is used to __________.
+Display the list of objects based on the selected property
+
+*Where-Object cmdlet is used to __________.
+Filter the objects from the list

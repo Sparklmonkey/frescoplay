@@ -1,0 +1,119 @@
+QUIZ 1
+
+*PDF integration command cannot be used for ___________.
+converting PDF files to word document
+
+*The following operations can be done utilizing string operation command?
+All the options
+
+*Using Email automation command, you can directly receive emails from the server without having an Email client interface such as Gmail.
+True
+
+*You must access to the control room to upload a bot to the control room.
+True
+
+*Automation Anywhere cannot work with ___________.
+Handwritten documents
+
+*In the task editor window of Automation Anywhere, you can write the code manually without using a single AA command.
+False
+
+*On which type of clients from control room can you schedule tasks?
+Runtime client
+
+*It is optional to offer CSV path for pattern-based data extraction in web recording.
+True
+
+
+
+
+
+
+FINAL QUIZ
+
+
+*Automation Anywhere is compatible with SAP, Oracle, Mainframes, and Java applications.
+True
+
+*___________ is not a valid trigger type in Automation Anywhere.
+system logoff
+
+*______ cannot be checked utilizing if condition.
+cpu utilization
+
+*Using Email automation command, you can receive emails from the server directly without having Email client interface such as Outlook.
+True
+
+*Web recorder can also be used to work with windows or desktop applications.
+False
+
+*Web recorder enables us to extract tables, images, single data, and pattern-based data. The same thing can be accomplished using Smart Recorder.
+False
+
+*Automation Anywhere offers some special variables that can be utilized inside the loop command ___________.
+Excel and table column
+
+*Which of the following commands is more prescribed while creating a bot?
+insert keystrokes
+
+*By utilizing Smart recorder, you can work with both web and applications.
+True
+
+*Automation Anywhere Development client, Control Room, and Run-time Client can be installed using only one license.
+False
+
+*Error handling command allows us to __________.
+All the options
+
+*Meta bots are utilized in AA as a reusable component and let us work with visual captures and DLLs.
+True
+
+*Following operations can be done utilizing string operation command?
+All the options
+
+*Mapping of variables from main task to sub-task can be done using ___________.
+Run task command
+
+*Automation Anywhere provides inbuilt exception handling capability
+True
+
+*In Automation anywhere task editor window, we can manually write the lines of code without using a single AA command.
+Falsef
+
+*Automation Anywhere offers us the flexibility to run the task by utilizing Runtime Client, Development Client, and Control Room.
+False
+
+*You must have access to the control room to upload a bot to the control room.
+True
+
+*On which type of clients can you schedule tasks from the control room?
+Runtime client
+
+*Which recorder is least suggested in Automation Anywhere?
+smart recorder
+
+*AA auto login feature permits us __________.
+To execute the bot while the system is logged off
+
+*SQL query option under Database command can be utilized to insert, delete, and update the SQL table.
+False
+
+*What is the exact order in Automation Anywhere - Most friendly-Moderate friendly - Least friendly formats?
+Csv-scanned pdf-word
+
+*You can find one image in another image and do left-click, right-click and double-click using _________.
+image recognition command
+
+*Which system variable is utilized to read the CSV and text files?
+filedata column
+
+*Variable type that is not supported by AA is known as __________.
+string
+
+
+
+*___________ is the command you can utilize to hold the bot execution for a particular period and then continue.
+pause X hold X
+
+*
+

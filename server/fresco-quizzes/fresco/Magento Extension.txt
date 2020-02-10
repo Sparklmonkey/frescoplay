@@ -1,0 +1,154 @@
+*When the dependency inversion principle is applied, it means high-level classes are not working directly with low-level classes.
+True
+
+*What is the Magento CLI command to get help on cache enable?
+magento help cache:enable
+
+*What is the CLI command to create an admin account?
+php bin/magento admin:user: <username>
+
+*cache:flush command removes all the cache, including the third-party libraries cache data.
+True
+
+*Maintenance mode is turned on only if the var/___________ file has been created.
+maintenance.flag
+
+*______ CLI command is used to uninstall a module.
+php bin/magento module:unistall
+
+*cache:clean command removes all the cache, including the third-party libraries cache data.
+False
+
+*In which file you can define your dependency for a class in Magento?
+di.xml
+
+*What is the correct way to execute Magento CLI commands?
+All the options
+
+*_________ is a software design pattern that allows a class to specify its dependencies without having to construct them.
+Dependency injection
+
+*What is the CLI command to list all the commands?
+magento list
+
+*What is the CLI command that displays the list of system cache types?
+cache:status
+
+*_________ is a Magento 2 administrative tool used to run routine tasks easily.
+CLI
+
+*Which of the following is incorrect regarding the dependency inversion principle?
+None of the options
+
+
+
+
+
+*What all are things that you can configure using di.xml file?
+All the options
+
+*If your custom class extends from one that has plugins, then the interceptor of your class is instantiated instead of the original class.
+Yes
+
+*________ blocks are the containers holding the content blocks.
+Structural blocks
+
+*How many plugin types are available in Magento?
+3
+
+*_______ objects are the object manager that uses merged di.xml to create and inject them into constructors.
+Injectable
+
+*What is the first step in creating a custom system.xml?
+Creating custom system configuration
+
+*You have to call _________ function to dispatch an event from the event manager class.
+dispatch
+
+*ObjectManager class is located at which directory?
+vendor/magento/framework/ObjectManager
+
+*Plugins cannot be used in which of the following?
+All the options
+
+*Observers are executed whenever the event manager dispatches the event where they are configured to watch.
+True
+
+*______ config value sorts the chain of plugins in lowest to the highest order.
+sortOrder
+
+*Events are dispatched using Magento\Framework\Event\Maganer class.
+True
+
+*_______ is an auto-generated class returned by ObjectManager as a response for the original class request.
+Interceptor
+
+*Where does the global di.xml reside in magento directory?
+app/etc/di.xml
+
+*Events are dispatched by _________ when certain actions are trigerred.
+Modules
+
+*Which of the following are properties of an observer.xml element?
+All the options
+
+*Which option you should enable in the configuration menu to get the name and path of the blocks in UI?
+Both the options
+
+*Name the two parameters used by the before method.
+subject and value
+
+*What are the types of dependencies?
+Both injectable and newable
+
+*Interceptor is used for running plugins.
+True
+
+*_____ method is used to replace the original method entirely.
+around
+
+*Observers' names can be similar in an event definition.
+False
+
+*_______ is the DI manager that finds the correct implementations which are required for the original object.
+ObjectManager
+
+*Where does the event name is referenced in your module directory?
+events.xml
+
+*Name the two parameters used by the after method.
+subject and result
+
+*An object can depend on factories that produce _______ objects.
+Newable
+
+*Proxy initiates dependency in ______ approach.
+lazy load
+
+*______ blocks generate the actual content for the display, where you need to assign to one of the structural blocks for frontend display.
+Content blocks
+
+*____ method return value will substitute the original method return value.
+after
+
+*Newable objects cannot be injected.
+True
+
+*Interceptor class gets generated programmatically when the object manager tries to call the instance of the class.
+True
+
+*
+
+
+
+
+
+*Magento uses _______ tool that consolidates all class dependency information and stores it in files.
+Dependency injection X
+
+*What are the parameters of the around method?
+subject and proceed X subject and result X
+
+
+
+

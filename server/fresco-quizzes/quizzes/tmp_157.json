@@ -1,0 +1,192 @@
+**TypeScript was made public by __________.
+Microsoft
+
+*Typescript compiler tsc converts code to _________.
+JavaScript
+
+*We can rename a .js file to .ts file generally.
+True
+
+*The value of TypeScript is writing _________.
+Safer code
+
+*TypeScript is a __________.
+Super-set of JavaScript
+
+*TypeScript is __________.
+Object Oriented
+
+*A JavaScript file cannot be renamed to a TypeScript file.
+False
+
+
+
+
+
+*Type Annotations allow us to _______.
+Record the intended contract of the function or variable
+
+*Generics allows accepting arguments of _________.
+Different types
+
+*During run time, _______ checking is done.
+Dynamic Type
+
+*Which type is assigned to variables with null type?
+None of the options
+
+*Static type checking is done at ________.
+Compilation time
+
+*Annotations can be implemented as __________.
+length: number
+
+*A type system is a set of ________.
+Rules
+
+*Generics allows accepting arguments of _________.
+Different types
+
+
+
+
+*Which of the following is the right way of defining enum?
+All the options
+
+*any is a generic type.
+False
+
+*Generics is a/an _______.
+Template
+
+
+
+*Which of the options is used appropriately in JavaScript code?
+function reverse(s: string) : string;
+
+*Syntax for a decorator is _________.
+@symbol
+
+*Inheritance is implemented by using the ________ keyword.
+extends
+
+*value && typeof value == "DataType" is used for _________.
+Overloading
+
+*" var jarvis = function (x: number, y?: number): number {} " showcases _________.
+Both the options
+
+*The following are correct ways of defining variables in TypeScript, except _________.
+var 10231
+
+
+
+
+*TypeScript uses prototypical inheritance instead of classical inheritance.
+False
+
+*Which keyword is used for Inheritance in TypeScript?
+extends
+
+*Which keyword is used to access base class properties?
+super
+
+*The code snippet " if (value && typeof value == "string") {}; is used for ______________.
+Overloading
+
+*Which of the following is/are inherited from base class?
+Both the options
+ 
+
+
+
+
+
+*What type of checking does Java programming language use?
+Static type checking
+
+*Compiled .js of .ts containing class will also have class.
+False
+
+*Type System is a _____________.
+Set of rules
+
+*Accessing a class of a module from outside is impossible in TypeScript.
+False
+
+*Decorators provide a way for ________________.
+Both the options
+
+*What does " function f(l: number, w: number){} " demonstrate?
+Type annotation
+
+*TypeScript is an open source programming language.
+True
+
+*any type is assigned to the variable in case of _____________________.
+not initialising nor defining the type of variable
+
+*What is the form associated with @expression?
+Decorators
+
+*The following types are supported by TypeScript, except ______.
+integer
+
+*Contextual typing in TypeScript is a form of ___________.
+Type Inference
+
+*Which of the following demonstrates function overloading, if possible, in TypeScript?
+if (value && typeof value == "number"){}
+
+*Which of the following code snippets is safer?
+function fn(x: () => void) { x(); }
+
+*Why are optional parameters added?
+To assure that value is always assigned to the variable
+
+*" var jarvis = function (x: number, y?: number): number {} " showcases ____________.
+Both the options
+
+*What is true about Mixins in TypeScript?
+All the options
+
+*Enum organizes a _______.
+Set of related values
+
+*During compilation, TypeScript code gets converted to assembly language.
+False
+
+*The interface of TypeScript is usually converted to JavaScript.
+False
+
+*The optional parameter can be defined by using "?".
+True
+
+*TypeScript provides access to private members through ___________.
+get and set
+
+*At most, how many decorators can be applied to a declaration?
+Multiple
+
+*The following are ways to declare a variable in TypeScript, except ________.
+var 2
+
+
+
+
+
+
+*
+
+
+
+
+*How can we access a class from a module from outside?
+By using namespace X 
+
+*_________ in the command line enables experimental support for decorators.
+"experimentalDecorators": true X "compilerOptions": {} X 
+
+*How can we access a class of module from outside?
+It is not possible in TypeScript due to safety concerns X By using implements X 
+
