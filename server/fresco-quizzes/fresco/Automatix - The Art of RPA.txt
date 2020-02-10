@@ -1,0 +1,173 @@
+**____________ is hosted on a server.
+Robot controller
+
+**Sequence of step by step instructions is known as a ___________.
+job
+
+**User permissions are assigned by ______________.
+Robot Controller
+
+*In the layered design _____________ is the top most layer.
+Process
+
+*Software robots are capable of interacting with a wide range of systems.
+True
+
+*Locating objects relative to the edge of the screen is known as _________________.
+pixel-based object location
+
+**Software robots are also known as ________.
+Clients or Agents
+
+*BPM interacts through the _______________ layer.
+Data access
+
+* _________ deploys jobs to the software robots.
+Robot controller
+
+*_____________ is the master repository of jobs.
+Robot controller
+
+
+
+
+
+**RPA can automate ________ processes.
+All of the options
+
+**________ performs the instructions by directly interacting with the business applications.
+Software robots
+
+**Software robots are capable of interacting with a wide range of systems.
+True
+
+**RPA can help to automate periodic reporting.
+True
+
+**Individual screen interactions are handled by _______ layer.
+Components
+
+**RPA enables reduction of data entry errors.
+True
+
+**RPA is capable of __________________ to new situations.
+All of the options.
+
+**__________ automation robots exhibit decision making capabilities.
+Cognitive
+
+**BPM interacts through the _______________ layer.
+Data access
+
+**Re-engineering the entire underlying process is part of ________________.
+BPM
+
+**Locating objects relative to the edge of the screen is known as _________________.
+pixel-based object location
+
+**The last layer in layered design is _____________.
+None of the options
+
+**Reusable business logic lies in the ______ layer.
+subprocess
+
+**Sequence of step by step instructions is known as a ___________.
+job
+
+*RPA focuses on ease of use by reducing human dependency.
+True
+
+*A robot can accumulate knowledge of procedures over time.
+True
+
+*All the RPA tools provide both front and back office automation.
+False
+
+*RPA stores the data as well as enables automation.
+False
+
+
+
+
+*RPA is similar to older technologies such as screen scrapping or macros.
+False
+
+**UiPath provides open platform for automation.
+True
+
+*It is through this/these ____________ layer/layers, RPA accesses the underlying application.
+presentation
+
+*Simple configuration wizards are available in _______________.
+developer tools
+
+*RPA can help in improving the monitoring of network devices.
+True
+
+*A software robot is trained in a live environment.
+True
+
+*In layered design functionality and logic is separated into different parts to enable reuse.
+True
+
+*Robot controller prioritizes work queue based on the robot's status.
+True
+
+*________ is used to speed up the process definition by capturing the user actions.
+Process recorder
+
+*Robot controller is hosted on the desktop.
+False
+
+*______________ is used for visualizing complex processes.
+Layered design
+
+
+
+
+*Robots are trained by ______________.
+end-user
+
+*Conditional decision making is out of the scope of RPA automation.
+False
+
+*_________ deploy(s) jobs to the software robots.
+Robot controller
+
+*RPA is not suitable for processes that ________________.
+requires constant human intervention
+
+*Which among these is not an RPA tool?
+None of the options
+
+*CRM systems can be streamlined using _____ tools.
+BPM
+
+*RPA is a __________ software.
+lightweight
+
+*If an organization chooses to implement RPA, it must ensure to change the programming logic in the applications involved.
+False
+
+*Processing of customer complaints can be automated using RPA.
+True
+
+*Recorder function is an added advantage while selecting an RPA tool, because it assists with ________.
+speeding up of the configuration
+
+*RPA acts as a physical robot when required.
+False
+
+*
+
+
+
+**_________ defines the instructions that the robot must follow.
+Robot controller X
+
+*RPA can be used to automate _______________________.
+Both of the options X 
+
+
+
+

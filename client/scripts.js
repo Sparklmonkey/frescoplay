@@ -1,4 +1,7 @@
 const attemptsTolerance = 5;
+const nextQuestionDelay = 1500;
+const viewChangeDelay = 3000;
+let stopApp = false;
 let response = undefined;
 let assessmentDone = false;
 
@@ -104,7 +107,7 @@ const jaroWrinker = function (s1, s2) {
     return weight;
 }
 
-const loadAnswersJson = function() {	
+const loadAnswersJson = () => {	
 	let urlArray = document.URL.split('/');
 	let quizId = urlArray[4];
 	fetch(`https://raw.githubusercontent.com/Sparklmonkey/frescoplay/master/${quizId}.json`)
@@ -115,7 +118,7 @@ const loadAnswersJson = function() {
 		});
 }
 
-const getCandidatesAndBestOne = function(sourceArray, text, property){
+const getCandidatesAndBestOne = (sourceArray, text, property) => {
 	// We must find the question that probably has format differences, so let's use some distance algorithms
 	let candidates = sourceArray.map((element) => {
 		return {
@@ -137,7 +140,7 @@ const doResponseIntent = function(){
 
 };
 
-const selectCorrectAnswer = function() {	
+const selectCorrectAnswer = () => {	
 	let btnSubmitQuiz = document.getElementById('quizSubmitBtn');
 
 	if (btnSubmitQuiz.attributes.cursor.value === 'pointer') { // Submit available
@@ -168,40 +171,46 @@ const selectCorrectAnswer = function() {
 			let correctAnswerObject = answerCandidate.best.value.previousElementSibling; 
 			correctAnswerObject.click();
 		} catch (error) {
-			console.log("No answers for this")
+			console.log("No answers for this");
 		}
 	}
 }
 
-const doAssessment = function() {
-	if(!assessmentDone){
-		response = undefined;
-		addBtnClickEventListener();
-		loadAnswersJson();
-	} else {
-		let continueBtn = Array.from(document.getElementsByClassName('modalContent')[0].children).find(it => it.innerText === 'CONTINUE');
-		if(continueBtn !== undefined) {
-			continueBtn.click();	
-			setTimeout(() => {
-				doCourse(1);
-			}, 2000);		
+const doAssessment = () => {
+	try {
+		if(!assessmentDone){
+			response = undefined;
+			addBtnClickEventListener();
+			loadAnswersJson();
+		} else {
+			let continueBtn = Array.from(document.getElementsByClassName('modalContent')[0].children).find(it => it.innerText === 'CONTINUE');
+			if(continueBtn !== undefined) {
+				continueBtn.click();	
+				setTimeout(() => {
+					doCourse(1);
+				}, viewChangeDelay);		
+			}
 		}
-	}
+	} catch (error) {
+		console.log(`Error trying to finish the assessment. Details: ${error.message}`);
+	}	
 }
 
-const addBtnClickEventListener = function () {
+const addBtnClickEventListener = () => {
 	//THIS WILL HANDLE CALLING QUESTION COMPLETION AFTER QUESTION HAS BEEN AUTOMATICALLY SELECTED, OR MANUALLY SELECTED.
 	Array.from(document.querySelectorAll(".navButton.right, .answerOptions")).map( it => {
 		it.addEventListener("click", (event) => {
-			if(response)
-				setTimeout(() => selectCorrectAnswer(), 1500)
-			else
+			if(response) {
+				setTimeout(() => selectCorrectAnswer(), nextQuestionDelay)
+			}
+			else {
 				loadAnswersJson()
+			}
 		})
 	});
 }
 
-const takeNewAssessment = function() {
+const takeNewAssessment = () => {
 	response = undefined;
 	assessmentDone = false;
 
@@ -209,49 +218,79 @@ const takeNewAssessment = function() {
 	loadAnswersJson();
 }
 
-const doCourse = function(attempts) {
+const doCourse = (attempts) => {
 	try {
-		let btnNext = document.getElementsByClassName('navButton right')[0];
-		if (btnNext !== undefined) {
-			btnNext.click();
-			setTimeout(() => {
-				doCourse(attempts);
-			}, 1000);
-		} else { 
-			// There are two options... one, this could be a congratulations screen, so we'll check it out
-			let btnProceed = document.getElementsByClassName('proceedBtn')[0];
-			if (btnProceed !== undefined) {
-				// And yeah! it's a congratulations screen
-				btnProceed.click();
+		let nextAttempt = attempts + 1;
+
+		if (!stopApp) {			
+			let btnNext = document.getElementsByClassName('navButton right')[0];
+			if (btnNext !== undefined) {
+				btnNext.click();
 				setTimeout(() => {
 					doCourse(attempts);
-				}, 3000);
-			} else {
-				// A wild quiz has appeared!
-				let btnStartQuiz = document.getElementById('startQuiz');
-				if (btnStartQuiz !== undefined) {
-					btnStartQuiz.click();
+				}, nextQuestionDelay);
+
+			} else { 
+				// There are two options... one, this could be a congratulations screen, so we'll check it out
+				let btnProceed = document.getElementsByClassName('proceedBtn')[0];
+				if (btnProceed !== undefined) {
+					// And yeah! it's a congratulations screen
+					btnProceed.click();
 					setTimeout(() => {
-						takeNewAssessment();
-					}, 3000);
+						doCourse(attempts);
+					}, viewChangeDelay);
+
 				} else {
-					//throw Error('Some weird behavior was detected!');
+					// A wild quiz has appeared!
+					let btnStartQuiz = document.getElementById('startQuiz');
+					if (btnStartQuiz !== undefined) {
+						btnStartQuiz.click();
+						setTimeout(() => {
+							takeNewAssessment();
+						}, viewChangeDelay);
+
+					} else {
+						// Or there's a probability that we're inside the quiz... so let's start answering it
+						takeNewAssessment();
+					}
 				}
 			}
+		} else {
+			console.log('Application stopped!');
 		}
 	} catch (error) {		
 		console.log('Oooppss... we have a weird behavior here :(');		
 		console.log(error);
 
 		if (attempts < attemptsTolerance) {
-			console.log(`Let's try again: Attempt ${attempts} of ${attemptsTolerance}`);
+			console.log(`Let's try again: Attempt ${nextAttempt} of ${attemptsTolerance}`);
 			setTimeout(() => {
-				doCourse(attempts++);
-			}, 3000);
+				doCourse(nextAttempt);
+			}, viewChangeDelay);
+
 		} else {
-			console.log('Dude... finish the course manually!!!');
+			console.log('Dude... finish this course manually');
+			stopApplication();
 		}
 	}
+}
+
+const getMyCoursesStatus = () => {
+	const url = 'https://play-api.fresco.me/api/v1/progresses.json';
+	const apiKey = window.localStorage.getItem('playWebApp.api_key');
+
+	fetch(url, {
+		headers: { 'x-api-key' : apiKey }
+	})
+	.then( response => response.text())
+	.then( responseObject => {			
+		response = JSON.parse(responseObject);
+		console.log(response);
+	});
+}
+
+const stopApplication = () => {
+	stopApp = true;
 }
 
 doCourse(1);

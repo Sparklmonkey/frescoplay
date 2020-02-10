@@ -1,0 +1,98 @@
+**Better Control, higher security, and privacy can be achieved through which type of cloud deployment model?
+Private
+
+**In which type of virtualization, you create a virtual machine on top of physical hardware?
+Server virtualization
+
+*What are the cloud cost models?
+All of the options
+
+*Which clouds are on-premise giving IT managers complete control over the available resources?
+private
+
+*DaaS is utilized for provisioning critical data on demand.
+True
+
+*Which delivery model is an example of a cloud computing environment that provides users with a web-based email service?
+SaaS
+
+*In the public cloud, it incurs high CAPEX and less OPEX.
+False
+
+*SaaS supports multiple users and provides a shared data model through ________ model.
+Multi-tenancy
+
+**________ environment is used to deploy private clouds for critical workloads and a public cloud to host less critical workloads.
+Hybrid cloud
+
+**Which of the following options is cloud computing key enabling technologies?
+All of the options
+
+*Which feature is needed to make enterprise application migrate to a private cloud?
+Elasticity of storage for the application
+
+*What are the economic advantages of the cloud?
+All of the options
+
+*In which cloud model, several organizations access to the same cloud for a similar application?
+Community
+
+*What are the cons of cloud computing?
+All of the options
+
+*Among the following options, which is an example of hypervisor?
+Hyper-V
+
+*Reporting services are one of the cloud characteristics.
+False
+
+*What is the first step in the process of deploying a cloud computing offering?
+Cloud Readiness assessment
+
+*Full virtualization is ideal for ___________.
+Computer system sharing,isolate users
+
+*Hosted email infrastructure is an example for _________.
+SaaS
+
+*Which of the following options are virtualization characteristics?
+All of the options
+
+*Paravirtualization is ideal for __________.
+Disaster recovery, migration capacity
+
+*Which of the following option is offered by Identity as a Service?
+All of the options
+
+*What are the security risks of cloud computing?
+All of the options
+
+*In paravirtualization, guest operating systems run in isolation.
+False
+
+*Clients access their data in the cloud through web-based protocols.
+True
+
+*Which of the following is an essential concept related to the cloud?
+Abstraction
+
+*IDaaS is a ________-based identity and access management offering.
+SaaS
+
+*Which of the following cloud client constitute computers without a hard drive?
+Thin
+
+**__________ is a tool that communicates with the hosts and their virtual machines.
+Virtual machine monitor
+
+
+
+
+*Infrastructure APIs help in provisioning ________.
+Computing and storage resources
+
+*
+
+
+
+

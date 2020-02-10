@@ -1,0 +1,257 @@
+**In Hyperledger Fabric, Smart contracts are termed as ______.
+Chain codes
+
+**New blocks are appended to a blockchain by linking to the previous block's _____.
+hash
+
+
+**Which Hyperledger framework is used for decentralized identity management?
+Hyperledger Indy
+
+*Hyperledger Fabric is a ________ type of blockchain framework.
+private, permissioned
+
+*In which year was the Hyperledger project founded?
+2015
+
+*Which of these is not a part of the Hyperledger umbrella?
+Corda
+
+*Which of the following is not a Hyperledger framework?
+Hyperledger Excel
+
+*Which Hyperledger project is a benchmarking tool?
+Hyperledger Caliper
+
+*The Hyperledger project is hosted and maintained by _______?
+Linux Foundation
+
+*_______ is a Hyperledger tool that provides interoperability between ledger systems.
+Quilt
+
+*The native currency of an Ethereum network is?
+Ether
+
+*Which programming language is used in Ethereum blockchain?
+Solidity
+
+*The ________ tool provides a shared, reusable, interoperable toolkit for solutions focused on creating, transmitting, and storing verifiable digital credentials.
+Aries
+
+*The _______ Hyperledger tool brings the on-demand “as-a-service” deployment model to the blockchain ecosystem, to reduce the effort required for creating, managing, and terminating blockchains.
+Cello
+
+*Distributed Ledger is a type of data structure.
+TRUE
+
+
+
+
+
+
+
+
+*Gossip protocol is a networking protocol similar to TCP/IP protocol, and is used for communication in Hyperledger.
+TRUE
+
+*Hyperledger Fabric supports smart contracts written in Solidity.
+TRUE
+
+*________ nodes are responsible for creating chain codes.
+Computing
+
+*What is a subnet of communication between members of a blockchain network?
+Channel
+
+*________ allows participants of a channel to share private and confidential data without creating a new channel.
+Private data
+
+*_______ are key-value pairs that represent both tangible and intangible things like storage devices and chain codes.
+Assets
+
+*In Hyperledger Fabric, _______ represents the current state of a ledger.
+World state
+
+*_______ identify and verify the authenticity of every entity inside a blockchain network.
+Membership Service Providers
+
+*_______ transactions deploy new chain code to the Hyperledger Fabric blockchain.
+Deployed
+
+*The Hyperledger Fabric framework was initially developed by which company?
+IBM
+
+*Invoke transactions invoke the previously deployed chain codes.
+TRUE
+
+* ________ nodes run the chain codes.
+Ordering
+
+*Nodes are identified by using _______.
+Membership Services
+
+*Chain codes are classified into two types, _______ and _______.
+Developed, System
+
+*_______ peers are responsible for adding a block to the blockchain network.
+Committing
+
+
+
+
+
+
+*The command 'peer channel update' signs and sends the supplied configtx update file to the Orderer.
+FALSE
+
+*Which tool is used to create configuration transactions?
+Configtxgen
+
+*The ledger system in Hyperledger Fabric uses what database by default?
+Level DB
+
+*The only way to access blockchain APIs is to use a software developer kit (SDK).
+TRUE
+
+*Which of the following allows private ledgers between two or more participants?
+Channels
+
+*Hyperledger Fabric supports storing world state data in which of the following databases?
+LevelDB and CouchDB
+
+*When running a query from a blockchain application, the ledger's Smart Contract need not be invoked.
+FALSE
+
+*Which command is used to bring down the Hyperledger Fabric network?
+byfn.sh down
+
+*Which type of peers approves the inclusion of transaction blocks into a ledger, and communicates with other peers?
+Ordering
+
+*A participant can belong to more than one Hyperledger Fabric blockchain network.
+TRUE
+
+*How many Ordering services does the first default network created consist of?
+One
+
+*How is data stored in a ledger?
+Key, Value pair
+
+*________ is used to run multiple containers that will create peers for the network.
+Docker-compose
+
+*What is the default programming language used by Hyperledger Fabric?
+Go
+
+*Which tool is used to view, invoke, deploy, or query a block in a ledger?
+Explorer
+
+*What does the cryptogen tool help you create?
+Certificates
+
+*A Peer or Node can be a part of many channels.
+TRUE
+
+*Which script in the first-network directory is used to automatically create a network?byfn.sh
+
+*When creating a network according to an organization’s structure and bootstrapping a channel, which of the following artifacts need to be generated?
+Genesis Block, Channel Configuration, and Anchor Peer Configs for each organization.
+
+*Which of the following is a blockchain solution provided by TCS?
+Quartz
+
+*What are the two main components of a blockchain network that developers are most interested in?
+Smart Contracts and Applications
+
+*What type of files are used in Hyperledger Fabric to specify the configurations of channels, certificates, and other asset
+YAML
+
+*Hyperledger Fabric supports which of the following?
+Both Consensus and Identity
+
+*What are the four stages of a chain code life cycle?
+“Install”, “Instantiate”, “Invoke”, and “Query”.
+
+
+*External applications can update a ledger only through ________.
+Chain code
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,175 @@
+
+*Which Replication model supports database read and write operations in all the nodes?
+R=Peer to Peer Replication Model
+*Key-value databases would not be the best fit if there is/are __________
+R=All the options
+*In MongoDB, data is represented as a collection of __________
+R=JSON documents
+*Which type of datastore supports nodes that are connected by relationships?
+R=Graph datastore
+*The most popular Navigational DBMS system is/are __________.
+R=Integrated Management System and Integrated Database System
+*An example of Key-Value datastore is __________.
+R=DynamoDB
+*CAP represents __________.
+R= Consistency, Availability, Partition Tolerance
+*NoSQL database supports caching in __________.
+R=System memory
+*Apache Kudu distributes data through Vertical Partitioning.
+R=False
+*The Document base unit of storage resembles __________ in an RDBMS.
+R=Rows
+*The scalability of the Key-Value database is achieved through Sharding.
+R=True
+*The language to transform XML documents into other formats, like non-XML formats such as HTML is _________.
+R=XSLT
+*Example(s) of Columnar Database is/are __________.
+R= Cassandra and HBase
+*An API used in creating a Key-Value Pair in Key-Value datastore is __________.
+R=put(key,value)
+*Which among the following options is a challenge in the Master-Slave Replication model?
+R=Write Resilience
+*In a Column Data Model, the number of columns that a row can have __________.
+R=varies
+*The core principle of NoSQL is __________.
+R= BASE
+*Which of the following does not have restrictions on the data type it stores?
+R=Columnar Family in Columnar Datastore
+*In RDBMS, the attributes of an entity are stored in __________.
+R= Columns
+*NoSQL can handle __________.
+R= Unstructured and Semi-structured data
+*Which Replication model has the strongest resiliency power?
+R= Peer to Peer Replication Model
+*In Riak Key Value datastore, the variable ‘W’ indicates __________.
+R=Number of Write Operations
+*Cassandra was developed by __________
+R=Facebook
+
+*All NoSQL databases are similar.
+False
+
+**Which type of Key-Value datastore DB has its key and value sorted?
+Ordered Key-Value datastore
+
+*The type of Graph Store that works in real-time is __________.
+Graph Database
+
+*Which of the following factors influence(s) the choice of replication model?
+All the options
+
+**__________ is an Object Oriented Database.
+NoSQL
+
+**Riak DB leverages the CAP Theorem to improve its scalability.
+True
+
+*NoSQL data replication is __________.
+Homogenous
+
+*Relational Database satisfies __________.
+ACID Properties
+
+*Columnar datastore avoids storing null values.
+True
+
+*JSON is a lightweight substitute for XML.
+True
+
+*The Property Graph Model is similar to __________.
+Entity Relationship Diagram
+
+*Terrastore is an example of __________.
+Document datastore
+
+*The syntax for retrieving specific elements from an XML document is __________.
+XPath
+
+**In the Master-Slave Replication model, the slave node services __________.
+Read operations
+
+*The type of scaling supported by NoSQL is __________.
+Horizontal
+
+*The file format(s) that can be stored and retrieved from the Document Store NoSQL data model is/are __________.
+All the options
+
+*An expressive structure with the collection of nodes and relationships interlinking them is __________.
+Graph datastore
+
+*An XML document which satisfies the rules specified by W3C is __________.
+Well Formed XML
+
+
+*Which among the following is the correct API call in Key-Value datastore?
+put(key,value)
+
+*__________ is a Columnar database that runs on a Hadoop cluster.
+Apache HBase
+
+*In the Master-Slave Replication model, the node which pushes all the updates in data to subordinate nodes is __________.
+Master Node
+
+*Which among the following is used by Amazon to store the user's shopping cart details?
+DynamoDB
+
+*In the Master-Slave Replication model, the node which services all the database write operations is __________.
+Master Node
+
+*In a columnar Database, __________ uniquely identifies a record.
+Row-Key
+
+*NoSQL is a Relational Data Model.
+False
+
+*In the Master-Slave Replication model, different Slave Nodes contain __________.
+Same data
+
+*Which type of scaling handles voluminous data by adding servers to the clusters?
+Horizontal
+
+*In Riak Key Value datastore, the Replication Factor 'N' indicates __________.
+Number of Data Copies to be maintained across nodes
+
+*The Specialized Query Language(s) used in Graph datastore is/are __________.
+All the options
+
+*Document Store database contains data in the format of __________.
+All the options
+
+*Neo4j is an example of Document Store DB.
+False
+
+*Which of the following has properties attached to it in the Graph datastore?
+Relationships X  Nodes and Relationships
+
+*Hash Table Design is similar to __________.
+Key Value datastore
+
+*Distributed Database solutions can be implemented by __________.
+All the options
+
+*Which type of database requires a trained workforce for the management of data?
+RDBMS
+
+*__________ in Key-Value Databases are similar to 'Tables' in RDBMS.
+Buckets
+
+*__________ are chunks of related data often accessed together.
+Column Families 
+
+*The famous XML Database(s) is/are _________.
+eXist and MarkLogic
+
+
+
+
+
+*Which among the following provides support for querying the data structure it stores?
+MongoDB X None of the options X 
+
+*__________ is referred to the individual's knowledge of multiple languages.
+Polylingual X Polymorphism X 
+
+*A Graph Store similar to OLAP in RDMS is __________.
+R=Graph Database(X)

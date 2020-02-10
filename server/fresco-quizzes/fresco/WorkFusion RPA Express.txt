@@ -1,0 +1,151 @@
+QUIZ 1
+
+*_____________ is applied to machine learning algorithms.
+Quality pattern data
+
+*SPA Automates all operations easily by using _______________.
+Artificial Intelligence
+
+*You can create new recording by pressing ______.
+F5
+
+*SPA is also called as _____________.
+Virtual Data scientist
+
+
+*Which of the following are the capabilities of SPA?
+All of the options
+
+*Which of the following components is essential for successful automation?
+All of the options
+
+*In SPA task can be automated using _________________.
+Rule-based automatics
+
+
+
+**OCR has to be added manually.
+True
+
+**____________ Contains all the recordings of projects.
+Media files
+
+*____________ helps in automating the web and desktop applications without the need for writing code.
+RPA Recorder
+
+**Control tower and OCR is in _________ by default.
+OFF
+
+*____________ is a web application to see overall status of process and components.
+Platform monitor
+
+
+
+
+
+
+*What are the properties of wait method.
+Image to find and wait upto
+
+*Which of the following is not a mouse action?
+Mouse Double-click
+
+*____________ is a built-in tool for WorkFusion studio to identify the properties and values of objects depending on location.
+Inspector
+
+*Web element uses _________ to search it’s elements.
+Xpath
+
+*Web group contains which of the following elements?
+Open website and web element
+
+*If you search for non existing control __________ exception is thrown.
+Element not found
+
+*What are the loops available ion RPA Express?
+While, Repeat and Retry
+
+
+
+
+
+
+**An active window is needed for excel.
+False
+
+*AI helps in segregating unstructured data.
+True
+
+**Excel should be added manually from actions library.
+True
+
+**Which of the following statuses are available under the business process?
+Draft, running and Errors
+
+**You can create a new recording by pressing ______.
+F5
+
+**Error handling contains how many blocks?
+Two
+
+**OCR helps in converting ____________.
+Image to text
+
+*What makes workfusion different from competitors.
+Human-in-the-loop
+
+**_____________ is used to create manual tasks.
+Control tower
+
+**Which of the following is a parameter of switch to window?
+window and Delay before action
+
+*Which among the following provides full enterprise automation?
+Seamless automation and smarter automation
+
+*_____________ is a web interface to manage DB tables in workfusion.
+Data stores
+
+**Task performed by software robot is called as ____________.
+Bot tasks
+
+**Task are categorized into ________ types.
+Two
+
+**Shortcut to start the inspector.
+Ctrl+Shift+I
+
+**Which of the following is not a feature of SPA?
+Message store
+
+**Which of the following feature is a part of the application?
+Launch application
+
+**The current state of the license can be checked under ___________.
+Account information
+
+*In control tower which of the following component is not present?
+Data sources
+
+*_____________ is used to check the workflow execution depending on conditions.
+All of the options
+
+**____________ is used to repeat the business process on a timely basis.
+Scheduling
+
+**If ____________ is enabled , the bot switches to new application window.
+Autodetect window
+
+*Bot sources are managed by using __________________.
+Control tower
+
+**Which of the following option is not provided by using file storage?
+Saving Recordings
+
+
+
+ 
+*____________ is a collection of items to be added in the actions flow.
+Action Items X
+
+

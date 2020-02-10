@@ -1,0 +1,149 @@
+QUIZ 1
+
+*Adapters help the users to interact with _______ applications.
+Target
+
+*Automation helps to achieve errorless outputs.
+True
+
+*Openspan helps in enhancing ________ platforms of pega.
+BPM and CRM
+
+*Which among of the following is a pega differentiator?
+All of the options
+
+*______ helps in providing unique desktop experience to the user.
+RDA
+
+*Which among of the following is a property of web adapter?
+All of the options
+
+
+
+QUIZ 2
+
+*UWA supports how many browser types?
+2
+
+*Libraries are helpful to extend the functionality.
+True
+
+*_________ is used for querying the data in the table.
+Data cells
+
+*_________ doesn’t have a counter mechanism.
+List Loop
+
+*To start web interrogation always keep global web page function as default.
+True
+
+
+*In UWA ___________ leaves the open tabs when interrogation is stopped.
+Leave Running
+
+
+
+QUIZ 3
+
+*_____ character is used to allow dynamic data in the design block.
+@
+
+*How many input parameters are present for for loop?
+3
+
+*_________ needs less code and executes faster than loops.
+Queries
+
+*By using project to project reference, changes are updated in all the referenced application projects.
+True
+
+
+*__________ is used to run the saved tests.
+Test cases tab
+
+*_________ helps in creating dependencies between the projects in the build.
+Project to project reference
+
+
+
+FINAL QUIZ
+
+**__________ animates the automation activities in runtime lof files.
+Automation playback
+
+*For loop uses ______ as a counter to iterate through the logic.
+Index
+
+*__________ doesn’t have any parent case.
+Top-level
+
+**You can start debugging by using ___________ key.
+F5
+
+*Which of the following is a log file ?
+All of the options
+
+*Dependency between parent and child steps can be done by using _____.
+Wait step
+
+*JSON serialization allows ___________ as a parameter.
+MessageDetails
+
+*Which of the following returns message details for message definition?
+GetMessageDetails
+
+*In message manifest all the messages are stored in central repository.
+True
+
+*If case of an issue during the runtime of automation, _________ is the log to check.
+Runtimelog.txt
+
+*An activity can start in one framework project and can end in another framework project.
+True
+
+*While editing automation you can open playback file.
+False
+
+*__________ components helps in connecting one part of automation to another.
+Label/Jump to
+
+*Data can be modified in all the child cases.
+True
+
+*_________ helps in identifying the elements across multiple instances.
+Match Rules
+
+*___________ is defined as attribute of interrogated control.
+Property
+
+*Log file cleaner helps in removing personal data.
+True
+
+*To create window based application, which adapter should be choosen?
+Windows Application
+
+*In Pega, a solution may contain multiple projects.
+True
+
+*_________ are the methods for activities.
+Cancel and start activity
+
+*With the help of ____________ you can easily find where the error has occured.
+Indicators
+
+*________ number of elements are present in the message manifest.
+4
+
+*Start method contains ______ Methods.
+3
+
+*Renaming the interrogated control can be done in _______ tool window.
+Properties
+
+*_________ is used for specifying unique data elements.
+All of the options
+
+
+
+
+

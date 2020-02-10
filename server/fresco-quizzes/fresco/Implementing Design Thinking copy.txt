@@ -1,0 +1,78 @@
+**_______ gives an insight how effectively the user experience is meeting strategic goals.
+Success Metrics
+
+**_________ help us to understand users in the context of their everyday lives.
+Contextual Inquiry
+
+**To tackle issues in the skeleton frame, we create a _______ document.
+Wireframe
+
+*__________ makes sure that a button has an appealing shape and texture.
+Aesthetic Design
+
+**________ aid a business grow and attain its objectives.
+Business Goals
+
+*A good design should be functional just as much as aesthetic.
+True
+
+**________ navigation allows the users to access items that they don’t need on a regular basis.
+Courtesy
+
+*The practice of designing a product or service keeping users in mind is called __________.
+User-Centered Design
+
+**________ navigation is embedded in the content itself.
+Contextual
+
+**What makes sure that the aesthetic and functional aspects of the button work in the context of the rest of the product?
+User Experience Design
+
+**The experience users have with your product or service comes through ____________.
+All the options
+
+**________ navigation allows the user to access nearby screens in the architecture.
+Local
+
+**__________ gives an insight how effectively the user experience is meeting strategic goals.
+Success Metrics
+
+**Which one of the following techniques helps us in understanding user needs?
+All the options
+
+**The concept of __________ is not just visual but a set of conceptual associations or emotional reactions.
+Brand Identity
+
+*A common way of measuring the effectiveness of user experience is the conversion rate.
+True
+
+*Designing the right elements for the tasks that the user is attempting to perform is called ________.
+Interface Design
+
+**________ plane blends content, functionality and aesthetics to produce a design that pleases senses of the user.
+Surface
+
+**________ navigation allows the user to access the main sections of the product.
+Global
+
+**The skeleton plane consists of ___________.
+All the options
+
+**In which architectural approach, the nodes are organized in two or more dimensions?
+Matrix Structure
+
+*To determine the requirements, we put our personas into short stories called ________.
+Scenarios
+
+*User segments can be created based on _________.
+All the options
+
+
+
+
+
+*_________ deals with collecting the user data needed to develop the knowledge about user.
+All the options X 
+
+*The usage of proper ________ is essential to communicate a brand identity.
+Style Guide X 

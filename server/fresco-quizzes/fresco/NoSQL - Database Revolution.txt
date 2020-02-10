@@ -1,0 +1,386 @@
+*Full-form of 'CRUD' is _________.
+Create-Read-Update-Delete
+
+*________ distributes different data across multiple servers.
+Sharding
+
+*Horizontal scaling approach tends to be cheaper as the number of operations and the size of the data increases.
+TrueThe process through which the on-disk tree files periodically merged to create larger consolidated stores is called __________.
+
+*NoSQL databases are designed to expand _________.
+horizontally
+
+*Limitations of RDBMS are ______________.
+Scalability/Database design complexity
+
+*6487 Key-value pair data storages include all except ________.
+Network Attached Storage
+
+*6490 The RDBMS 'table' equivalent terminology in Riak is ________.
+bucket
+
+*6491 A Riak convergent replicated data type (CRDT) includes ________.
+Maps/Sets/Counters
+
+*6488 A Key-value store does not support Secondary Indexes.
+False
+
+*In a column-database a row is being uniquely identified by __________.
+Row-key
+
+*Pre-join projection is equivalent to ________ as in traditional relational systems.
+Materialized view
+
+*HBase Tables are divided _________ by row key range into ________ .
+horizontally, regions
+
+*The column store has to perform _____ IO to insert a new value
+as many disk blocks
+
+*Columnar databases are preferable for OLTP systems.
+False
+
+*The row store needs to perform _____ IO to insert a new value.
+Single
+
+*Cassandra allows to define composite Primary Keys.
+True
+
+*Hbase main server components include all except _________.
+Hbase Memstore
+
+*In Hbase, 'Columns' are named and specified in table definition.
+False
+
+*In a columnar database, the columns are stored together on disk, achieving a higher compression ratio is an expensive operation.
+False
+
+*In Cassandra, the ___ A column-database used to store __________ versions of each cells________ determines how many copies of the data will be maintained across multiple nodes.
+Replication factor
+
+*In column-oriented stores, data is stored on a ____________ basis.
+Column Family
+
+
+
+
+*An RDBMS equivalent component for a "collection" in a Document database:
+Table
+
+*An RDBMS equivalent component for a "document identifier" in a Document database:
+Foreign Key
+
+*In MongoDB, there is a similar feature of 'like' expression as like RDBMS.
+False
+
+*JSON documents are built up of _________.
+All the options
+
+*MongoDB read/write performance can be tuned with the help of Stored Procedures.
+False
+
+*Document databases split a document into its constituent name/value pairs for indexing purpose.
+False
+
+*______ is a syntax for retrieving specific elements from an XML document.
+Xpath
+
+*The MATCH clause is roughly equivalent to the _______ clause in SQL and the RETURN clause to a ______ clause.
+Where, Select
+
+
+
+*Only Nodes have properties in Graph database.
+False
+
+*Cypher query language is associated with __________.
+Neo4j
+
+*Graph databases are generally built for use with ________.
+OLTP
+
+*The major components of a Graph include all except _______.
+JSON
+
+*Neo4j architecture is a self-driven and independent architecture because of ________________.
+Both the options
+
+
+*Sorted Column store would provide higher compression ratio by representing each column as ________ compared to the preceding one.
+Delta
+
+*Wiredtiger storage engine is a part of ___________.
+MongoDB
+
+*_________ are replicated to allow failover in MongoDB.
+Shards
+
+*Riak demonstrates dual nature of _____________.
+Key/value Store and Document Database
+
+*In case of a Strict consistency, a read will always return the most recent data value.
+True
+
+*A column-database used to store __________ versions of each cells.
+Multiple
+
+*In Riak, ________ consistency model is implemented.
+Eventual
+
+*In Cassandra, if the replication factor is 5, the coordinator will send replicas of the data item to the next _________ nodes on the ring.
+4
+
+*Kudu can be accessed via all except _________.
+Apache Hive
+
+*Like most relational databases, Kudu also offers secondary indexes and uniqueness constraints.
+False
+
+*Read overhead in a Columnar database can be partly reduced by Multicolumn projection and _____________.
+Caching
+
+*Transactional integrity is relevant in case of batch-centric Hadoop-based analytics on warehoused data.
+False
+
+*Hbase DDL Operations (create, delete tables) are maintained by ___________.
+Hbase Master
+
+*The equivalent Hbase structure of an in-memory tree in Log-structured Merge Trees is __________.
+MemStore
+
+*Cassandra lightweight transactions (LWT) supports ______ pattern.
+Compare-and-set
+
+*Hbase Region assignment operation is being handled by _________.
+Hbase Master
+
+*Cassandra's Gossip Protocol can take care of the heartbeat lost due to _______ in a widely distributed system.
+Both node failure and network issue
+
+*In Cassandra, if the replication factor is 3, the coordinator will send replicas of the data item to the next _____ nodes on the ring.
+2
+
+*Some of the common Read Consistency level in Cassandra include all except __________.
+ANY
+
+*Some of the common Write Consistency level in Cassandra include all except ___________.
+LOCAL_ONE
+
+*In case of an Eventual consistency, reads may not return the most recent value, but reads will not return values “out of sequence.”
+False
+
+
+
+
+
+
+*All NoSQL databases are similar.
+False X True
+
+**Which type of Key-Value datastore DB has its key and value sorted?
+Ordered Key-Value datastore
+
+*The most popular Navigational DBMS system is/are __________.
+Integrated Database System
+
+**Which of the following does not have restrictions on the data type it stores?
+Columnar Family in Columnar Datastore
+
+
+
+
+
+
+
+
+
+
+
+
+**__________ in Key-Value Databases are similar to 'Tables' in RDBMS.
+Buckets
+
+**NoSQL can handle __________.
+Unstructured and Semi-structured data
+
+**Which of the following has properties attached to it in the Graph datastore?
+Relationships
+
+**Cassandra was developed by __________
+Facebook
+
+**Columnar datastore avoids storing null values.
+True
+
+**__________ is an Object Oriented Database.
+NoSQL
+
+**In the Master-Slave Replication model, the slave node services __________.
+Read operations
+
+**Sharding replication follows__________.
+Horizontal Partitioning of Data
+
+**NoSQL database supports caching in __________.
+System memory
+
+**Terrastore is an example of __________.
+Document datastore
+
+**Which Replication model has the strongest resiliency power?
+Peer to Peer Replication Model
+
+**In the Master-Slave Replication model, the node which pushes all the updates in data to subordinate nodes is __________.
+Master Node
+
+**Which type of scaling handles voluminous data by adding servers to the clusters?
+Horizontal
+
+**__________ requires data in a structured format as per the defined data model.
+RDBMS
+
+
+**Riak DB leverages the CAP Theorem to improve its scalability.
+True
+
+**An API used in creating a Key-Value Pair in Key-Value datastore is __________.
+put(key,value)
+
+
+
+
+
+*In MongoDB, data is represented as a collection of __________
+All the options
+
+*NoSQL data replication is __________.
+Homogenous
+
+
+*Distributed Database solutions can be implemented by __________.
+All the options
+
+*The key parameter(s) to be taken into consideration while weighing NoSQL databases against each other is/are __________
+All the options
+
+*An XML document which satisfies the rules specified by W3C is __________.
+Valid XML
+
+*Document Store database contains data in the format of __________.
+All the options X JSON document
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**A Graph Store similar to OLAP in RDMS is __________.
+Graph Database
+
+**The scalability of Key-Value database is achieved through __________.
+Sharding Replication
+
+
+
+**An example of Key-Value datastore is __________.
+DynamoDB
+
+
+
+
+*The famous XML Database(s) is/are _________.
+eXist and MarkLogic
+
+*The core principle of NoSQL is __________.
+BASE
+
+*The Document base unit of storage resembles __________ in an RDBMS.
+Rows
+
+*Which among the following provides support for querying the data structure it stores?
+MongoDB
+
+
+
+
+
+
+
+
+*Which among the following is the correct API call in Key-Value datastore?
+put(key,value)
+
+
+*The language to transform XML documents into other formats, like non-XML formats such as HTML is _________.
+XPath
+
+
+*Example(s) of Columnar Database is/are __________.
+Cassandra and HBase
+
+*Relational Database satisfies __________.
+ACID Properties
+
+
+*The Specialized Query Language(s) used in Graph datastore is/are __________.
+All the options
+
+*The type of Graph Store that works in real-time is __________.
+Graph Database
+
+
+*Which among the following options is a challenge in the Master-Slave Replication model?
+All the options
+
+**Apache Kudu distributes data through Vertical Partitioning.
+False
+
+
+*__________ are chunks of related data often accessed together.
+All the options
+
+
+
+
+*Cassandra has properties of both __________ and ____________.
+All the options X Neo4j/Amazon Dynamo X
+
+*The equivalent Hbase structure of an on-disk trees in Log-structured Merge Trees is ___________.
+MemStore X Block-cache X 
+
+*An RDBMS equivalent component for a "document" in a Document database:
+Column X 
+
+*The process through which the on-disk tree files periodically merged to create larger consolidated stores is called __________.
+Partitioning X 

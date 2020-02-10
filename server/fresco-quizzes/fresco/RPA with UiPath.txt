@@ -1,0 +1,321 @@
+QUIZ 1
+
+**Variables can be created even if the Designer panel does not contain at least one activity.
+False
+
+*What is the file that contains the information about the automation project ?
+project.json
+
+**Around__________activities are present in UiPath studio.
+300
+
+*When publishing a project, what is the type of file the entire project is archived to ?
+.nupkg
+
+*Which will provide quick access to variables,arguments and imports in UIPath Studio ?
+Designer panel
+
+*Which exceutes the process built on UiPath studio?
+UiPath Robot
+
+*________ Deals with any kind of data.
+Generic value
+
+*Which among the following has multiple branching logical operators?
+Flowchart
+
+*Entry,Exit and ___________ are the three sections of the state activity in a state machine.
+Transition(s)
+
+*Which is suitable for linear processes and stand as a single block activity?
+Sequences
+
+*Which among the following has finite states in its execution?
+State Diagram
+
+
+
+
+QUIZ 2
+
+*_________ is used to check by name rather than index.
+Dictionary
+
+*_________ is used to find UI elements in application.
+Selectors
+
+*$ is a wild card selector.
+False
+
+*________ provides skeleton structure for process.
+Automatic Recoring 
+
+
+*_________ is not a type of recording.
+Application
+
+*Recording captures everything and transforms it into ________.
+Sequences
+
+*Multiple Processes can use the same file if visible checkbox is checked.
+True
+
+*_________ deals with numbers, characters and Boolean.
+Scalar
+
+*________ is used to do excel activities.
+Excel application scope
+
+*Variables in UiPath are categorised into ________ types.
+Three
+
+*Which activity enables you to step through arrays, lists, data tables or other types of collections?
+ForEach Row
+
+
+QUIZ 3
+
+
+**Which among the following is used to check whether the image is available ?
+Image Exists
+
+**By using ______ property you can find the pages as per your wish.
+Range
+ 
+*Which among the following helps in monitoring system events?
+Monitor system events
+
+*Relative Scrapping helps in extracting data from virtual networks.
+True
+
+*Output methods are also called as __________.
+Screen scrapping
+
+*__________ is used when reliable selectors are not available.
+Append range
+
+*Which among the following is used to save mails to specified folder?
+Save Mail Message
+
+*___________ monitors the system based on system-wide key events.
+Hot Key trigger
+
+*Citrix environment is a virtual environment.
+True
+
+*__________ is used to secure the text sent to UI elements.
+Type secure text
+
+*Which among the following is used to automate virtual environments.
+citrix automatic wizard
+
+
+QUIZ 4
+
+
+
+*__________ is used to break complex workflow into smaller steps.
+Invoke Workflow
+
+*Which among the following is a organised project standard?
+All the options
+
+*___________ helps to observe the execution of a process.
+Debugging
+
+*Execution status can be tracked by using _______.
+Log Message
+
+*Which among the following is not a debug mode?
+Enter
+
+*Data is passed between the workflows using _______.
+Activities
+
+
+
+QUIZ 5
+
+*__________ Orchestrates the robots to run repetitive business process.
+UIPath Orchestrator
+
+*Which among the following are types of assets?
+All the options
+
+*You can assign robots in UiPath from _______.
+Jobs or Schedules Page
+
+*___________ helps in executing jobs faster.
+Process
+
+*Which among the following maintains and develops orchestrator environment?
+Configuration
+
+*All logs in UiPath are exported to ___ file.
+.csv
+
+
+
+FINAL QUIZ
+
+
+
+
+**When creating a new variable from variables panel, default datatype assigned to that variable is _______.
+String
+
+**Each transition contains three sections namely condition,action,and ___________.
+Trigger
+
+**Which among the following is a web-based management platform?
+UiPath Orchestrator
+
+**Which among the following is used to generate multiple actions in same window?
+Partial Selector
+
+**_______ enable you to pause the execution of an automation so that you can check its state at a given point.
+Breakpoints
+
+**Despite sensitive to graphical variations which property is fast and reliable?
+Click Image
+
+**To achieve faster automation UI elements are helpful.
+True
+
+**When you publish a project, the entire project folder is archived into _________ file ?
+.nupkg
+
+*It is recommended to surround the workflow by a _____ activity in order to handle any exceptions.
+Try Catch 
+
+*Pick Branch activity cannot be used inside the Then/Else section of an If activity.
+True
+
+*Generic Value variables can store any kind of data including text,number,dates and array data(s).
+True
+
+*Can a robot perform clicks alongside key modifiers (shift, ctrl, etc) in citrix environment?
+True
+
+*Break activity can be used along with switch activity to iterate through cases of switch activity.
+False
+
+*Left click and Right click on buttons, Mouse hover and other elements can be recorded.
+False
+
+*_______ direction can be used within given workflow.
+In and In/Out
+
+**The current values of the variables while working in debug mode will be displayed in ____ panel of the UiPath studio.
+Locals
+
+*Which input action on screen scraping is best suited for an application that needs higher rate of compatibility and speed?
+Simulate Type/Click
+
+**Which among the following is fast in execution?
+Simulate Type/Click
+
+*___is the best approach to filter data from a data table based on a condition.
+Sort
+
+**We can use _____when looking to extract a certain value from a PDF file when there are major structural changes in the file.
+Anchor Base
+
+**_____ tool is a method of getting blocks of text from a PDF.
+Screen Scraping
+
+*Which activity enables you to step through arrays, lists, data tables or other types of collections?
+ForEach
+
+*_________ adds a pause when activty is done.
+Delay after
+
+*
+
+
+
+
+
+
+
+
+**______helps in validating selectors in real time.
+Ui Explorer
+
+
+
+
+
+
+
+
+
+
+
+
+*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*_________ adds a pause when activty is done.
+Delay time
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

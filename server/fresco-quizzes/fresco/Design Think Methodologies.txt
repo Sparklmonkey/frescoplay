@@ -1,0 +1,160 @@
+
+*User personas are created during this phase.
+Discover stage
+
+*At the delivery phase, we
+All of the above
+
+**A design brief provided by the client can be rewritten or reworked upon
+True
+
+**The initial design brief is provided by the __________
+client
+
+**The final stage in Bootcamp Bootleg process is
+Testing
+
+**A wireframe is simply a black and white model showing the overall placement of the elements on the page.
+True
+
+*In a develop phase, evaluation is done prior to ideation
+False
+
+**4D UX methodology was initially coined by Stanford d. school
+False
+
+*Design thinking is not an exclusive property of designers
+True
+
+**This methodology was proposed by Stanford d. school
+Bootcamp Bootleg
+
+*Tom is a designer at ABC firm. He is assigned with the task of designing a protective head gear targeted at workers of construction industry. With plenty of design thinking mechanisms at his disposal, he has the liberty to choose any one out of them and proceed. Keeping in mind, the risks involved in recalling the product due to poor design, he has to stick to a robust design mechanism. Out of the design thinking mechanisms that you have learned in the course, which one do you think would best fit Tom's purpose?
+Double Diamond
+
+*Ideation phase is when brainstorming takes place
+True
+
+*No alterations are to be made in the design after the testing phase
+False
+
+*The stages in a design thinking process is not always sequential.
+True
+
+**The Bootcamp Bootleg process consists of ___ stages
+5
+
+*A sitemap is a high level diagram portraying the general structure and architecture of the website.
+True
+
+*Prototypes should not be demonstrated and tested in other departments with in the organization to maintain secrecy
+False
+
+*------------------ helps the design team and client to visualize and handle a design concept, and also to get an idea of it’s physical presence and tactile qualities.
+Prototype
+
+*The goal of the prototype phase is
+Both the options
+
+*MVP's stand for
+Minimum Viable Product
+
+*Choose the right sequence of stages in 4D UX Methodology
+Discover, Design, Develop and Deliver
+
+*Empathy is critical because
+it allows design thinkers to set aside his or her own assumptions about the world in order to gain insight into users and their needs
+
+*The design team should not produce more than one prototype.
+False
+
+*You shouldnot seek to re-define the problem as a problem statement in a human-centered manner.
+False
+
+*Design thinking is mainly suitable for developing creative and crazy product innovations
+False
+
+*The supreme goal design thinking is to help you
+All the options
+
+*What is key in any design thinking process?
+Empathy
+
+*At which stage does content development comes into play?
+Develop stage
+
+
+*Once the brief has been defined and agreed upon, a designer starts to search for relevant information that can be fed into the design process at the ideate stage. Which process are we referring to?
+Research process
+
+*Being an experimental phase, here continuous iterations can take place. Which phase is being referred to?
+Prototype
+
+*_________________ is a way to narrow down thoughts to a final solution
+Convergent thinking
+
+*Design Thinking is a non-linear process
+True
+
+*Design Thinking has
+All of the above
+
+*The phrase "thinking outside the box" has been coined to describe one goal of the brainstorming phase and is encouraged, since
+this can aid in the discovery of hidden elements and ambiguities in the situation and discovering potentially faulty assumptions.
+
+*Ideation phase is when brainstorming takes place
+True
+
+*The design brief consists of all possible solutions to the problem statement
+False
+
+*The winning design is typically that which most closely meets the design brief and necessarily need not adhere to budget and timescale.
+False
+
+*Empathy is crucial because it allows design thinkers to set aside his or her own assumptions about the world in order to gain insight into users and their needs
+True
+
+*The biggest asset of design thinking is
+All of the above
+
+*Imagine that you are a designer and your goal is to improve onboarding experience for new users. What will you do first?
+Observe and start talking to actual users
+
+*Once the brief has been defined and agreed upon, a designer starts to search for relevant information that can be fed into the design process at the ideate stage. Which process are we referring to?
+Research process
+
+*Primary and secondary modes of research are done in
+Discover
+
+*Prototypes should only be demonstrated and tested within the team itself.
+False
+
+*This is the phase where we do extensive research on our target users, understanding their pain points, observing the environment in which they work and developing insights'. Which phase are we referring to?
+Discovery phase
+
+*Unlike 4D process, phases of this process are either diverging or converging. Which is the process?
+Double Diamond
+
+*Primary and secondary modes of research are done in
+Discover
+
+*Each phase in a design thinking process is ___________ in nature
+cyclical
+
+*Design Thinknig is not an iterative process
+False
+
+*Visual QA is done at this stage.
+None of the options
+
+*Its often necessary to do an exercise within a phase multiple times in order to arrive at the outcome needed since
+more the time taken, higher the credits for the design team.
+
+
+
+
+*This approach brings in the 'thinking mechanism' aspect into the process
+Bootcamp Bootleg X 4D UX methodology X  
+
+
+
