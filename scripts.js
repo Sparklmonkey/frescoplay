@@ -1,3 +1,4 @@
+const attemptsTolerance = 5;
 let response = undefined;
 let assessmentDone = false;
 
@@ -182,7 +183,7 @@ const doAssessment = function() {
 		if(continueBtn !== undefined) {
 			continueBtn.click();	
 			setTimeout(() => {
-				doCourse();
+				doCourse(1);
 			}, 2000);		
 		}
 	}
@@ -208,17 +209,49 @@ const takeNewAssessment = function() {
 	loadAnswersJson();
 }
 
-const doCourse = function() {
-	let btnNext = document.getElementsByClassName('navButton right')[0];
-	if (btnNext !== undefined) {
-		btnNext.click();
-		setTimeout(() => {
-			doCourse();
-		}, 1000);
-	} else { // A wild quiz has appeared!
-		document.getElementById('startQuiz').click();
-		takeNewAssessment();
+const doCourse = function(attempts) {
+	try {
+		let btnNext = document.getElementsByClassName('navButton right')[0];
+		if (btnNext !== undefined) {
+			btnNext.click();
+			setTimeout(() => {
+				doCourse(attempts);
+			}, 1000);
+		} else { 
+			// There are two options... one, this could be a congratulations screen, so we'll check it out
+			let btnProceed = document.getElementsByClassName('proceedBtn')[0];
+			if (btnProceed !== undefined) {
+				// And yeah! it's a congratulations screen
+				btnProceed.click();
+				setTimeout(() => {
+					doCourse(attempts);
+				}, 3000);
+			} else {
+				// A wild quiz has appeared!
+				let btnStartQuiz = document.getElementById('startQuiz');
+				if (btnStartQuiz !== undefined) {
+					btnStartQuiz.click();
+					setTimeout(() => {
+						takeNewAssessment();
+					}, 3000);
+				} else {
+					//throw Error('Some weird behavior was detected!');
+				}
+			}
+		}
+	} catch (error) {		
+		console.log('Oooppss... we have a weird behavior here :(');		
+		console.log(error);
+
+		if (attempts < attemptsTolerance) {
+			console.log(`Let's try again: Attempt ${attempts} of ${attemptsTolerance}`);
+			setTimeout(() => {
+				doCourse(attempts++);
+			}, 3000);
+		} else {
+			console.log('Dude... finish the course manually!!!');
+		}
 	}
 }
 
-doCourse();
+doCourse(1);
