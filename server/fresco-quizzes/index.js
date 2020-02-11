@@ -103,7 +103,7 @@ const doCourseSearch = async (courseName, callback) => {
     const json = await response.json();
     callback(json);
   } catch (error) {
-    console.log(error);
+    console.log(`Error trying to do the course search. Details: ${error.message}`);
   }
 };
 

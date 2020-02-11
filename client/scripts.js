@@ -8,28 +8,27 @@ let stopApp = false;
 let response = undefined;
 let assessmentDone = false;
 
+const levenshteinDistance = (a, b) => {
+    if(a.length == 0) return b.length; 
+    if(b.length == 0) return a.length; 
 
-const levenshteinDistance =  function(a, b){
-        if(a.length == 0) return b.length; 
-        if(b.length == 0) return a.length; 
+    var matrix = [];
 
-        var matrix = [];
+    // increment along the first column of each row
+    var i;
+    for(i = 0; i <= b.length; i++){
+        matrix[i] = [i];
+    }
 
-        // increment along the first column of each row
-        var i;
-        for(i = 0; i <= b.length; i++){
-            matrix[i] = [i];
-        }
+    // increment each column in the first row
+    var j;
+    for(j = 0; j <= a.length; j++){
+        matrix[0][j] = j;
+    }
 
-        // increment each column in the first row
-        var j;
-        for(j = 0; j <= a.length; j++){
-            matrix[0][j] = j;
-        }
-
-        // Fill in the rest of the matrix
-        for(i = 1; i <= b.length; i++){
-            for(j = 1; j <= a.length; j++){
+    // Fill in the rest of the matrix
+    for(i = 1; i <= b.length; i++){
+        for(j = 1; j <= a.length; j++){
             if(b.charAt(i-1) == a.charAt(j-1)){
                 matrix[i][j] = matrix[i-1][j-1];
             } else {
@@ -37,13 +36,13 @@ const levenshteinDistance =  function(a, b){
                                         Math.min(matrix[i][j-1] + 1, // insertion
                                                 matrix[i-1][j] + 1)); // deletion
             }
-            }
         }
+    }
 
     return matrix[b.length][a.length];
 };
 
-const jaroWrinker = function (s1, s2) {
+const jaroWrinker = (s1, s2) => {
     var m = 0;
 
     // Exit early if either are empty.
@@ -112,80 +111,105 @@ const jaroWrinker = function (s1, s2) {
 }
 
 const loadAnswersJson = () => {	
-	let urlArray = document.URL.split('/');
-	let quizId = urlArray[4];
-	fetch(`https://raw.githubusercontent.com/Sparklmonkey/frescoplay/master/answers/${quizId}.json`)
-		.then( response => response.text())
-		.then( responseObject => {			
-			response = JSON.parse(responseObject);
-			selectCorrectAnswer();
-		});
+	try {
+		let urlArray = document.URL.split('/');
+		let quizId = urlArray[4];
+		fetch(`https://raw.githubusercontent.com/Sparklmonkey/frescoplay/master/answers/${quizId}.json`)
+			.then( response => response.text())
+			.then( responseObject => {			
+				response = JSON.parse(responseObject);
+				selectCorrectAnswer();
+			});
+	} catch (error) {
+		console.log(`Error trying to load the answers. Details: ${error.message}`);
+	}
 }
 
 const getCandidatesAndBestOne = (sourceArray, text, property) => {
-	// We must find the question that probably has format differences, so let's use some distance algorithms
-	let candidates = sourceArray.map((element) => {
+	try {
+		// We must find the question that probably has format differences, so let's use some distance algorithms
+		let candidates = sourceArray.map((element) => {
+			return {
+				'distance0': levenshteinDistance(text.trim(), element[property].trim()),
+				'distance1': jaroWrinker(text.trim(), element[property].trim()),
+				'value': element
+			}
+		});
+		
+		let bestOne = candidates.sort((a, b) => a.distance0 - b.distance0 || b.distance1 - a.distance1)[0];
+		
 		return {
-			'distance0': levenshteinDistance(text.trim(), element[property].trim()),
-			'distance1': jaroWrinker(text.trim(), element[property].trim()),
-			'value': element
-		}
-	});
-	
-	let bestOne = candidates.sort((a, b) => a.distance0 - b.distance0 || b.distance1 - a.distance1)[0];
-	
-	return {
-		'candidates': candidates,
-		'best': bestOne
-	};
+			'candidates': candidates,
+			'best': bestOne
+		};
+	} catch (error) {
+		console.log(`Error trying to get the candidates. Details: ${error.message}`)
+	}
 }
 
-const doResponseIntent = function(){
-
+const doResponseIntent = function(attempts, callback){
 };
 
-const selectCorrectAnswer = () => {	
-	let btnSubmitQuiz = document.getElementById('quizSubmitBtn');
+const selectCorrectAnswer = (attempts=0) => {	
+	let nextAttempt = attempts + 1;
 
-	if (btnSubmitQuiz.attributes.cursor.value === 'pointer') { // Submit available
-		btnSubmitQuiz.click();
-		setTimeout(() => {
-			assessmentDone = true;
-			doAssessment();
-		}, 2000);
-	} else {
-		let currQuestion = document.getElementsByClassName('question')[0].innerText;
-		
-		try {
-			let currAnswer = null;
-			// Might throw null pointer
-			if (response.questions.find( it => it.question == currQuestion ) != undefined) {
-				 currAnswer = response.questions.find( it => it.question == currQuestion ).answer;
-			} else {
-				let questionCandidate = getCandidatesAndBestOne(response.questions, currQuestion, 'question'); 
-				console.log(questionCandidate);
+	try {
+		let btnSubmitQuiz = document.getElementById('quizSubmitBtn');
 
-				currAnswer = questionCandidate.best.value.answer; //questionCandidate.value.answer;
-			}
+		if (btnSubmitQuiz.attributes.cursor.value === 'pointer') { // Submit available
+			btnSubmitQuiz.click();
+			setTimeout(() => {
+				assessmentDone = true;
+				doAssessment();
+			}, viewChangeDelay);
+		} else {
+			let currQuestion = document.getElementsByClassName('question')[0].innerText;
 			
-			let answerOptions = Array.from(document.getElementsByClassName('answerOptions')[0].children).filter(it => it.tagName == "LABEL");
-			let answerCandidate = getCandidatesAndBestOne(answerOptions, currAnswer, 'innerText');
+			try {
+				let currAnswer = null;
+				// Might throw null pointer
+				if (response.questions.find( it => it.question == currQuestion ) != undefined) {
+					 currAnswer = response.questions.find( it => it.question == currQuestion ).answer;
+				} else {
+					let questionCandidate = getCandidatesAndBestOne(response.questions, currQuestion, 'question'); 
+					console.log(questionCandidate);
 
-			if (answerCandidate.best.distance1 > distanceAnswerTolerance) {
-				// Our best candidate is not the best...				
-				alert(`Maybe we don't have the correct answer for this question... try it by yourself. \nBest Candidate: ${answerCandidate.best.value.innerText}`);
-			} else {
-				// Might throw null pointer (CURRENTLY NOT WORKING)
-				let correctAnswerObject = answerCandidate.best.value.previousElementSibling; 
-				correctAnswerObject.click();
+					currAnswer = questionCandidate.best.value.answer; //questionCandidate.value.answer;
+				}
+				
+				let answerOptions = Array.from(document.getElementsByClassName('answerOptions')[0].children).filter(it => it.tagName == "LABEL");
+				let answerCandidate = getCandidatesAndBestOne(answerOptions, currAnswer, 'innerText');
+
+				if (answerCandidate.best.distance1 > 0 && answerCandidate.best.distance1 < distanceAnswerTolerance) {
+					// Our best candidate is not the best...				
+					alert(`Maybe we don't have the correct answer for this question... try it by yourself.\nBest Candidate: "${answerCandidate.best.value.innerText}"`);
+				} else {
+					// Might throw null pointer (CURRENTLY NOT WORKING)
+					let correctAnswerObject = answerCandidate.best.value.previousElementSibling; 
+					correctAnswerObject.click();
+				}
+			} catch (error) {
+				console.log("No answers for this");
+				throw error;
 			}
-		} catch (error) {
-			console.log("No answers for this");
+		}
+	} catch (error) {		
+		if (attempts < attemptsTolerance) {			
+			console.log(`Let's try again: Attempt ${nextAttempt} of ${attemptsTolerance}`);
+			setTimeout(() => {
+				selectCorrectAnswer(nextAttempt);
+			}, viewChangeDelay);
+
+		} else {
+			console.log('Dude... finish this course manually');
+			stopApplication();
 		}
 	}
 };
 
-const doAssessment = () => {
+const doAssessment = (attempts=0) => {
+	let nextAttempt = attempts + 1;
+
 	try {
 		const startTheCourse = (event, attempt) => {
 			event();
@@ -198,10 +222,12 @@ const doAssessment = () => {
 			response = undefined;
 			addBtnClickEventListener();
 			loadAnswersJson();
+
 		} else {
 			let continueBtn = Array.from(document.getElementsByClassName('modalContent')[0].children).find(it => it.innerText === 'CONTINUE');
 			if(continueBtn !== undefined) {					
-				startTheCourse(() => continueBtn.click(), 1);				
+				startTheCourse(() => continueBtn.click(), 1);		
+
 			} else {
 				// Probably you didn't pass the quiz
 				let retryBtn = document.getElementsByClassName('spaceAroundButton').length > 0 ? document.getElementsByClassName('spaceAroundButton')[1] : undefined;
@@ -211,10 +237,12 @@ const doAssessment = () => {
 						// Yep... you're almost f*up bro
 						let tryAgain = confirm(`It's probably that we don't have the correct answers for this quiz. Do you want to try it again (at your own risk)?`);
 						if (tryAgain) {
-							startTheCourse(() => retryBtn.click(), 1);							
+							startTheCourse(() => retryBtn.click(), 1);		
+
 						} else {
 							console.log('Ok smartass... go ahead and do it by your own... bye!');
 							stopApplication();
+
 						}
 					}
 				} else {
@@ -224,34 +252,53 @@ const doAssessment = () => {
 		}
 	} catch (error) {
 		console.log(`Error trying to finish the assessment. Details: ${error.message}`);
+
+		if (attempts < attemptsTolerance) {			
+			console.log(`Let's try again: Attempt ${nextAttempt} of ${attemptsTolerance}`);
+			setTimeout(() => {
+				doCourse(nextAttempt);
+			}, viewChangeDelay);
+
+		} else {
+			console.log('Dude... finish this course manually');
+			stopApplication();
+		}
 	}	
 };
 
 const addBtnClickEventListener = () => {
-	//THIS WILL HANDLE CALLING QUESTION COMPLETION AFTER QUESTION HAS BEEN AUTOMATICALLY SELECTED, OR MANUALLY SELECTED.
-	Array.from(document.querySelectorAll(".navButton.right, .answerOptions")).map( it => {
-		it.addEventListener("click", (event) => {
-			//if (!stopApplication) {
-				if(response) {
-					setTimeout(() => selectCorrectAnswer(), nextQuestionDelay)
-				}
-				else {
-					loadAnswersJson()
-				}
-			//}
-		})
-	});
+	try {
+		//THIS WILL HANDLE CALLING QUESTION COMPLETION AFTER QUESTION HAS BEEN AUTOMATICALLY SELECTED, OR MANUALLY SELECTED.
+		Array.from(document.querySelectorAll(".navButton.right, .answerOptions")).map( it => {
+			it.addEventListener("click", (event) => {
+				//if (!stopApplication) {
+					if(response) {
+						setTimeout(() => selectCorrectAnswer(), nextQuestionDelay)
+					}
+					else {
+						loadAnswersJson()
+					}
+				//}
+			})
+		});
+	} catch (error) {
+		console.log(`Error trying to add the event listener. Details: ${error.message}`)
+	}
 };
 
 const takeNewAssessment = () => {
-	response = undefined;
-	assessmentDone = false;
+	try {
+		response = undefined;
+		assessmentDone = false;
 
-	addBtnClickEventListener();
-	loadAnswersJson();
+		addBtnClickEventListener();
+		loadAnswersJson();
+	} catch(error) {
+		console.log(`Error tring to take the new assessment. Details: ${error.message}`);
+	}
 };
 
-const doCourse = (attempts, callback) => {
+const doCourse = (attempts=0, callback) => {
 	let nextAttempt = attempts + 1;
 
 	try {		
@@ -334,43 +381,60 @@ const distinctObjects = (array) => {
 };
 
 const getMyCoursesStatus = (callback) => {
-	const frescoUrl = 'https://play-api.fresco.me/api/v1/progresses.json';
-	const coursesUrl = 'https://raw.githubusercontent.com/Sparklmonkey/frescoplay/master/answers/courses.json';	
+	try {
+		const frescoUrl = 'https://play-api.fresco.me/api/v1/progresses.json';
+		const coursesUrl = 'https://raw.githubusercontent.com/Sparklmonkey/frescoplay/master/answers/courses.json';	
 
-	fetch(frescoUrl, {
-		headers: { 'x-api-key' : apiKey }
-	})
-	.then(response => response.text())
-	.then(responseObject => {			
-		const frescoStatus = JSON.parse(responseObject);
-
-		fetch(coursesUrl)
+		fetch(frescoUrl, {
+			headers: { 'x-api-key' : apiKey }
+		})
 		.then(response => response.text())
-		.then(responseObject => {		
-			let nonCompletedCourses = frescoStatus.progresses.filter(a => a.status !== 'completed');
-			
-			const availableCourses = distinctObjects(JSON.parse(responseObject));
+		.then(responseObject => {			
+			const frescoStatus = JSON.parse(responseObject);
+			console.log(frescoStatus);
 
-			let toCompleteList = availableCourses.filter(a => {
-				return nonCompletedCourses.find(b => b.node.id === a.id);
-			}); 
-			let toStartList = availableCourses.filter(a => {				
-				return frescoStatus.progresses.filter(b => b.node.id === a.id).length === 0
+			fetch(coursesUrl)
+			.then(response => response.text())
+			.then(responseObject => {		
+				// We filtered from the list the courses that have hands on tasks to do...
+				let nonCompletedCourses = frescoStatus.progresses.filter(f => f.status !== 'completed' && !f.node.has_handson);						
+				// We took the ones that aren't complete and the user must finish the hands on... just to let him know that he's lazy ass 
+				let nonCompletedWithHandson = frescoStatus.progresses.filter(f => f.status !== 'completed' && f.node.has_handson);						
+
+				if (nonCompletedWithHandson.length > 0) {
+					// You shall not pass!
+					let coursesWithHandsOn = nonCompletedWithHandson.map(course => {
+						return `> ${course.node.name} \n`;
+					});
+
+					alert(`Here's a bunch of courses that has hands on tasks, complete them.\n\nCourses:\n ${coursesWithHandsOn}`);
+				}
+
+				const availableCourses = distinctObjects(JSON.parse(responseObject));
+
+				let toCompleteList = availableCourses.filter(a => {
+					return nonCompletedCourses.find(b => b.node.id === a.id);
+				}); 
+				let toStartList = availableCourses.filter(a => {				
+					return frescoStatus.progresses.filter(b => b.node.id === a.id).length === 0
+				});
+
+				const toDoList = distinctObjects([].concat(...[toCompleteList, toStartList])).sort((a, b) => a.id - b.id);
+				console.log(toDoList);
+
+				callback(toDoList);
 			});
-
-			const toDoList = distinctObjects([].concat(...[toCompleteList, toStartList])).sort((a, b) => a.id - b.id);
-			console.log(toDoList);
-
-			callback(toDoList);
 		});
-	});
-};
+	} catch(error) {
+		throw error;		
+	}
+}
 
 const stopApplication = () => {
 	stopApp = true;
 };
 
-const findReactElement = (dom, traverseUp = 0) => {
+const findReactElement = (dom, traverseUp=0) => {
     const key = Object.keys(dom).find(key=>key.startsWith("__reactInternalInstance$"));
     const domFiber = dom[key];
     if (domFiber == null) return null;
@@ -400,7 +464,7 @@ const findReactElement = (dom, traverseUp = 0) => {
     return compFiber.stateNode;
 }
 
-const enrollCourse = (coursesList, idx = 0) => {
+const enrollCourse = (coursesList, idx=0) => {
 	try {
 		let currentCourse = coursesList[idx];		
         let cardLinks = document.getElementsByClassName('cardLink');
@@ -455,7 +519,7 @@ const enrollCourse = (coursesList, idx = 0) => {
 	}
 };
 
-const startHomeSearch = (attempts) => {
+const startHomeSearch = (attempts=0) => {
 	let nextAttempt = attempts + 1;
 
 	try {
