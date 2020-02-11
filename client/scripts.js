@@ -1,4 +1,5 @@
 const attemptsTolerance = 5;
+const distanceAnswerTolerance = 0.8;
 const nextQuestionDelay = 1500;
 const viewChangeDelay = 3000;
 const courseLoadDelay = 5000;
@@ -170,9 +171,14 @@ const selectCorrectAnswer = () => {
 			let answerOptions = Array.from(document.getElementsByClassName('answerOptions')[0].children).filter(it => it.tagName == "LABEL");
 			let answerCandidate = getCandidatesAndBestOne(answerOptions, currAnswer, 'innerText');
 
-			// Might throw null pointer (CURRENTLY NOT WORKING)
-			let correctAnswerObject = answerCandidate.best.value.previousElementSibling; 
-			correctAnswerObject.click();
+			if (answerCandidate.best.distance1 > distanceAnswerTolerance) {
+				// Our best candidate is not the best...				
+				alert(`Maybe we don't have the correct answer for this question... try it by yourself. \nBest Candidate: ${answerCandidate.best.value.innerText}`);
+			} else {
+				// Might throw null pointer (CURRENTLY NOT WORKING)
+				let correctAnswerObject = answerCandidate.best.value.previousElementSibling; 
+				correctAnswerObject.click();
+			}
 		} catch (error) {
 			console.log("No answers for this");
 		}
@@ -225,12 +231,14 @@ const addBtnClickEventListener = () => {
 	//THIS WILL HANDLE CALLING QUESTION COMPLETION AFTER QUESTION HAS BEEN AUTOMATICALLY SELECTED, OR MANUALLY SELECTED.
 	Array.from(document.querySelectorAll(".navButton.right, .answerOptions")).map( it => {
 		it.addEventListener("click", (event) => {
-			if(response) {
-				setTimeout(() => selectCorrectAnswer(), nextQuestionDelay)
-			}
-			else {
-				loadAnswersJson()
-			}
+			//if (!stopApplication) {
+				if(response) {
+					setTimeout(() => selectCorrectAnswer(), nextQuestionDelay)
+				}
+				else {
+					loadAnswersJson()
+				}
+			//}
 		})
 	});
 };
@@ -350,7 +358,7 @@ const getMyCoursesStatus = (callback) => {
 				return frescoStatus.progresses.filter(b => b.node.id === a.id).length === 0
 			});
 
-			const toDoList = distinctObjects([].concat(...[toCompleteList, toStartList]));
+			const toDoList = distinctObjects([].concat(...[toCompleteList, toStartList])).sort((a, b) => a.id - b.id);
 			console.log(toDoList);
 
 			callback(toDoList);
@@ -413,13 +421,19 @@ const enrollCourse = (coursesList, idx = 0) => {
 
 			setTimeout(() => {
 				if (btnEnrollment != undefined){
-					btnEnrollment.click();						
-				} else if (btnResume != undefined) {
-					btnResume.click();
-					startTheCourse();
-				} else {
-					pressTheCourseButtons();
+					btnEnrollment.click();		
+					pressTheCourseButtons();				
 				}
+
+				if (btnResume != undefined) {
+					btnResume.click();
+					pressTheCourseButtons();					
+				}
+
+				if (btnEnrollment == undefined && btnResume == undefined){ 
+					startTheCourse();
+				}
+				
 			}, viewChangeDelay);
 		};
 		
