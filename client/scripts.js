@@ -1,9 +1,12 @@
 const attemptsTolerance = 5;
 const nextQuestionDelay = 1500;
 const viewChangeDelay = 3000;
+const courseLoadDelay = 5000;
+const apiKey = window.localStorage.getItem('playWebApp.api_key');
 let stopApp = false;
 let response = undefined;
 let assessmentDone = false;
+
 
 const levenshteinDistance =  function(a, b){
         if(a.length == 0) return b.length; 
@@ -110,7 +113,7 @@ const jaroWrinker = function (s1, s2) {
 const loadAnswersJson = () => {	
 	let urlArray = document.URL.split('/');
 	let quizId = urlArray[4];
-	fetch(`https://raw.githubusercontent.com/Sparklmonkey/frescoplay/master/${quizId}.json`)
+	fetch(`https://raw.githubusercontent.com/Sparklmonkey/frescoplay/master/answers/${quizId}.json`)
 		.then( response => response.text())
 		.then( responseObject => {			
 			response = JSON.parse(responseObject);
@@ -174,27 +177,49 @@ const selectCorrectAnswer = () => {
 			console.log("No answers for this");
 		}
 	}
-}
+};
 
 const doAssessment = () => {
 	try {
+		const startTheCourse = (event, attempt) => {
+			event();
+			setTimeout(() => {
+				doCourse(attempt);
+			}, viewChangeDelay);
+		};
+
 		if(!assessmentDone){
 			response = undefined;
 			addBtnClickEventListener();
 			loadAnswersJson();
 		} else {
 			let continueBtn = Array.from(document.getElementsByClassName('modalContent')[0].children).find(it => it.innerText === 'CONTINUE');
-			if(continueBtn !== undefined) {
-				continueBtn.click();	
-				setTimeout(() => {
-					doCourse(1);
-				}, viewChangeDelay);		
+			if(continueBtn !== undefined) {					
+				startTheCourse(() => continueBtn.click(), 1);				
+			} else {
+				// Probably you didn't pass the quiz
+				let retryBtn = document.getElementsByClassName('spaceAroundButton').length > 0 ? document.getElementsByClassName('spaceAroundButton')[1] : undefined;
+				if (retryBtn !== undefined) {
+					// Just to double checked it
+					if (retryBtn.innerText === 'RETRY') {
+						// Yep... you're almost f*up bro
+						let tryAgain = confirm(`It's probably that we don't have the correct answers for this quiz. Do you want to try it again (at your own risk)?`);
+						if (tryAgain) {
+							startTheCourse(() => retryBtn.click(), 1);							
+						} else {
+							console.log('Ok smartass... go ahead and do it by your own... bye!');
+							stopApplication();
+						}
+					}
+				} else {
+					console.log(`Sorry bro... I don't know what happened here :(`);
+				}
 			}
 		}
 	} catch (error) {
 		console.log(`Error trying to finish the assessment. Details: ${error.message}`);
 	}	
-}
+};
 
 const addBtnClickEventListener = () => {
 	//THIS WILL HANDLE CALLING QUESTION COMPLETION AFTER QUESTION HAS BEEN AUTOMATICALLY SELECTED, OR MANUALLY SELECTED.
@@ -208,7 +233,7 @@ const addBtnClickEventListener = () => {
 			}
 		})
 	});
-}
+};
 
 const takeNewAssessment = () => {
 	response = undefined;
@@ -216,12 +241,12 @@ const takeNewAssessment = () => {
 
 	addBtnClickEventListener();
 	loadAnswersJson();
-}
+};
 
-const doCourse = (attempts) => {
-	try {
-		let nextAttempt = attempts + 1;
+const doCourse = (attempts, callback) => {
+	let nextAttempt = attempts + 1;
 
+	try {		
 		if (!stopApp) {			
 			let btnNext = document.getElementsByClassName('navButton right')[0];
 			if (btnNext !== undefined) {
@@ -250,8 +275,17 @@ const doCourse = (attempts) => {
 						}, viewChangeDelay);
 
 					} else {
-						// Or there's a probability that we're inside the quiz... so let's start answering it
-						takeNewAssessment();
+						let btnGoToMyCourses = document.getElementById('proceedBtn');
+
+						if (btnGoToMyCourses !== undefined) {
+							// Or there's a probability that we're inside the quiz... so let's start answering it
+							takeNewAssessment();
+						} else {
+							btnGoToMyCourses.click();
+							setTimeout(() => {
+								callback();
+							}, viewChangeDelay);
+						}
 					}
 				}
 			}
@@ -273,24 +307,161 @@ const doCourse = (attempts) => {
 			stopApplication();
 		}
 	}
-}
+};
 
-const getMyCoursesStatus = () => {
-	const url = 'https://play-api.fresco.me/api/v1/progresses.json';
-	const apiKey = window.localStorage.getItem('playWebApp.api_key');
+const distinctObjects = (array) => {
+	const result = [];
+	const map = new Map();
+	for (const item of array) {
+	    if(!map.has(item.id)){
+	        map.set(item.id, true);    // set any value to Map
+	        result.push({
+	            id: item.id,
+	            name: item.name
+	        });
+	    }
+	}
 
-	fetch(url, {
+	return result;
+};
+
+const getMyCoursesStatus = (callback) => {
+	const frescoUrl = 'https://play-api.fresco.me/api/v1/progresses.json';
+	const coursesUrl = 'https://raw.githubusercontent.com/Sparklmonkey/frescoplay/master/answers/courses.json';	
+
+	fetch(frescoUrl, {
 		headers: { 'x-api-key' : apiKey }
 	})
-	.then( response => response.text())
-	.then( responseObject => {			
-		response = JSON.parse(responseObject);
-		console.log(response);
+	.then(response => response.text())
+	.then(responseObject => {			
+		const frescoStatus = JSON.parse(responseObject);
+
+		fetch(coursesUrl)
+		.then(response => response.text())
+		.then(responseObject => {		
+			let nonCompletedCourses = frescoStatus.progresses.filter(a => a.status !== 'completed');
+			
+			const availableCourses = distinctObjects(JSON.parse(responseObject));
+
+			let toCompleteList = availableCourses.filter(a => {
+				return nonCompletedCourses.find(b => b.node.id === a.id);
+			}); 
+			let toStartList = availableCourses.filter(a => {				
+				return frescoStatus.progresses.filter(b => b.node.id === a.id).length === 0
+			});
+
+			const toDoList = distinctObjects([].concat(...[toCompleteList, toStartList]));
+			console.log(toDoList);
+
+			callback(toDoList);
+		});
 	});
-}
+};
 
 const stopApplication = () => {
 	stopApp = true;
+};
+
+const findReactElement = (dom, traverseUp = 0) => {
+    const key = Object.keys(dom).find(key=>key.startsWith("__reactInternalInstance$"));
+    const domFiber = dom[key];
+    if (domFiber == null) return null;
+
+    // react <16
+    if (domFiber._currentElement) {
+        let compFiber = domFiber._currentElement._owner;
+        for (let i = 0; i < traverseUp; i++) {
+            compFiber = compFiber._currentElement._owner;
+        }
+        return compFiber._instance;
+    }
+
+    // react 16+
+    const GetCompFiber = fiber =>{
+        //return fiber._debugOwner; // this also works, but is __DEV__ only
+        let parentFiber = fiber.return;
+        while (typeof parentFiber.type == "string") {
+            parentFiber = parentFiber.return;
+        }
+        return parentFiber;
+    };
+    let compFiber = GetCompFiber(domFiber);
+    for (let i = 0; i < traverseUp; i++) {
+        compFiber = GetCompFiber(compFiber);
+    }
+    return compFiber.stateNode;
 }
 
-doCourse(1);
+const enrollCourse = (coursesList, idx = 0) => {
+	try {
+		let currentCourse = coursesList[idx];		
+        let cardLinks = document.getElementsByClassName('cardLink');
+
+        if (cardLinks.length > 0) {
+			//let tmpCourseLink = document.createElement("a");  
+	        //tmpCourseLink.href = `/course/${currentCourse.id}`;      
+	        // Append the anchor element to the body. 
+	        let cardLinkReact = findReactElement(cardLinks[0], 1);
+	        cardLinkReact.props.to = `/course/${currentCourse.id}`;
+			
+			cardLinks[0].click();
+        }        
+
+        const pressTheCourseButtons = () => {	
+			let btnEnrollment = document.getElementById('courseEnroll');
+			let btnResume = document.getElementById('courseResume');				
+
+			setTimeout(() => {
+				if (btnEnrollment != undefined){
+					btnEnrollment.click();						
+				} else if (btnResume != undefined) {
+					btnResume.click();
+					startTheCourse();
+				} else {
+					pressTheCourseButtons();
+				}
+			}, viewChangeDelay);
+		};
+		
+		const startTheCourse = () => {
+			setTimeout(() => {
+					doCourse(1, () => {
+					// The current course was finished, so let's start the next one
+					enrollCourse(coursesList, idx + 1);
+				});
+			}, viewChangeDelay);
+		};		
+
+		setTimeout(() => {		
+			pressTheCourseButtons();
+		}, courseLoadDelay);
+
+	} catch (error) {
+		console.log(error);	
+	}
+};
+
+const startHomeSearch = (attempts) => {
+	let nextAttempt = attempts + 1;
+
+	try {
+		if (!stopApp) {
+			getMyCoursesStatus(coursesToDo => {				
+				enrollCourse(coursesToDo);		
+			});
+		}
+	} catch (error) {
+		console.log('Oooppss... we have a weird behavior here :(');		
+		console.log(error);
+
+		if (attempts < attemptsTolerance) {
+			console.log(`Let's try again: Attempt ${nextAttempt} of ${attemptsTolerance}`);
+			setTimeout(() => {
+				startHomeSearch(nextAttempt);
+			}, viewChangeDelay);
+		} else {
+			console.log('Sorry but this was too much for our script... ');
+			stopApplication();
+		}
+	}
+}
