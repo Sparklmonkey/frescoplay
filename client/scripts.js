@@ -7,6 +7,7 @@ const apiKey = window.localStorage.getItem('playWebApp.api_key');
 let stopApp = false;
 let response = undefined;
 let assessmentDone = false;
+let coursesToDo = [];
 
 const levenshteinDistance = (a, b) => {
     if(a.length == 0) return b.length; 
@@ -153,23 +154,49 @@ const doResponseIntent = function(attempts, callback){
 const selectCorrectAnswer = (attempts=0) => {	
 	let nextAttempt = attempts + 1;
 
+	const finishAssessment = (btn, callback) => {
+		btn.click();
+		setTimeout(() => {
+			assessmentDone = true;
+			callback();
+		}, viewChangeDelay);
+	};
+
 	try {
 		let btnSubmitQuiz = document.getElementById('quizSubmitBtn');
+		let btnGoToMyCourses = document.getElementsByClassName('btn')[0];
+		let btnProceed = document.getElementsByClassName('proceedBtn')[0];
 
-		if (btnSubmitQuiz.attributes.cursor.value === 'pointer') { // Submit available
-			btnSubmitQuiz.click();
-			setTimeout(() => {
-				assessmentDone = true;
-				doAssessment();
-			}, viewChangeDelay);
-		} else {
-			let currQuestion = document.getElementsByClassName('question')[0].innerText;
+		// Submit available
+		//if (btnSubmitQuiz != undefined){
+		if (btnSubmitQuiz.attributes.cursor.value === 'pointer') {
+			// Press the submit button
+			finishAssessment(btnSubmitQuiz, doAssessment);
+		//}
+		} else if (btnProceed != undefined) {
+			// Press the go to my courses button
+			finishAssessment(btnProceed, () => {
+				//If you reach this line that means that you already finished the last course
+				startHomeSearch();
+			});
+
+		} else if (btnGoToMyCourses != null) {
+			// If you have hands-on tasks... we'll continue with the next course
+			if (btnGoToMyCourses.innerText == "GO TO HANDS-ONS") {
+				// Press the go to my courses button
+				finishAssessment(document.getElementsByClassName('proceedBtn')[0], () => {
+					//If you reach this line that means that you already finished the last course
+					startHomeSearch();
+				});
+			}
+		} else {			
+			let currQuestion = document.getElementsByClassName('question')[0].innerText.trim();
 			
 			try {
 				let currAnswer = null;
 				// Might throw null pointer
-				if (response.questions.find( it => it.question == currQuestion ) != undefined) {
-					 currAnswer = response.questions.find( it => it.question == currQuestion ).answer;
+				if (response.questions.find( it => it.question.includes(currQuestion)) != undefined) {
+					 currAnswer = response.questions.find( it => it.question.includes(currQuestion)).answer;
 				} else {
 					let questionCandidate = getCandidatesAndBestOne(response.questions, currQuestion, 'question'); 
 					console.log(questionCandidate);
@@ -189,7 +216,7 @@ const selectCorrectAnswer = (attempts=0) => {
 					correctAnswerObject.click();
 				}
 			} catch (error) {
-				console.log("No answers for this");
+				console.log(`No answers for this question: ${currQuestion}`);
 				throw error;
 			}
 		}
@@ -210,7 +237,7 @@ const selectCorrectAnswer = (attempts=0) => {
 const doAssessment = (attempts=0) => {
 	let nextAttempt = attempts + 1;
 
-	try {
+	try {		
 		const startTheCourse = (event, attempt) => {
 			event();
 			setTimeout(() => {
@@ -253,7 +280,11 @@ const doAssessment = (attempts=0) => {
 					}
 				}
 			} else {
-				throw Error('Non-expected behavior');
+				// Let's check if we're currently inside a quiz				
+				let currentUrl = document.URL.split('/');
+				if (currentUrl[currentUrl.length - 1] == 'quiz') {
+					throw Error('Non-expected behavior');
+				}					
 			}
 		}
 	} catch (error) {
@@ -296,9 +327,11 @@ const takeNewAssessment = () => {
 	try {
 		response = undefined;
 		assessmentDone = false;
-
-		addBtnClickEventListener();
-		loadAnswersJson();
+		console.log("take new assessment")
+		setTimeout(() => {
+			addBtnClickEventListener();
+			loadAnswersJson();
+		}, viewChangeDelay);
 	} catch(error) {
 		console.log(`Error tring to take the new assessment. Details: ${error.message}`);
 	}
@@ -327,20 +360,20 @@ const doCourse = (attempts=0, callback) => {
 					}, viewChangeDelay);
 
 				} else {
-					// A wild quiz has appeared!
+					// A wild quiz has appeared!					
 					let btnStartQuiz = document.getElementById('startQuiz');
 					if (btnStartQuiz != undefined) {
 						btnStartQuiz.click();
 						setTimeout(() => {
 							takeNewAssessment();
-						}, viewChangeDelay);
+						}, courseLoadDelay);
 
 					} else {
 						let btnGoToMyCourses = document.getElementById('proceedBtn');
 						if (btnGoToMyCourses == undefined) {
 							// Or there's a probability that we're inside the quiz... so let's start answering it
 							takeNewAssessment();
-						} else {
+						} else {							
 							btnGoToMyCourses.click();
 							setTimeout(() => {
 								callback();
@@ -469,56 +502,78 @@ const findReactElement = (dom, traverseUp=0) => {
     return compFiber.stateNode;
 }
 
-const enrollCourse = (coursesList, idx=0) => {
+const enrollCourse = () => {
 	try {
-		let currentCourse = coursesList[idx];		
-        let cardLinks = document.getElementsByClassName('cardLink');
+		const initEnroll = () => {
+			let currentCourse = coursesToDo.length > 0 ? coursesToDo[0] : null;
 
-        if (cardLinks.length > 0) {
-			//let tmpCourseLink = document.createElement("a");  
-	        //tmpCourseLink.href = `/course/${currentCourse.id}`;      
-	        // Append the anchor element to the body. 
-	        let cardLinkReact = findReactElement(cardLinks[0], 1);
-	        cardLinkReact.props.to = `/course/${currentCourse.id}`;
-			
-			cardLinks[0].click();
-        }        
+			if (currentCourse == undefined){
+				stopApplication();
+				alert(`All the courses were finished :)! Pay the subscription!`);
+				return;
+			}	
 
-        const pressTheCourseButtons = () => {	
+			// Go to home view
+			console.log(`Waiting a bit to start the following course: ${currentCourse.name}`);
+			document.getElementById('sideBarHome').click();
+
+			setTimeout(() => {		
+				injectTheCourseLink(currentCourse);
+			}, courseLoadDelay);
+		}
+ 
+		// Inject the c(o)urse!
+		const injectTheCourseLink = (currentCourse) => {
+	        let cardLinks = document.getElementsByClassName('cardLink');
+
+	        if (cardLinks.length > 0) {
+				//let tmpCourseLink = document.createElement("a");  
+		        //tmpCourseLink.href = `/course/${currentCourse.id}`;      
+		        // Append the anchor element to the body. 
+		        let cardLinkReact = findReactElement(cardLinks[0], 1);
+		        cardLinkReact.props.to = `/course/${currentCourse.id}`;
+				
+				cardLinks[0].click();
+	        }        
+
+	        setTimeout(() => {		
+				pressTheCourseButtons();
+			}, courseLoadDelay);
+	    }
+
+        const pressTheCourseButtons = (currentCourse) => {	
 			let btnEnrollment = document.getElementById('courseEnroll');
 			let btnResume = document.getElementById('courseResume');				
 
 			setTimeout(() => {
 				if (btnEnrollment != undefined){
 					btnEnrollment.click();		
-					pressTheCourseButtons();				
+					pressTheCourseButtons(currentCourse);				
 				}
 
 				if (btnResume != undefined) {
 					btnResume.click();
-					pressTheCourseButtons();					
+					pressTheCourseButtons(currentCourse);					
 				}
 
 				if (btnEnrollment == undefined && btnResume == undefined){ 
-					startTheCourse();
+					startTheCourse(currentCourse);
 				}
 				
 			}, viewChangeDelay);
 		};
 		
-		const startTheCourse = () => {
+		const startTheCourse = (currentCourse) => {
 			setTimeout(() => {
-					doCourse(1, () => {
+				doCourse(1, () => {
+					console.log(`The course: ${currentCourse.name} was finished!`);
 					// The current course was finished, so let's start the next one
-					enrollCourse(coursesList, idx + 1);
+					startHomeSearch();
 				});
 			}, viewChangeDelay);
 		};		
 
-		setTimeout(() => {		
-			pressTheCourseButtons();
-		}, courseLoadDelay);
-
+		initEnroll();
 	} catch (error) {
 		console.log(error);	
 	}
@@ -527,12 +582,32 @@ const enrollCourse = (coursesList, idx=0) => {
 const startHomeSearch = (attempts=0) => {
 	let nextAttempt = attempts + 1;
 
-	try {
-		if (!stopApp) {
-			getMyCoursesStatus(coursesToDo => {				
-				enrollCourse(coursesToDo);		
+	try {	
+		if (stopApp) {	
+			return;
+		}		
+
+		const onInitFrescoApp = () => {
+			if (coursesToDo.length == 0) {
+				getCoursesToDo();
+			} else {
+				coursesToDo.shift();
+				initHomeSearch();
+			}
+		};
+
+		const getCoursesToDo = () => {
+			getMyCoursesStatus(myCoursesToDo => {				
+				coursesToDo = myCoursesToDo;	
+				initHomeSearch();			
 			});
-		}
+		};
+
+		const initHomeSearch = () => {			
+			enrollCourse();	
+		};
+
+		onInitFrescoApp();
 	} catch (error) {
 		console.log('Oooppss... we have a weird behavior here :(');		
 		console.log(error);
