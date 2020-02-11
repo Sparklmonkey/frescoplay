@@ -224,30 +224,36 @@ const doAssessment = (attempts=0) => {
 			loadAnswersJson();
 
 		} else {
-			let continueBtn = Array.from(document.getElementsByClassName('modalContent')[0].children).find(it => it.innerText === 'CONTINUE');
-			if(continueBtn !== undefined) {					
-				startTheCourse(() => continueBtn.click(), 1);		
+			let modalContent = document.getElementsByClassName('modalContent')[0];
 
-			} else {
-				// Probably you didn't pass the quiz
-				let retryBtn = document.getElementsByClassName('spaceAroundButton').length > 0 ? document.getElementsByClassName('spaceAroundButton')[1] : undefined;
-				if (retryBtn !== undefined) {
-					// Just to double checked it
-					if (retryBtn.innerText === 'RETRY') {
-						// Yep... you're almost f*up bro
-						let tryAgain = confirm(`It's probably that we don't have the correct answers for this quiz. Do you want to try it again (at your own risk)?`);
-						if (tryAgain) {
-							startTheCourse(() => retryBtn.click(), 1);		
+			if (modalContent != undefined) {
+				let continueBtn = Array.from(document.getElementsByClassName('modalContent')[0].children).find(it => it.innerText === 'CONTINUE');
+				if(continueBtn !== undefined) {					
+					startTheCourse(() => continueBtn.click(), 1);		
 
-						} else {
-							console.log('Ok smartass... go ahead and do it by your own... bye!');
-							stopApplication();
-
-						}
-					}
 				} else {
-					console.log(`Sorry bro... I don't know what happened here :(`);
+					// Probably you didn't pass the quiz
+					let retryBtn = document.getElementsByClassName('spaceAroundButton').length > 0 ? document.getElementsByClassName('spaceAroundButton')[1] : undefined;
+					if (retryBtn !== undefined) {
+						// Just to double checked it
+						if (retryBtn.innerText === 'RETRY') {
+							// Yep... you're almost f*up bro
+							let tryAgain = confirm(`It's probably that we don't have the correct answers for this quiz. Do you want to try it again (at your own risk)?`);
+							if (tryAgain) {
+								startTheCourse(() => retryBtn.click(), 1);		
+
+							} else {
+								console.log('Ok smartass... go ahead and do it by your own... bye!');
+								stopApplication();
+
+							}
+						}
+					} else {
+						console.log(`Sorry bro... I don't know what happened here :(`);
+					}
 				}
+			} else {
+				throw Error('Non-expected behavior');
 			}
 		}
 	} catch (error) {
@@ -304,7 +310,7 @@ const doCourse = (attempts=0, callback) => {
 	try {		
 		if (!stopApp) {			
 			let btnNext = document.getElementsByClassName('navButton right')[0];
-			if (btnNext !== undefined) {
+			if (btnNext != undefined) {
 				btnNext.click();
 				setTimeout(() => {
 					doCourse(attempts);
@@ -313,7 +319,7 @@ const doCourse = (attempts=0, callback) => {
 			} else { 
 				// There are two options... one, this could be a congratulations screen, so we'll check it out
 				let btnProceed = document.getElementsByClassName('proceedBtn')[0];
-				if (btnProceed !== undefined) {
+				if (btnProceed != undefined) {
 					// And yeah! it's a congratulations screen
 					btnProceed.click();
 					setTimeout(() => {
@@ -323,7 +329,7 @@ const doCourse = (attempts=0, callback) => {
 				} else {
 					// A wild quiz has appeared!
 					let btnStartQuiz = document.getElementById('startQuiz');
-					if (btnStartQuiz !== undefined) {
+					if (btnStartQuiz != undefined) {
 						btnStartQuiz.click();
 						setTimeout(() => {
 							takeNewAssessment();
@@ -331,8 +337,7 @@ const doCourse = (attempts=0, callback) => {
 
 					} else {
 						let btnGoToMyCourses = document.getElementById('proceedBtn');
-
-						if (btnGoToMyCourses !== undefined) {
+						if (btnGoToMyCourses == undefined) {
 							// Or there's a probability that we're inside the quiz... so let's start answering it
 							takeNewAssessment();
 						} else {
