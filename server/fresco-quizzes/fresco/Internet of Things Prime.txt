@@ -1,0 +1,100 @@
+*Arduino board has which of the following components?
+All the options
+*A fog extends cloud to the ________________
+things that process and act on data
+*Identify the challenges of an IoT architecture.
+Both the options
+*An IoT application is designed to adapt to the given situation dynamically.
+True
+*____________ is a standardized method to establish communication between interconnected devices.
+Protocol
+*The following are interfaces of Raspberry Pi, except _________
+NFC
+*Edge computing helps to reduce the latency time of processing information.
+True
+*In a IoT architecture, the ____________ layer collects data from the environment
+Perception
+*____________ is a specialized web transfer protocol for use with constrained nodes and networks in IoT.
+CoAP
+*Arduino Uno is pre-programmed with _________
+boot loader
+*Which of the following is a/are characteristic(s) of an IoT application?
+Connectable and Scalable
+*The following are IoT protocols, except _________.
+WAN
+*An IoT device takes actions/decisions without human intervention .
+True
+*Application layer is responsible for ___________
+Applying business logic for a given requirement
+*Internet of Things is a system of interconnected computing devices.
+True
+*Edge computing is _____________
+Processing the data near a network of devices/components
+*An IoT architecture comprises of ___________
+All the options
+*IoT is an interaction between the physical and the digital world.
+True
+*_____________ is a suite of applications used to prepare and present data in a meaningful way.
+IoT platform
+*Which of the following is a classification of IoT protocols?
+All the options
+*An IoT system consists of _______________
+All The options
+*The word IoT was coined by ____________
+Kevin Ashton
+*Contextual awareness is a vital characteristic of IoT.
+True
+*IoT infrastructure should support __________
+Anytime, Anywhere and Anyone
+*An IoT Thing is _____________
+An entity with a unique identifier
+*The unique identifier of an IoT device helps ___________
+To connect, communicate and monitor the device
+*Sensors and Actuators are also known as ____________
+ Transducers
+*Peer to Peer Computing means ____________
+ Interconnected objects communicating between each other
+*An IoT device will monitor information from the environment.
+True
+*Identify the non-IoT device from the given options.
+Microsoft surface laptop
+*IoT architecture should be _____________
+Heterogeneous
+*Raspberry Pi is a low-cost general-purpose computer.
+True
+*The following are IoT platforms, except _________
+Zoho connect
+*Arduino is a microcontroller.
+True
+*Which of the following is an example of an IoT application?
+Wearable device to monitor blood glucose level
+*The main challenge of the communication layer is _________
+Both the options
+*MQTT ______________
+All the options
+*Implementing Edge/Fog computing helps to reduce network bandwidth.
+True
+*Arduino board can read sensor values through the analog I/O pins.
+True
+*IoT is an abbreviation of _____________
+Internet of Things
+*The first wearable device was invented by __________
+Thad Starnes
+*IIoT stands for _________
+Industrial Internet of Things
+*Which of the following is a benefit of Edge/Fog computing?
+Faster response time
+*‘Denial of Service’ is a method of attack using interconnected PC or devices.
+True
+*Photo diode is a/an ____________ electronic component.
+ active
+*IoT uses HTTP protocol in the _________ layer.
+Application
+*The following are IoT applications, except __________
+ A mobile app monitors the web activity of a user
+*Arduino board can withstand a maximum voltage of _________
+20V
+*CoAP is a _______________
+lightweight fast HTTP
+*Devices which store energy in the form of voltage or current are known as ____________
+Passive components
