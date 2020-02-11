@@ -1,1 +1,89 @@
-*What is the metric used to measure how quickly we are deploying?
+*Understanding what we are deploying and how we are deploying comes under which practice of DevOps?
+Configuration Management (Good)
+
+*Product Management is one of the 7 DevOps practices.
+False (Good)
+
+*Which of the following is a value of DevOps?
+DevOps goals span the entire delivery pipeline (Good)
+
+*____________ is the primary measure of progress according to Agile Manifesto.
+Working Software (Good)
+
+*DevOps is the union of ___________, ____________ and _________ to enable continuous delivery of value to end users.
+People, Processes and Products (Good)
+
+*DevOps encompasses _______________
+Automation (Good)
+
+*Improving the quality and performance of the applications is a major driver for switching to DevOps.
+True (Good)
+
+*DevOps encompasses culture and collaboration.
+True (Good)
+
+*Improving the quality and performance of the applications is a major driver for switching to DevOps.
+True (Good)
+
+*Which of the following can slow down your ability to deliver code effectively?
+Technical Debt (Good)
+
+*____________ measures the complexity of the code and the efficiency of the development systems.
+Change Lead Time (Good)
+
+*The following are benefits of automation in DevOps, except it _________.
+Implants Manual Errors (Good)
+
+*____________ enables continuous value delivery.
+Automation (Good)
+
+*Automation empowers frequent releases and self-service.
+True (Good)
+
+*Change Fail rate is an Agility performance indicator.
+False (Good)
+
+*What is the desire in the organization to push things to production termed as?
+Live Site Culture (Good)
+
+*What is the metric used to measure how quickly are we deploying?
+Deployment Frequency (Good)
+
+*Which of the following is a benefit of small releases?
+Faster Feedback (Good)
+
+*_____________ ensures that the code deployed to the production environment is not necessarily released to all end users.
+Feature Flag (Good)
+
+*_____________ is a software engineering approach in which teams produce software in short cycles, ensuring that the software can be reliably released at any time.
+Continuous Delivery (Good)
+
+*During the Continuous Integration process, unit tests are executed during the build.
+True (Good)
+
+*Continuous Delivery encourages configuration as code.
+True (Good)
+
+*Continuous Delivery focuses on manual delivery pipeline.
+False (Good)
+
+*It is acceptable if all the environments are not consistent in a DevOps lifecycle.
+False (Good)
+
+*______________ testing tests components together in scenarios.
+Integration (Good)
+
+*_____________ is the automated system used for continuous integration (Build Code, Create Packages and Run Code).
+ Build Pipeline (Good)
+
+Treating Infrastructure as a flexible resource is a benefit of Infrastructure and Configuration as Code.
+True (Good)
+
+*In Manual Integration testing, Human Intelligence is waged against the application.
+True (Good)
+
+*The following are types of monitoring, except ___________
+Program (Good)
+
+*The process of monitoring and learning from a live site is known as ____________________
+Application Performance Monitoring (Good)
