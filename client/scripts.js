@@ -8,6 +8,7 @@ let stopApp = false;
 let response = undefined;
 let assessmentDone = false;
 let coursesToDo = [];
+let isQuizIdle = false;
 
 const levenshteinDistance = (a, b) => {
     if(a.length == 0) return b.length; 
@@ -65,11 +66,11 @@ const jaroWrinker = (s1, s2) => {
             high = (i + range <= s2.length) ? (i + range) : (s2.length - 1);
 
         for ( j = low; j <= high; j++ ) {
-        if ( s1Matches[i] !== true && s2Matches[j] !== true && s1[i] === s2[j] ) {
-            ++m;
-            s1Matches[i] = s2Matches[j] = true;
-            break;
-        }
+			if ( s1Matches[i] !== true && s2Matches[j] !== true && s1[i] === s2[j] ) {
+				++m;
+				s1Matches[i] = s2Matches[j] = true;
+				break;
+			}
         }
     }
 
@@ -83,16 +84,16 @@ const jaroWrinker = (s1, s2) => {
 
     for ( i = 0; i < s1.length; i++ ) {
         if ( s1Matches[i] === true ) {
-        for ( j = k; j < s2.length; j++ ) {
-            if ( s2Matches[j] === true ) {
-            k = j + 1;
-            break;
-            }
-        }
+			for ( j = k; j < s2.length; j++ ) {
+				if ( s2Matches[j] === true ) {
+				k = j + 1;
+				break;
+				}
+			}
 
-        if ( s1[i] !== s2[j] ) {
-            ++n_trans;
-        }
+			if ( s1[i] !== s2[j] ) {
+				++n_trans;
+			}
         }
     }
 
@@ -131,8 +132,8 @@ const getCandidatesAndBestOne = (sourceArray, text, property) => {
 		// We must find the question that probably has format differences, so let's use some distance algorithms
 		let candidates = sourceArray.map((element) => {
 			return {
-				'distance0': levenshteinDistance(text.trim(), element[property].trim()),
-				'distance1': jaroWrinker(text.trim(), element[property].trim()),
+				'distance0': levenshteinDistance(text.trim().toLowerCase(), element[property].trim().toLowerCase()),
+				'distance1': jaroWrinker(text.trim().toLowerCase(), element[property].trim().toLowerCase()),
 				'value': element
 			}
 		});
@@ -162,76 +163,92 @@ const selectCorrectAnswer = (attempts=0) => {
 		}, viewChangeDelay);
 	};
 
-	try {
-		let btnSubmitQuiz = document.getElementById('quizSubmitBtn');
-		let btnGoToMyCourses = document.getElementsByClassName('btn')[0];
-		let btnProceed = document.getElementsByClassName('proceedBtn')[0];
+	if(!isQuizIdle){
+		isQuizIdle = true;
 
-		// Submit available
-		//if (btnSubmitQuiz != undefined){
-		if (btnSubmitQuiz.attributes.cursor.value === 'pointer') {
-			// Press the submit button
-			finishAssessment(btnSubmitQuiz, doAssessment);
-		//}
-		} else if (btnProceed != undefined) {
-			// Press the go to my courses button
-			finishAssessment(btnProceed, () => {
-				//If you reach this line that means that you already finished the last course
-				startHomeSearch();
-			});
+		try {
+			let btnSubmitQuiz = document.getElementById('quizSubmitBtn') || { "attributes" : { "cursor" : { "value" : "none" } } };
+			let btnGoToMyCourses = document.getElementsByClassName('btn')[0];
+			let btnProceed = document.getElementsByClassName('proceedBtn')[0];
 
-		} else if (btnGoToMyCourses != null) {
-			// If you have hands-on tasks... we'll continue with the next course
-			if (btnGoToMyCourses.innerText == "GO TO HANDS-ONS") {
+			// Submit available
+			//if (btnSubmitQuiz != undefined){
+			if (btnSubmitQuiz.attributes.cursor.value === 'pointer') {
+				// Press the submit button
+				finishAssessment(btnSubmitQuiz, doAssessment);
+			//}
+			} else if (btnProceed != undefined) {
 				// Press the go to my courses button
-				finishAssessment(document.getElementsByClassName('proceedBtn')[0], () => {
+				finishAssessment(btnProceed, () => {
 					//If you reach this line that means that you already finished the last course
 					startHomeSearch();
 				});
-			}
-		} else {			
-			let currQuestion = document.getElementsByClassName('question')[0].innerText.trim();
-			
-			try {
-				let currAnswer = null;
-				// Might throw null pointer
-				if (response.questions.find( it => it.question.includes(currQuestion)) != undefined) {
-					 currAnswer = response.questions.find( it => it.question.includes(currQuestion)).answer;
-				} else {
-					let questionCandidate = getCandidatesAndBestOne(response.questions, currQuestion, 'question'); 
-					console.log(questionCandidate);
 
-					currAnswer = questionCandidate.best.value.answer; //questionCandidate.value.answer;
+			} else if (btnGoToMyCourses != null) {
+				// If you have hands-on tasks... we'll continue with the next course
+				if (btnGoToMyCourses.innerText == "GO TO HANDS-ONS") {
+					// Press the go to my courses button
+					finishAssessment(document.getElementsByClassName('proceedBtn')[0], () => {
+						//If you reach this line that means that you already finished the last course
+						startHomeSearch();
+					});
 				}
+			} else {			
+				let currQuestion = document.getElementsByClassName('question')[0].innerText.trim();
 				
-				let answerOptions = Array.from(document.getElementsByClassName('answerOptions')[0].children).filter(it => it.tagName == "LABEL");
-				let answerCandidate = getCandidatesAndBestOne(answerOptions, currAnswer, 'innerText');
+				try {
+					let currAnswer = null;
+					let questionCandidate = null;
 
-				if (answerCandidate.best.distance1 > 0 && answerCandidate.best.distance1 < distanceAnswerTolerance) {
-					// Our best candidate is not the best...				
-					alert(`Maybe we don't have the correct answer for this question... try it by yourself.\nBest Candidate: "${answerCandidate.best.value.innerText}"`);
-				} else {
-					// Might throw null pointer (CURRENTLY NOT WORKING)
-					let correctAnswerObject = answerCandidate.best.value.previousElementSibling; 
-					correctAnswerObject.click();
+					// Might throw null pointer
+					if (response.questions.find( it => it.question.includes(currQuestion)) != undefined) {
+						currAnswer = response.questions.find( it => it.question.includes(currQuestion)).answer;
+					} else {
+						questionCandidate = getCandidatesAndBestOne(response.questions, currQuestion, 'question'); 
+						console.log(questionCandidate);
+						currAnswer = questionCandidate.best.value.answer; //questionCandidate.value.answer;
+					}
+					
+					let answerOptions = Array.from(document.getElementsByClassName('answerOptions')[0].children).filter(it => it.tagName == "LABEL");
+					let answerCandidate = getCandidatesAndBestOne(answerOptions, currAnswer, 'innerText');
+
+					if (answerCandidate.best.distance1 > 0 && answerCandidate.best.distance1 < distanceAnswerTolerance) {
+						// Our best candidate is not the best...				
+						console.log(`Maybe we don't have the correct answer for this question or probably the fresco-team want to ambush our beloved script.` +
+						`Try answer this one by yourself.\n` +
+						`Best Candidate:\n` +
+						`Question: "${questionCandidate.best.value.question}"\n`+
+						`Answer: "${questionCandidate.best.value.answer}"`);
+
+						let searchOnGoogle = confirm(`Yup we don't have this question, but there's a friend that can help us.\nDo you want to search this question in google?`);						
+						if(searchOnGoogle){
+							window.open(`http://google.com/search?q=${currQuestion}`);
+						}									
+					} else {
+						// Might throw null pointer (CURRENTLY NOT WORKING)
+						let correctAnswerObject = answerCandidate.best.value.previousElementSibling; 
+						correctAnswerObject.click();
+					}
+				} catch (error) {
+					console.log(`No answers for this question: ${currQuestion}.\nDetails: ${error.message}`);
+					throw error;
 				}
-			} catch (error) {
-				console.log(`No answers for this question: ${currQuestion}`);
-				throw error;
+			}
+		} catch (error) {		
+			if (attempts < attemptsTolerance) {			
+				console.log(`Let's try again: Attempt ${nextAttempt} of ${attemptsTolerance}`);
+				setTimeout(() => {
+					selectCorrectAnswer(nextAttempt);
+				}, viewChangeDelay);
+
+			} else {
+				console.log('Dude... finish this course manually');
+				stopApplication();
 			}
 		}
-	} catch (error) {		
-		if (attempts < attemptsTolerance) {			
-			console.log(`Let's try again: Attempt ${nextAttempt} of ${attemptsTolerance}`);
-			setTimeout(() => {
-				selectCorrectAnswer(nextAttempt);
-			}, viewChangeDelay);
 
-		} else {
-			console.log('Dude... finish this course manually');
-			stopApplication();
-		}
-	}
+		isQuizIdle = false;
+	}		
 };
 
 const doAssessment = (attempts=0) => {
@@ -257,7 +274,6 @@ const doAssessment = (attempts=0) => {
 				let continueBtn = Array.from(document.getElementsByClassName('modalContent')[0].children).find(it => it.innerText === 'CONTINUE');
 				if(continueBtn !== undefined) {					
 					startTheCourse(() => continueBtn.click(), 1);		
-
 				} else {
 					// Probably you didn't pass the quiz
 					let retryBtn = document.getElementsByClassName('spaceAroundButton').length > 0 ? document.getElementsByClassName('spaceAroundButton')[1] : undefined;
@@ -268,11 +284,9 @@ const doAssessment = (attempts=0) => {
 							let tryAgain = confirm(`It's probably that we don't have the correct answers for this quiz. Do you want to try it again (at your own risk)?`);
 							if (tryAgain) {
 								startTheCourse(() => retryBtn.click(), 1);		
-
 							} else {
 								console.log('Ok smartass... go ahead and do it by your own... bye!');
 								stopApplication();
-
 							}
 						}
 					} else {
@@ -325,9 +339,12 @@ const addBtnClickEventListener = () => {
 
 const takeNewAssessment = () => {
 	try {
+		console.log(">Take Assessment")
+
 		response = undefined;
 		assessmentDone = false;
-		console.log("take new assessment")
+		isQuizIdle = false;
+		
 		setTimeout(() => {
 			addBtnClickEventListener();
 			loadAnswersJson();
@@ -341,6 +358,8 @@ const doCourse = (attempts=0, callback) => {
 	let nextAttempt = attempts + 1;
 
 	try {		
+		console.log(">Do Course")
+
 		if (!stopApp) {			
 			let btnNext = document.getElementsByClassName('navButton right')[0];
 			if (btnNext != undefined) {
@@ -468,10 +487,6 @@ const getMyCoursesStatus = (callback) => {
 	}
 }
 
-const stopApplication = () => {
-	stopApp = true;
-};
-
 const findReactElement = (dom, traverseUp=0) => {
     const key = Object.keys(dom).find(key=>key.startsWith("__reactInternalInstance$"));
     const domFiber = dom[key];
@@ -504,6 +519,8 @@ const findReactElement = (dom, traverseUp=0) => {
 
 const enrollCourse = () => {
 	try {
+		console.log(">Enroll Course")
+
 		const initEnroll = () => {
 			let currentCourse = coursesToDo.length > 0 ? coursesToDo[0] : null;
 
@@ -579,10 +596,22 @@ const enrollCourse = () => {
 	}
 };
 
+const stopApplication = () => {
+	console.log(">Stop Application")
+	stopApp = true;
+};
+
+const restartApplication = () => {
+	console.log(">Restart Application")
+	stopApp = true;
+	startHomeSearch();
+};
+
 const startHomeSearch = (attempts=0) => {
 	let nextAttempt = attempts + 1;
 
 	try {	
+		console.log(">Home Search")
 		if (stopApp) {	
 			return;
 		}		
