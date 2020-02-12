@@ -94,6 +94,9 @@ Exchange API
 *The http methods used by REST are
 All of the options
 
+*The http methods used by REST are
+GET, POST, DELETE
+
 *Wysiwyg module is compatible with the CKEditor module from drupal.org.
 False
 
@@ -114,8 +117,6 @@ True
 
 *Twig is a
 Template Framework
-
-*
 
 
 

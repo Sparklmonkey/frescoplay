@@ -243,7 +243,7 @@ const selectCorrectAnswer = (attempts=0) => {
 
 			} else {
 				console.log('Dude... finish this course manually');
-				stopApplication();
+				//stopApplication();
 			}
 		}
 
@@ -312,7 +312,7 @@ const doAssessment = (attempts=0) => {
 
 		} else {
 			console.log('Dude... finish this course manually');
-			stopApplication();
+			//stopApplication();
 		}
 	}	
 };
@@ -321,15 +321,13 @@ const addBtnClickEventListener = () => {
 	try {
 		//THIS WILL HANDLE CALLING QUESTION COMPLETION AFTER QUESTION HAS BEEN AUTOMATICALLY SELECTED, OR MANUALLY SELECTED.
 		Array.from(document.querySelectorAll(".navButton.right, .answerOptions")).map( it => {
-			it.addEventListener("click", (event) => {
-				//if (!stopApplication) {
-					if(response) {
-						setTimeout(() => selectCorrectAnswer(), nextQuestionDelay)
-					}
-					else {
-						loadAnswersJson()
-					}
-				//}
+			it.addEventListener("click", (event) => {				
+				if(response) {
+					setTimeout(() => selectCorrectAnswer(), nextQuestionDelay)
+				}
+				else {
+					loadAnswersJson()
+				}				
 			})
 		});
 	} catch (error) {
@@ -360,50 +358,63 @@ const doCourse = (attempts=0, callback) => {
 	try {		
 		console.log(">Do Course")
 
-		if (!stopApp) {			
-			let btnNext = document.getElementsByClassName('navButton right')[0];
-			if (btnNext != undefined) {
-				btnNext.click();
+		if (stopApp) {	
+			console.log('Application stopped!');
+			return;
+		}	
+		
+		let btnNext = document.getElementsByClassName('navButton right')[0];
+		if (btnNext != undefined) {
+			btnNext.click();
+			setTimeout(() => {
+				doCourse(attempts);
+			}, nextQuestionDelay);			
+		} else { 
+			// There are two options... one, this could be a congratulations screen, so we'll check it out
+			let btnProceed = document.getElementsByClassName('proceedBtn')[0];
+			let btnStartQuiz = document.getElementById('startQuiz');
+			let btnGoToMyCourses = document.getElementsByClassName('btn')[0];
+
+			if (btnProceed != undefined){
+				console.log(">Proceed Click")
+
+				// And yeah! it's a congratulations screen
+				btnProceed.click();
 				setTimeout(() => {
 					doCourse(attempts);
-				}, nextQuestionDelay);
+				}, viewChangeDelay);
+				return
+			} 
+			if (btnStartQuiz != undefined){
+				console.log(">Start Quiz Click")
 
-			} else { 
-				// There are two options... one, this could be a congratulations screen, so we'll check it out
-				let btnProceed = document.getElementsByClassName('proceedBtn')[0];
-				if (btnProceed != undefined) {
-					// And yeah! it's a congratulations screen
-					btnProceed.click();
-					setTimeout(() => {
-						doCourse(attempts);
-					}, viewChangeDelay);
-
-				} else {
-					// A wild quiz has appeared!					
-					let btnStartQuiz = document.getElementById('startQuiz');
-					if (btnStartQuiz != undefined) {
-						btnStartQuiz.click();
-						setTimeout(() => {
-							takeNewAssessment();
-						}, courseLoadDelay);
-
-					} else {
-						let btnGoToMyCourses = document.getElementById('proceedBtn');
-						if (btnGoToMyCourses == undefined) {
-							// Or there's a probability that we're inside the quiz... so let's start answering it
-							takeNewAssessment();
-						} else {							
-							btnGoToMyCourses.click();
-							setTimeout(() => {
-								callback();
-							}, viewChangeDelay);
-						}
-					}
-				}
+				// A wild quiz has appeared!												
+				btnStartQuiz.click();
+				setTimeout(() => {
+					takeNewAssessment();
+				}, courseLoadDelay);
+				return
 			}
-		} else {
-			console.log('Application stopped!');
-		}
+			if (btnGoToMyCourses != undefined){
+				if (btnGoToMyCourses.innerText === 'GO TO MY COURSES') {
+					console.log(">Go to my couses Click")
+
+					btnGoToMyCourses.click();
+					setTimeout(() => {
+						callback();
+					}, viewChangeDelay);
+				}
+				else {					
+					console.log(">Unknown option!")
+
+					// Or there's a probability that we're inside the quiz... so let's start answering it
+					let currentUrl = document.URL.split('/');
+					if (currentUrl[currentUrl.length - 1] == 'quiz'){
+						takeNewAssessment();
+					}					
+				}
+			}		
+		} 		
 	} catch (error) {		
 		console.log('Oooppss... we have a weird behavior here :(');		
 		console.log(error);
@@ -416,7 +427,7 @@ const doCourse = (attempts=0, callback) => {
 
 		} else {
 			console.log('Dude... finish this course manually');
-			stopApplication();
+			//stopApplication();
 		}
 	}
 };
