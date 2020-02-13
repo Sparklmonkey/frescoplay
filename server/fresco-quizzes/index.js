@@ -5,7 +5,7 @@ const querystring = require('querystring');
 const express = require('express');
 const app = express();
 const fetch = require("node-fetch");
-const apiKey = 'SkI3CnK-nOgvXnTrEqa2eBAcVxnnzPD9rWS961eZyMQ';
+const apiKey = 'yc-3RwjqgdCQPP-RnUNXr1f6ynGtfTcyI2A02ytwcnE';
 
 const waitFor = (ms) => new Promise(r => setTimeout(r, ms));
 
@@ -35,7 +35,8 @@ fs.readdir(directoryPath, async (err, files) => {
 	        let fileName = file.replace('.txt', '');  	        
 	        console.log(fileName); 
 
-	        await doCourseSearch(fileName, async (jsonData) => {
+	        await doCourseSearch(fileName, async (jsonData) => {	
+				console.log(jsonData);			
 	        	const cpFileDir = `${directoryResultPath}/tmp_${jsonData.nodes[0].id}.json`;
 	        	// destination.txt will be created or overwritten by default.
 				await fs.copyFile(`${directoryPath}/${file}`, cpFileDir, async (err) => {

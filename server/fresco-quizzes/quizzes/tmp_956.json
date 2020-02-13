@@ -1,0 +1,74 @@
+*What is ICR?
+Intelligent Character Recognition (Good)
+*What are the various Data export formats?
+All of the options mentioned (Good)
+*What are the various document Processing Stages?
+All of the options mentioned (Good)
+*How many language texts ABBYY technologies can recognize?
+upto 200 (Good)
+*What are ABBYY image import options?
+All of the options mentioned (Good)
+*What is OCR?
+ Optical Character Recognition (Good)
+*What are the challenges in Manual Data Entry and Processing?
+All of the options mentioned (Good)
+*What type of documents ABBYY Flexicapture can process?
+All of the options mentioned (Good)
+*Assembly errors can be corrected in which station?
+Verification Station (Good)
+*Which of the following actions can be performed in Data Verification station?
+Check uncertain characters, data format (Good)
+*What are various Verification Operator roles?
+All of the options (Good) 
+*Which one is ABBYY Flexicapture Server Component?
+File Storage (Good)
+*Which of the following actions can be performed in scanning station?
+Send batches containing images to server for recognition (Good)
+*Data Verification Operator works on which station?
+Data Verification Station (Good)
+*What are the tasks handled in Verification station?
+All of the options (Good)
+*What are ABBYY Flexicapture installation types?
+Both (Good) 
+*Which component distributes the tasks among the processing stations?
+Processing Server (Good) 
+*Data verification station can be accessed ---------------
+Both (Good) 
+*Which station is used to create Flexicapture project?
+ Project Setup (Good) 
+*The order in which Document Definitions are applied?
+First Structured, then Semi-structured in the order they appear in the list (Good)
+*What information is contained in the Flexicapture Project?
+All of the options mentioned (Good)
+*Which one is ABBYY Flexicapture Client Component?
+Project Setup Station (Good)
+*What information is stired in DB server?
+All of the options mentioned (Good)
+*A section of a Document Definition consists of ________.
+One or more pages (Good)
+*What is a Document Set used for?
+To reduce verification time spent on document package integrity check, and to quickly compare main fields with child documents.
+*What are Batch Types used for?
+All the options (Good)
+*What are the tasks handled in a Verification station?
+All the options (Good)
+*On which station can you create a Document Definition?
+Project Setup Station (Good)
+*In which order will FlexiCapture match definitions to images, if there are multiple document definitions of both structured (Fixed Form) and semi-structured (FlexiLayout) types?
+In the order they are published (Good)
+*What is a Document Definition used for?
+To specify the fields to be recognized and the document processing parameters. (Good)
+*On which station can Validation Rule errors (e.g. Script rule or DB check) be corrected?
+Verification Station (Good)
+*Images can be imported to a project by using?
+All the options Good)
+*An Operator with role Data Verification Operator can work on?
+All the options Good)
+*What type of documents can ABBYY FlexiCapture process?
+All the options (Good)
+*Is it possible to export all batches immediately after recognition, without any verification by operators?
+Yes, if Unattended or specially Customized Advanced Workflow is used. (Good)
+*Which of the following statements is true about Image Import profiles?
+Several import profiles can be created by using different storages for various batch types. (Good)
+
+
