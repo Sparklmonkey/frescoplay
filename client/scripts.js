@@ -4,6 +4,7 @@ const nextQuestionDelay = 1500;
 const viewChangeDelay = 3000;
 const courseLoadDelay = 5000;
 const apiKey = window.localStorage.getItem('playWebApp.api_key');
+const urlCorsProxy = 'https://cors-anywhere.herokuapp.com/'
 const urlApiQuiz = 'https://quiz-store.herokuapp.com'
 const apiQuizKey = 'fr3sc0-5uck5'
 let stopApp = false;
@@ -116,10 +117,14 @@ const jaroWrinker = (s1, s2) => {
 
 const loadAnswersJson = () => {	
 	try {
-		let urlArray = document.URL.split('/');
-		let quizId = urlArray[4];
-		fetch(`${urlApiQuiz}/quiz/get?id=${quizId}`, {
-			headers: { 'x-api-key': apiQuizKey }
+		let urlArray = document.URL.split('/')
+		let quizId = urlArray[4]
+		const quizDataUrl = `${urlApiQuiz}/quiz/get?id=${quizId}`
+
+		fetch(urlCorsProxy + quizDataUrl, {
+			headers: { 
+				'x-api-key': apiQuizKey				
+			}
 		})
 		.then( response => response.text())
 		.then( responseObject => {			
@@ -131,21 +136,45 @@ const loadAnswersJson = () => {
 	}
 }
 
+// const getSchunipzAvailableCourses = () => {
+// 	const targetUrl = `${urlApiQuiz}/courses/get`
+		  
+// 	fetch(urlCorsProxy + targetUrl, {
+// 		headers: {
+// 			'x-api-key': apiQuizKey
+// 		}
+// 	})
+// 	.then(blob => blob.json())
+// 	.then(data => {
+// 		console.table(data);
+// 		//document.querySelector("pre").innerHTML = JSON.stringify(data, null, 2);
+// 		return data;
+// 	})
+// 	.catch(e => {
+// 		console.log(e);
+// 		return e;
+// 	});
+// }
+
 const getMyCoursesStatus = (callback) => {
 	try {
-		const frescoUrl = 'https://play-api.fresco.me/api/v1/progresses.json';
-		const coursesUrl = `${urlApiQuiz}/courses/get`;	
+		const frescoUrl = 'https://play-api.fresco.me/api/v1/progresses.json'
 
 		fetch(frescoUrl, {
-			headers: { 'x-api-key' : apiKey }
+			headers: {
+				'x-api-key': apiKey				
+			}
 		})
 		.then(response => response.text())
 		.then(responseObject => {			
 			const frescoStatus = JSON.parse(responseObject);
 			console.log(frescoStatus);
 
-			fetch(coursesUrl, {
-				headers: { 'x-api-key': apiQuizKey }
+		    const coursesUrl = `${urlApiQuiz}/courses/get`
+			fetch(urlCorsProxy + coursesUrl, {
+				headers: { 
+					'x-api-key': apiQuizKey
+				}
 			})
 			.then(response => response.text())
 			.then(responseObject => {		
@@ -163,7 +192,14 @@ const getMyCoursesStatus = (callback) => {
 					alert(`Here's a bunch of courses that has hands on tasks, complete them.\n\nCourses:\n ${coursesWithHandsOn}`);
 				}
 
-				const availableCourses = distinctObjects(JSON.parse(responseObject));
+				const coursesOnApi = JSON.parse(responseObject).map(c => {
+					return {
+						id: c,
+						name: ''
+					}
+				})
+
+				const availableCourses = distinctObjects(coursesOnApi);
 
 				let toCompleteList = availableCourses.filter(a => {
 					return nonCompletedCourses.find(b => b.node.id === a.id);
