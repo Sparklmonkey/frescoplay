@@ -5,7 +5,8 @@ const querystring = require('querystring');
 const express = require('express');
 const app = express();
 const fetch = require("node-fetch");
-const apiKey = 'yc-3RwjqgdCQPP-RnUNXr1f6ynGtfTcyI2A02ytwcnE';
+const frescoApiKey = 'PHbw3n0nLCr94o4BLFe-lmvtCx7Z1vshq9keQQPhsmY';
+const chuniApiKey = 'fr3sc0-5uck5'
 
 const waitFor = (ms) => new Promise(r => setTimeout(r, ms));
 
@@ -26,8 +27,7 @@ fs.readdir(directoryPath, async (err, files) => {
         return console.log('Unable to scan directory: ' + err);
     } 
     
-    let nonJunklist = files.filter(item => !(/(^|\/)\.[^\/\.]/g).test(item));
-	let availableCourses = [];
+    let nonJunklist = files.filter(item => !(/(^|\/)\.[^\/\.]/g).test(item));	
 
     await asyncForEach(nonJunklist, async (file) => {
     	try {
@@ -35,32 +35,13 @@ fs.readdir(directoryPath, async (err, files) => {
 	        let fileName = file.replace('.txt', '');  	        
 	        console.log(fileName); 
 
-	        await doCourseSearch(fileName, async (jsonData) => {	
-				console.log(jsonData);			
-	        	const cpFileDir = `${directoryResultPath}/tmp_${jsonData.nodes[0].id}.json`;
-	        	// destination.txt will be created or overwritten by default.
-				await fs.copyFile(`${directoryPath}/${file}`, cpFileDir, async (err) => {
-				  if (err) {
-				  	throw err;
-				  }
+	        await doCourseSearch(fileName, async (jsonData) => {						
+				await formatQuizAnswers(jsonData.nodes[0].id, `${directoryPath}/${file}`, async courseData => {															
+					console.log(courseData)
 
-				  console.log(`${file} was copied to ${cpFileDir}`);
-
-				  await formatQuizAnswers(cpFileDir, async (formattedData) => {
-				  	const fnFileDir = `${directoryResultPath}/${jsonData.nodes[0].id}.json`;
-				  	fs.writeFile(fnFileDir, formattedData, function(err) {
-					    if(err) {
-					        return console.log(err);
-					    }
-					    console.log(`The quiz was saved as ${fnFileDir}!`);
-					    
-					    availableCourses.push({
-					    	'id': jsonData.nodes[0].id,
-					    	'name': jsonData.nodes[0].name
-					    });
-					}); 
-				  });
-				});        	
+					await insertCourseIntoApi(courseData, 
+						data => console.log(`Quiz ${jsonData.id} insert response: ${data}`));					
+				});     	
 	        });
 
 	        await waitFor(2000);	        
@@ -68,25 +49,10 @@ fs.readdir(directoryPath, async (err, files) => {
 	    	console.log(`Oopss... there was a really weird behavior trying to handle this file ${file}.`);
 	    	console.error(error);
 	    }
-    });
-
-    await createAvailableCoursesFile(availableCourses);
+	});
+	    
     console.log('Process Finished :)');
 });
-
-const createAvailableCoursesFile = async (filesArray) => {
-	try {
-		const fnFileDir = `${directoryResultPath}/courses.json`;
-		await fs.writeFile(fnFileDir, JSON.stringify(filesArray), async (err) => {
-		    if(err) {
-		        return console.log(err);
-		    }
-		    console.log(`The available courses file was saved as ${fnFileDir}!`);		    
-		}); 
-	} catch (error) {
-		console.error(error);
-	}
-}
 
 const doCourseSearch = async (courseName, callback) => {
   try {
@@ -98,7 +64,7 @@ const doCourseSearch = async (courseName, callback) => {
     const response = await fetch(url, {
     	method: 'GET',
     	headers : {
-    		'x-api-key': apiKey
+			'x-api-key': frescoApiKey			
     	}
     });
     const json = await response.json();
@@ -108,13 +74,42 @@ const doCourseSearch = async (courseName, callback) => {
   }
 };
 
-const formatQuizAnswers = async (file, callback) => {
+const insertCourseIntoApi = async (courseData, callback) => {
+	try {	  
+	  const bodyData = JSON.stringify(courseData)
+	  console.log(bodyData)
+
+	  const url = 'https://quiz-store.herokuapp.com/quiz/post';
+	  const response = await fetch(url, {
+		  method: 'POST',
+		  headers : {
+			  'x-api-key': chuniApiKey,
+			  'Content-Type': 'application/json'
+		  },
+		  body: bodyData
+	  });
+
+	  console.log(response);
+
+	  let responseData = '';
+	  if (response.status === 204)
+		  responseData = 'OK'
+	  else
+		  responseData = 'ERROR';
+		  
+	  callback(responseData);
+	} catch (error) {
+	  console.log(`Error trying to insert the data. Details: ${error.message}`);
+	}
+  };
+
+const formatQuizAnswers = async (id, file, callback) => {
 	try {
-		await fs.readFile(file, 'utf8', async (err, contents) => {			
+		await fs.readFile(file, 'utf8', async (err, contents) => {		
+			if (err) console.log(`Error trying to read the following file: ${file}. Details: ${err.message}`);			
+			
 		    let splittedLines = contents.split('*');
-		    let formattedData = {
-		    	questions: []
-		    };
+		    let questions = []		    
 		    await asyncForEach(splittedLines, async (question) => {			
 		    	if (question.trim() !== '') {	
 			    	let questionAndAnswer = question.split("\n");			    	
@@ -125,15 +120,20 @@ const formatQuizAnswers = async (file, callback) => {
 				    	let question = questionAndAnswer[0].trim();
 				    	let answer = questionAndAnswer.length > 1 ? questionAndAnswer[1] : ''; 
 
-				    	formattedData.questions.push({
+				    	questions.push({
 				    		question : question,
 				    		answer : answer
 				    	});
 			    	}
 			    }
-		    });
+			});
+			
+			const courseData = {		
+				id: id,
+				questions: questions				
+			}
 		    
-		    callback(JSON.stringify(formattedData));
+		    callback(courseData);
 		});
 	} catch (error) {
 		console.log(error);

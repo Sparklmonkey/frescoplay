@@ -4,6 +4,8 @@ const nextQuestionDelay = 1500;
 const viewChangeDelay = 3000;
 const courseLoadDelay = 5000;
 const apiKey = window.localStorage.getItem('playWebApp.api_key');
+const urlApiQuiz = 'https://quiz-store.herokuapp.com'
+const apiQuizKey = 'fr3sc0-5uck5'
 let stopApp = false;
 let response = undefined;
 let assessmentDone = false;
@@ -116,14 +118,68 @@ const loadAnswersJson = () => {
 	try {
 		let urlArray = document.URL.split('/');
 		let quizId = urlArray[4];
-		fetch(`https://raw.githubusercontent.com/Sparklmonkey/frescoplay/master/answers/${quizId}.json`)
-			.then( response => response.text())
-			.then( responseObject => {			
-				response = JSON.parse(responseObject);
-				selectCorrectAnswer();
-			});
+		fetch(`${urlApiQuiz}/quiz/get?id=${quizId}`, {
+			headers: { 'x-api-key': apiQuizKey }
+		})
+		.then( response => response.text())
+		.then( responseObject => {			
+			response = JSON.parse(responseObject);
+			selectCorrectAnswer();
+		});
 	} catch (error) {
 		console.log(`Error trying to load the answers. Details: ${error.message}`);
+	}
+}
+
+const getMyCoursesStatus = (callback) => {
+	try {
+		const frescoUrl = 'https://play-api.fresco.me/api/v1/progresses.json';
+		const coursesUrl = `${urlApiQuiz}/courses/get`;	
+
+		fetch(frescoUrl, {
+			headers: { 'x-api-key' : apiKey }
+		})
+		.then(response => response.text())
+		.then(responseObject => {			
+			const frescoStatus = JSON.parse(responseObject);
+			console.log(frescoStatus);
+
+			fetch(coursesUrl, {
+				headers: { 'x-api-key': apiQuizKey }
+			})
+			.then(response => response.text())
+			.then(responseObject => {		
+				// We filtered from the list the courses that have hands on tasks to do...
+				let nonCompletedCourses = frescoStatus.progresses.filter(f => f.status !== 'completed' && !f.node.has_handson);						
+				// We took the ones that aren't complete and the user must finish the hands on... just to let him know that he's lazy ass 
+				let nonCompletedWithHandson = frescoStatus.progresses.filter(f => f.status !== 'completed' && f.node.has_handson);						
+
+				if (nonCompletedWithHandson.length > 0) {
+					// You shall not pass!
+					let coursesWithHandsOn = nonCompletedWithHandson.map(course => {
+						return `> ${course.node.name} \n`;
+					});
+
+					alert(`Here's a bunch of courses that has hands on tasks, complete them.\n\nCourses:\n ${coursesWithHandsOn}`);
+				}
+
+				const availableCourses = distinctObjects(JSON.parse(responseObject));
+
+				let toCompleteList = availableCourses.filter(a => {
+					return nonCompletedCourses.find(b => b.node.id === a.id);
+				}); 
+				let toStartList = availableCourses.filter(a => {				
+					return frescoStatus.progresses.filter(b => b.node.id === a.id).length === 0
+				});
+
+				const toDoList = distinctObjects([].concat(...[toCompleteList, toStartList])).sort((a, b) => a.id - b.id);
+				console.log(toDoList);
+
+				callback(toDoList);
+			});
+		});
+	} catch(error) {
+		throw error;		
 	}
 }
 
@@ -440,63 +496,13 @@ const distinctObjects = (array) => {
 	        map.set(item.id, true);    // set any value to Map
 	        result.push({
 	            id: item.id,
-	            name: item.name
+	            name: item.name ? item.name : null
 	        });
 	    }
 	}
 
 	return result;
 };
-
-const getMyCoursesStatus = (callback) => {
-	try {
-		const frescoUrl = 'https://play-api.fresco.me/api/v1/progresses.json';
-		const coursesUrl = 'https://raw.githubusercontent.com/Sparklmonkey/frescoplay/master/answers/courses.json';	
-
-		fetch(frescoUrl, {
-			headers: { 'x-api-key' : apiKey }
-		})
-		.then(response => response.text())
-		.then(responseObject => {			
-			const frescoStatus = JSON.parse(responseObject);
-			console.log(frescoStatus);
-
-			fetch(coursesUrl)
-			.then(response => response.text())
-			.then(responseObject => {		
-				// We filtered from the list the courses that have hands on tasks to do...
-				let nonCompletedCourses = frescoStatus.progresses.filter(f => f.status !== 'completed' && !f.node.has_handson);						
-				// We took the ones that aren't complete and the user must finish the hands on... just to let him know that he's lazy ass 
-				let nonCompletedWithHandson = frescoStatus.progresses.filter(f => f.status !== 'completed' && f.node.has_handson);						
-
-				if (nonCompletedWithHandson.length > 0) {
-					// You shall not pass!
-					let coursesWithHandsOn = nonCompletedWithHandson.map(course => {
-						return `> ${course.node.name} \n`;
-					});
-
-					alert(`Here's a bunch of courses that has hands on tasks, complete them.\n\nCourses:\n ${coursesWithHandsOn}`);
-				}
-
-				const availableCourses = distinctObjects(JSON.parse(responseObject));
-
-				let toCompleteList = availableCourses.filter(a => {
-					return nonCompletedCourses.find(b => b.node.id === a.id);
-				}); 
-				let toStartList = availableCourses.filter(a => {				
-					return frescoStatus.progresses.filter(b => b.node.id === a.id).length === 0
-				});
-
-				const toDoList = distinctObjects([].concat(...[toCompleteList, toStartList])).sort((a, b) => a.id - b.id);
-				console.log(toDoList);
-
-				callback(toDoList);
-			});
-		});
-	} catch(error) {
-		throw error;		
-	}
-}
 
 const findReactElement = (dom, traverseUp=0) => {
     const key = Object.keys(dom).find(key=>key.startsWith("__reactInternalInstance$"));
@@ -542,7 +548,7 @@ const enrollCourse = () => {
 			}	
 
 			// Go to home view
-			console.log(`Waiting a bit to start the following course: ${currentCourse.name}`);
+			console.log(`Waiting a bit to start the following course: id: ${currentCourse.id} - name: ${currentCourse.name}`);
 			document.getElementById('sideBarHome').click();
 
 			setTimeout(() => {		
