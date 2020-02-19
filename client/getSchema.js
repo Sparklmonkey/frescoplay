@@ -5,7 +5,7 @@ const getCourseSchema = (courseId) => {
 	    id : courseId,
 		quizzes: []
 	};
-
+	
     fetch(`https://play-api.fresco.me/api/v1/nodes/${courseId}.json?source=play`, {
         headers: { 'x-api-key' : apiKey }
     })
@@ -44,3 +44,24 @@ const getTaskDetails = (courseSchema, task, assessment, callback) => {
         });
 	});	
 }
+
+const iVolveScript = () => {
+	var xInterval = setInterval(function(){
+		$(document).ready(function(){
+			if($('.endQuizCls').length > 0) {
+				exitCourse();
+				clearInterval(xInterval);
+			} else {
+				videoEnded();
+				setTimeout(function(){
+				 $('#nextBtn').click();
+				}, 1000);
+			}
+		});
+	}, 5000);
+}
+
+// // Cursos Flash
+// for (var x = 1; x < 1000; x++){
+// 	videoPlayerX.listSlidesViewedComplete[x] = true;
+//    }
